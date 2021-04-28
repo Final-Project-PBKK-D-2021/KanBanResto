@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +11,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+foreach (scandir($path = app_path('Modules')) as $dir) {
+    if (file_exists($filepath = "{$path}/{$dir}/Presentation/routes/web.php")) {
+        require $filepath;
+    }
+}

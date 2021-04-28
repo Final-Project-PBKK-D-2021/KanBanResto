@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Register view namespaces
+        foreach (scandir($path = app_path('Modules')) as $moduleDir) {
+            View::addNamespace($moduleDir, "{$path}/{$moduleDir}/Presentation/views");
+        }
     }
 }
