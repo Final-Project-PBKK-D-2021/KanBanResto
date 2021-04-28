@@ -1,26 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="7d191d11-72bc-41bf-8f43-51ea9f0fa16b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Modules/KanBan/Core/Application/EventListener/ini_folder_buat_event_listener.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Modules/KanBan/Core/Application/EventProcessor/ini_folder_buat_event_processor.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Modules/KanBan/Core/Application/Service/ini_folder_buat_service.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Modules/KanBan/Core/Domain/Event/ini_folder_buat_event.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Modules/KanBan/Core/Domain/Model/ini_folder_buat_model.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Modules/KanBan/Core/Domain/Repository/ini_folder_buat_repositories.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Modules/KanBan/Infrastructure/Repository/ini_folder_buat_repository.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Modules/KanBan/Presentation/Controller/ini_folder_buat_controller.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Modules/KanBan/Presentation/routes/web.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Modules/KanBan/Presentation/views/ini_folder_buat_views.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Modules/KanBan/dependencies.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Modules/Shared/Mechanism/EventManager.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Modules/Shared/Mechanism/UnitOfWork.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Modules/Shared/Model/KanBanEnum.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Modules/KanBan/Core/Application/Service/OwnerLogin/OwnerLoginRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Modules/KanBan/Core/Domain/Repository/OwnerRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Modules/KanBan/Presentation/Controller/Login/OwnerLoginController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Modules/KanBan/Presentation/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Modules/KanBan/Presentation/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +33,11 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="PhpServers">
+    <servers>
+      <server host="127.0.0.1" id="8619f42e-6011-4ce7-b667-2cb9e207ec5b" name="127.0.0.1" port="8000" />
+    </servers>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -161,20 +158,27 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Modules/KanBan/Core/Application/Service" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Modules/KanBan/Core/Application/Service/OwnerLogin" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\PERSONAL_FILE_DAT\EXinsTINCT\Programming Project\Web Dev\PBKK\final_project_pbkk\KanBanResto\app\Modules\KanBan\Core\Application\Service\OwnerLogin" />
+      <recent name="D:\PERSONAL_FILE_DAT\EXinsTINCT\Programming Project\Web Dev\PBKK\final_project_pbkk\KanBanResto\resources\views" />
       <recent name="D:\PERSONAL_FILE_DAT\EXinsTINCT\Programming Project\Web Dev\PBKK\final_project_pbkk\KanBanResto\app\Modules\KanBan\Core\Application\Service" />
       <recent name="D:\PERSONAL_FILE_DAT\EXinsTINCT\Programming Project\Web Dev\PBKK\final_project_pbkk\KanBanResto\app\Modules\KanBan\Core\Application\EventListener" />
       <recent name="D:\PERSONAL_FILE_DAT\EXinsTINCT\Programming Project\Web Dev\PBKK\final_project_pbkk\KanBanResto\app\Modules\KanBan\Core\Application\EventProcessor" />
-      <recent name="D:\PERSONAL_FILE_DAT\EXinsTINCT\Programming Project\Web Dev\PBKK\final_project_pbkk\KanBanResto\app\Modules\KanBan\Core\Domain\Repository" />
-      <recent name="D:\PERSONAL_FILE_DAT\EXinsTINCT\Programming Project\Web Dev\PBKK\final_project_pbkk\KanBanResto\app\Modules\KanBan\Core\Domain\Model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\PERSONAL_FILE_DAT\EXinsTINCT\Programming Project\Web Dev\PBKK\final_project_pbkk\KanBanResto\app\Modules\KanBan\Core\Domain\Model" />
       <recent name="D:\PERSONAL_FILE_DAT\EXinsTINCT\Programming Project\Web Dev\PBKK\final_project_pbkk\KanBanResto\app\Modules\KanBan\Presentation" />
       <recent name="D:\PERSONAL_FILE_DAT\EXinsTINCT\Programming Project\Web Dev\PBKK\final_project_pbkk\KanBanResto\app\Modules\KanBan\views" />
       <recent name="D:\PERSONAL_FILE_DAT\EXinsTINCT\Programming Project\Web Dev\PBKK\final_project_pbkk\KanBanResto\app\Modules\KanBan\Core" />
@@ -202,6 +206,7 @@
       <workItem from="1619434266209" duration="343000" />
       <workItem from="1619502360475" duration="7000" />
       <workItem from="1619598085517" duration="1425000" />
+      <workItem from="1619607345100" duration="4301000" />
     </task>
     <servers />
   </component>
@@ -213,7 +218,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

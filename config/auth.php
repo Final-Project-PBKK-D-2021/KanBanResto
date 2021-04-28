@@ -46,6 +46,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'owner' => [
+            'driver' => 'session',
+            'provider' => 'owner',
+        ],
     ],
 
     /*
@@ -69,6 +74,12 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+
+        'owner' => [
+            'driver' => 'eloquent',
+            'model' => App\Modules\KanBan\Core\Domain\Model\Owner::class,
         ],
 
         // 'users' => [
@@ -95,6 +106,12 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'owners' => [
+            'provider' => 'owner',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
