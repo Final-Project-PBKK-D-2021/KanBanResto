@@ -10,6 +10,7 @@ use App\Modules\KanBan\Core\Application\Service\OwnerLogin\OwnerLoginRequest;
 use App\Modules\KanBan\Core\Application\Service\OwnerLogin\OwnerLoginService;
 use App\Modules\Shared\Mechanism\UnitOfWork;
 use Illuminate\Http\Request;
+use Throwable;
 
 
 class OwnerLoginController extends Controller
@@ -34,7 +35,7 @@ class OwnerLoginController extends Controller
         return view('comapany.auth.login');
     }
 
-    public function authenticate(Request $request): \Illuminate\Http\RedirectResponse
+    public function authenticate(Request $request)
     {
         $input = new OwnerLoginRequest(
             $request->input('email'),
@@ -47,7 +48,8 @@ class OwnerLoginController extends Controller
 
         try {
             $service->execute($input);
-        } catch (KanBanException $e) {
+        } catch (Throwable $e) {
+            $this->unit_of_work->rollback();
             return back()->withErrors(
                 [
                     'email' => 'The provided credentials do not match our records.',
@@ -55,6 +57,8 @@ class OwnerLoginController extends Controller
             );
         }
 
-        return redirect()->route('dashboard');
+        $this->unit_of_work->commit();
+//        return redirect()->route('dashboard');
+        echo "sudah login";
     }
 }

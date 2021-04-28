@@ -32,6 +32,7 @@ class DependencyInjectionServiceProvider extends ServiceProvider
 
     private function registerModules()
     {
+        $app = $this->app;
         foreach (scandir($path = app_path('Modules')) as $dir) {
             if (file_exists($filepath = "{$path}/{$dir}/dependencies.php")) {
                 require $filepath;

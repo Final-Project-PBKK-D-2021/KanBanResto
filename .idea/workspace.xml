@@ -5,14 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d191d11-72bc-41bf-8f43-51ea9f0fa16b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Modules/KanBan/Core/Application/Service/OwnerLogin/OwnerLoginRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Modules/KanBan/Core/Domain/Repository/OwnerRepositoryInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Modules/KanBan/Presentation/Controller/Login/OwnerLoginController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/login.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Modules/KanBan/Infrastructure/Repository/OwnerRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/KanBanResto.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/KanBanResto.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Modules/KanBan/Presentation/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Modules/KanBan/Presentation/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Modules/KanBan/Presentation/Controller/Login/OwnerLoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Modules/KanBan/Presentation/Controller/Login/OwnerLoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Modules/KanBan/dependencies.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Modules/KanBan/dependencies.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/DependencyInjectionServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/DependencyInjectionServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,6 +147,7 @@
       <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
       <path value="$PROJECT_DIR$/vendor/phar-io/version" />
       <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/laravel/breeze" />
     </include_path>
   </component>
   <component name="ProjectId" id="1rhPLJmGnpJsncWcYkJSmreaQ0L" />
@@ -167,6 +169,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -178,6 +181,7 @@
       <recent name="D:\PERSONAL_FILE_DAT\EXinsTINCT\Programming Project\Web Dev\PBKK\final_project_pbkk\KanBanResto\app\Modules\KanBan\Core\Application\EventProcessor" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\PERSONAL_FILE_DAT\EXinsTINCT\Programming Project\Web Dev\PBKK\final_project_pbkk\KanBanResto\app\Modules\KanBan\Core\Application\EventListener" />
       <recent name="D:\PERSONAL_FILE_DAT\EXinsTINCT\Programming Project\Web Dev\PBKK\final_project_pbkk\KanBanResto\app\Modules\KanBan\Core\Domain\Model" />
       <recent name="D:\PERSONAL_FILE_DAT\EXinsTINCT\Programming Project\Web Dev\PBKK\final_project_pbkk\KanBanResto\app\Modules\KanBan\Presentation" />
       <recent name="D:\PERSONAL_FILE_DAT\EXinsTINCT\Programming Project\Web Dev\PBKK\final_project_pbkk\KanBanResto\app\Modules\KanBan\views" />
@@ -207,7 +211,17 @@
       <workItem from="1619502360475" duration="7000" />
       <workItem from="1619598085517" duration="1425000" />
       <workItem from="1619607345100" duration="4301000" />
+      <workItem from="1619614977180" duration="1713000" />
+      <workItem from="1619618353304" duration="673000" />
     </task>
+    <task id="LOCAL-00001" summary="Testing Login">
+      <created>1619615013485</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1619615013485</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,5 +250,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Testing Login" />
+    <option name="LAST_COMMIT_MESSAGE" value="Testing Login" />
   </component>
 </project>
