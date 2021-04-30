@@ -4,9 +4,6 @@
 </head>
 <body>
 <div class="user-form vertical-center-middle">
-    <div class="text-center">
-        <img src="{{asset('assets/images/logo-lkihi.png')}}">
-    </div>
     <br>
     <div class="title text-center">Lembaga Kajian Islam dan Hukum Islam</div>
     <div class="sub-title text-center">Fakultas Hukum Universitas Indonesia</div>

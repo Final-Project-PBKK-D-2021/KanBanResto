@@ -12,4 +12,11 @@ Route::get(
     }
 )->name('login');
 
+Route::get(
+    '/',
+    function () {
+        return view('base');
+    }
+)->name('base');
+
 Route::post('/login', [OwnerLoginController::class, 'authenticate'])->name('login');
