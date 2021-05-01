@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Modules\KanBan\Core\Application\Service\OwnerLogin;
+namespace App\Modules\KanBan\Core\Application\Service\Owner\OwnerLogin;
 
 
 use App\Exceptions\KanBanException;

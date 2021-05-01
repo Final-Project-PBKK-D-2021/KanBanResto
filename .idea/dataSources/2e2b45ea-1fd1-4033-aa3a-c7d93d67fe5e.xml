@@ -1114,207 +1114,234 @@
     <table id="354" parent="3" name="failed_jobs">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="355" parent="3" name="migrations">
+    <table id="355" parent="3" name="menus">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="356" parent="3" name="owners">
+    <table id="356" parent="3" name="migrations">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="357" parent="3" name="password_resets">
+    <table id="357" parent="3" name="owners">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="358" parent="3" name="users">
+    <table id="358" parent="3" name="password_resets">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <column id="359" parent="354" name="id">
+    <table id="359" parent="3" name="users">
+      <Collation>utf8mb4_unicode_ci</Collation>
+    </table>
+    <column id="360" parent="354" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="360" parent="354" name="uuid">
+    <column id="361" parent="354" name="uuid">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="361" parent="354" name="connection">
+    <column id="362" parent="354" name="connection">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="362" parent="354" name="queue">
+    <column id="363" parent="354" name="queue">
       <Position>4</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="363" parent="354" name="payload">
+    <column id="364" parent="354" name="payload">
       <Position>5</Position>
       <DataType>longtext|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="364" parent="354" name="exception">
+    <column id="365" parent="354" name="exception">
       <Position>6</Position>
       <DataType>longtext|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="365" parent="354" name="failed_at">
+    <column id="366" parent="354" name="failed_at">
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>current_timestamp()</DefaultExpression>
     </column>
-    <index id="366" parent="354" name="failed_jobs_uuid_unique">
+    <index id="367" parent="354" name="failed_jobs_uuid_unique">
       <ColNames>uuid</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="367" parent="354" name="PRIMARY">
+    <key id="368" parent="354" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="368" parent="354" name="failed_jobs_uuid_unique">
+    <key id="369" parent="354" name="failed_jobs_uuid_unique">
       <ColNames>uuid</ColNames>
       <UnderlyingIndexName>failed_jobs_uuid_unique</UnderlyingIndexName>
     </key>
-    <column id="369" parent="355" name="id">
+    <column id="370" parent="355" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="371" parent="355" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="372" parent="355" name="created_at">
+      <Position>3</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <column id="373" parent="355" name="updated_at">
+      <Position>4</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <key id="374" parent="355" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="375" parent="356" name="id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="370" parent="355" name="migration">
+    <column id="376" parent="356" name="migration">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="371" parent="355" name="batch">
+    <column id="377" parent="356" name="batch">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="372" parent="355" name="PRIMARY">
+    <key id="378" parent="356" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="373" parent="356" name="id">
+    <column id="379" parent="357" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="374" parent="356" name="name">
+    <column id="380" parent="357" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="375" parent="356" name="email">
+    <column id="381" parent="357" name="email">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="376" parent="356" name="email_verified_at">
+    <column id="382" parent="357" name="email_verified_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="377" parent="356" name="password">
+    <column id="383" parent="357" name="password">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="378" parent="356" name="remember_token">
+    <column id="384" parent="357" name="remember_token">
       <Position>6</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="379" parent="356" name="created_at">
+    <column id="385" parent="357" name="created_at">
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="380" parent="356" name="updated_at">
+    <column id="386" parent="357" name="updated_at">
       <Position>8</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <index id="381" parent="356" name="owners_email_unique">
+    <index id="387" parent="357" name="owners_email_unique">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="382" parent="356" name="PRIMARY">
+    <key id="388" parent="357" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="383" parent="356" name="owners_email_unique">
+    <key id="389" parent="357" name="owners_email_unique">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>owners_email_unique</UnderlyingIndexName>
     </key>
-    <column id="384" parent="357" name="email">
+    <column id="390" parent="358" name="email">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="385" parent="357" name="token">
+    <column id="391" parent="358" name="token">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="386" parent="357" name="created_at">
+    <column id="392" parent="358" name="created_at">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <index id="387" parent="357" name="password_resets_email_index">
+    <index id="393" parent="358" name="password_resets_email_index">
       <ColNames>email</ColNames>
       <Type>btree</Type>
     </index>
-    <column id="388" parent="358" name="id">
+    <column id="394" parent="359" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="389" parent="358" name="name">
+    <column id="395" parent="359" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="390" parent="358" name="email">
+    <column id="396" parent="359" name="email">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="391" parent="358" name="email_verified_at">
+    <column id="397" parent="359" name="email_verified_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="392" parent="358" name="password">
+    <column id="398" parent="359" name="password">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="393" parent="358" name="remember_token">
+    <column id="399" parent="359" name="remember_token">
       <Position>6</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="394" parent="358" name="created_at">
+    <column id="400" parent="359" name="created_at">
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="395" parent="358" name="updated_at">
+    <column id="401" parent="359" name="updated_at">
       <Position>8</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <index id="396" parent="358" name="users_email_unique">
+    <index id="402" parent="359" name="users_email_unique">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="397" parent="358" name="PRIMARY">
+    <key id="403" parent="359" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="398" parent="358" name="users_email_unique">
+    <key id="404" parent="359" name="users_email_unique">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>users_email_unique</UnderlyingIndexName>
     </key>
