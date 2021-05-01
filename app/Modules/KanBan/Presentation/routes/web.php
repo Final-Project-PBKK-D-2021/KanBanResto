@@ -2,6 +2,7 @@
 
 
 use App\Modules\KanBan\Presentation\Controller\MenuController;
+use App\Modules\KanBan\Presentation\Controller\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get(
@@ -22,4 +23,10 @@ Route::prefix('menu')->name('menu.')->group(function (){
     Route::post('edit/{menu_id}', [MenuController::class, 'editMenu'])->name('update');
 
     Route::post('delete/{menu_id}', [MenuController::class, 'deleteMenu'])->name('delete');
+});
+
+Route::prefix('product')->name('product.')->group(function (){
+    Route::get('/', [ProductController::class, 'listProduct'])->name('index');
+
+   //belum
 });
