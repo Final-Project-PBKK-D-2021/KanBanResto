@@ -21,7 +21,7 @@ Business List
             <div class="card-body card-list">
                 @foreach ( $businesss as $business )
                 <div class="card-list-item">
-                    <a href="#">
+                    <a href="{{route('business.edit', ['business_id' => $business->id] )}}">
                     <div class="d-flex justify-content-between align-items-center sc-link">
                         <div class="media">
                             <div class="wd-40 ht-40 bg-its-icon mg-r-15 mg-md-r-15 d-flex align-items-center justify-content-center rounded-its"><ion-icon name="business-outline" class="tx-24 tx-primary"></ion-icon></div>

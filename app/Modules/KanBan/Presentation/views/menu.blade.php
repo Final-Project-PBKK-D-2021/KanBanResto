@@ -1,8 +1,8 @@
-<li class="nav-label mg-t-15">Test</li>
+<li class="nav-label mg-t-15">Menu</li>
     <li>
         <a href="{{route('business.index')}}" class="nav-link">
             <i data-feather="info"></i>
-            <span>Bisnis</span>
+            <span>Business</span>
         </a>
     </li>
     <li>
@@ -20,7 +20,7 @@
     <li>
         <a href="{{route('product.index')}}" class="nav-link">
             <i data-feather="coffee"></i>
-            <span>Produk</span>
+            <span>Product</span>
         </a>
     </li>
 </li>
