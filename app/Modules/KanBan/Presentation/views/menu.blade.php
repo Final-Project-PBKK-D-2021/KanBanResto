@@ -20,6 +20,12 @@
     <li>
         <a href="#" class="nav-link">
             <i data-feather="mail"></i>
+            <span>Outlet</span>
+        </a>
+    </li>
+    <li>
+        <a href="#" class="nav-link">
+            <i data-feather="mail"></i>
             <span>Menu</span>
         </a>
     </li>
