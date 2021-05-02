@@ -4,6 +4,7 @@
 use App\Modules\KanBan\Presentation\Controller\MenuController;
 use App\Modules\KanBan\Presentation\Controller\OutletController;
 use App\Modules\KanBan\Presentation\Controller\ProductController;
+use App\Modules\KanBan\Presentation\Controller\BusinessController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function() {return view('KanBan::home');})->name('home');
@@ -39,5 +40,10 @@ Route::prefix('product')->name('product.')->group(function () {
     Route::post('delete/{product_id}', [ProductController::class, 'deleteProduct'])->name('delete');
 });
 
+Route::prefix('business')->name('business.')->group(function (){
+    Route::get('/', [BusinessController::class, 'showBusinessList'])->name('index');
 
+    Route::get('create', [BusinessController::class, 'showCreateBusinessForm'])->name('create');
+    Route::post('create', [BusinessController::class, 'createBusiness'])->name('store');
+});
 

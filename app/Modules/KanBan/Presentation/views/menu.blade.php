@@ -1,6 +1,6 @@
 <li class="nav-label mg-t-15">Test</li>
     <li>
-        <a href="#" class="nav-link">
+        <a href="{{route('business.index')}}" class="nav-link">
             <i data-feather="info"></i>
             <span>Bisnis</span>
         </a>
