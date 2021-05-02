@@ -2,6 +2,7 @@
 
 
 use App\Modules\KanBan\Presentation\Controller\MenuController;
+use App\Modules\KanBan\Presentation\Controller\OutletController;
 use Illuminate\Support\Facades\Route;
 
 Route::get(
@@ -23,3 +24,17 @@ Route::prefix('menu')->name('menu.')->group(function (){
 
     Route::post('delete/{menu_id}', [MenuController::class, 'deleteMenu'])->name('delete');
 });
+
+//Outlets
+Route::prefix('outlet')->name('outlet.')->group(function (){
+    Route::get('/', [OutletController::class, 'index'])->name('index');
+    Route::get('/create', [OutletController::class, 'create'])->name('create');
+    Route::get('/{outlet}', [OutletController::class, 'show'])->name('show');
+    Route::post('/', [OutletController::class, 'store'])->name('store');
+    Route::delete('/delete/{outlet}', [OutletController::class, 'destroy'])->name('destroy');
+    Route::get('/edit/{outlet}', [OutletController::class, 'edit'])->name('edit');
+    Route::patch('/{outlet}', [OutletController::class, 'update'])->name('update');
+
+});
+
+
