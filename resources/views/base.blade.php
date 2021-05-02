@@ -52,7 +52,7 @@
     <div class="content-header align-items-center justify-content-start pos-fixed wd-100p z-index-10">
         <div>
             <a class="navbar-brand d-lg-none" href="{{ url('') }}">
-                <img src="{{ url('assets/img/myits-student-connect-blue.png') }}" height="30" alt="" class="mg-r-15">
+                <img src="{{ url('assets/img/logo.png') }}" height="30" alt="" class="mg-r-15">
             </a>
         </div>
     </div>

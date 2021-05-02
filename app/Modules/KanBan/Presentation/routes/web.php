@@ -3,6 +3,7 @@
 
 use App\Modules\KanBan\Presentation\Controller\MenuController;
 use App\Modules\KanBan\Presentation\Controller\ProductController;
+use App\Modules\KanBan\Presentation\Controller\OutletController;
 use Illuminate\Support\Facades\Route;
 
 Route::get(
@@ -25,9 +26,17 @@ Route::prefix('menu')->name('menu.')->group(function (){
     Route::post('delete/{menu_id}', [MenuController::class, 'deleteMenu'])->name('delete');
 });
 
-Route::prefix('product')->name('product.')->group(function (){
-    Route::get('/', [ProductController::class, 'listProduct'])->name('index');
+//Outlets
+Route::prefix('outlet')->name('outlet.')->group(function (){
+    Route::get('/', [OutletController::class, 'index'])->name('index');
+    Route::get('/create', [OutletController::class, 'create'])->name('create');
+    Route::get('/{outlet}', [OutletController::class, 'show'])->name('show');
+    Route::post('/', [OutletController::class, 'store'])->name('store');
+    Route::delete('/delete/{outlet}', [OutletController::class, 'destroy'])->name('destroy');
+    Route::get('/edit/{outlet}', [OutletController::class, 'edit'])->name('edit');
+    Route::patch('/{outlet}', [OutletController::class, 'update'])->name('update');
 
+<<<<<<< HEAD
     Route::get('create', [ProductController::class, 'showCreateProductForm'])->name('create');
     Route::post('create', [ProductController::class, 'createProduct'])->name('store');
     
@@ -35,4 +44,8 @@ Route::prefix('product')->name('product.')->group(function (){
     Route::post('edit/{product_id}', [ProductController::class, 'editProduct'])->name('update');
 
     Route::post('delete/{product_id}', [ProductController::class, 'deleteProduct'])->name('delete');
+=======
+>>>>>>> 00060b74749f7da94d5d3025ab7996dd55b7aed6
 });
+
+
