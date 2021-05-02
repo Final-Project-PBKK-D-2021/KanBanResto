@@ -38,6 +38,7 @@ Route::prefix('outlet')->name('outlet.')->group(function () {
 });
 
 Route::prefix('product')->name('product.')->group(function () {
+    Route::get('/', [ProductController::class, 'listProduct'])->name('index');
     Route::get('create', [ProductController::class, 'showCreateProductForm'])->name('create');
     Route::post('create', [ProductController::class, 'createProduct'])->name('store');
 
