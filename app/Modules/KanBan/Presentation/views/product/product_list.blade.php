@@ -92,7 +92,7 @@
         <div class="card-header">
             <h3 class="card-title d-inline">Product List</h3>
             <div class="d-inline float-right">
-                <a class="btn btn-success" href="{{route('product.create')}}">Tambah product!</a>
+                <a class="btn btn-success" href="{{route('product.create')}}">Tambah produk!</a>
             </div>
         </div>
         <!-- /.card-header -->
