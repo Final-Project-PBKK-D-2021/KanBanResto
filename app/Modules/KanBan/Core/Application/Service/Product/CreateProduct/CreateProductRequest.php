@@ -16,7 +16,7 @@ class CreateProductRequest
      * @param string $name
      * @param string $description
      */
-    public function __construct(string $name, string $description, int $price, string $badge)
+    public function __construct(string $name, int $price, string $description, string $badge)
     {
         $this->name = $name;
         $this->description = $description;

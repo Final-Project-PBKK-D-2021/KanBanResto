@@ -41,7 +41,7 @@
                                    autocomplete="off">
                         </div>
                         <div class="form-group">
-                            <label for="description-input">Deskripsi Buku product</label>
+                            <label for="description-input">Deskripsi Produk</label>
                             <input type="text" class="form-control"
                                    id="description-input"
                                    name="product_description" placeholder="Masukkan Deskripsi produk" value="{{old('product_description', $product_description)}}"

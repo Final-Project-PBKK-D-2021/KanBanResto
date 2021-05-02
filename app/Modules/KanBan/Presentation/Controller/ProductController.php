@@ -97,7 +97,7 @@ class ProductController
             ]
         );
 
-        $input = new EditProductuRequest(
+        $input = new EditProductRequest(
             $product_id,
             $request->input('product_name'),
             $request->input('product_price'),
@@ -106,7 +106,7 @@ class ProductController
         );
 
         /** @var EditProductService $service */
-        $service = resolve(EditProductuService::class);
+        $service = resolve(EditProductService::class);
         $this->unit_of_work->begin();
 
         try {
