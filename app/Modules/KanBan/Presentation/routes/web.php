@@ -25,9 +25,9 @@ Route::prefix('menu')->name('menu.')->group(function (){
 
 Route::prefix('outlet')->name('outlet.')->group(function () {
     Route::get('/', [OutletController::class, 'index'])->name('index');
+    Route::get('/create', [OutletController::class, 'create'])->name('create');
     Route::get('/{outlet}', [OutletController::class, 'show'])->name('show');
 
-    Route::get('/create', [OutletController::class, 'create'])->name('create');
     Route::post('/', [OutletController::class, 'store'])->name('store');
 
     Route::get('/edit/{outlet}', [OutletController::class, 'edit'])->name('edit');
