@@ -1,27 +1,39 @@
 <?php
 
 
+use App\Modules\KanBan\Presentation\Controller\Auth\OwnerAuthController;
+use App\Modules\KanBan\Presentation\Controller\BusinessController;
 use App\Modules\KanBan\Presentation\Controller\MenuController;
 use App\Modules\KanBan\Presentation\Controller\OutletController;
 use App\Modules\KanBan\Presentation\Controller\ProductController;
-use App\Modules\KanBan\Presentation\Controller\BusinessController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function() {
-    return view('KanBan::home');
-})->name('home');
+Route::get(
+    '/',
+    function () {
+        return view('KanBan::home');
+    }
+)->name('home');
 
-Route::prefix('menu')->name('menu.')->group(function (){
-    Route::get('/', [MenuController::class, 'listMenu'])->name('index');
+Route::get('/login', [OwnerAuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [OwnerAuthController::class, 'authenticate'])->name('login');
+Route::get('/register', [OwnerAuthController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [OwnerAuthController::class, 'register'])->name('register');
 
-    Route::get('create', [MenuController::class, 'showCreateMenuForm'])->name('create');
-    Route::post('create', [MenuController::class, 'createMenu'])->name('store');
 
-    Route::get('edit/{menu_id}', [MenuController::class, 'showEditMenuForm'])->name('edit');
-    Route::post('edit/{menu_id}', [MenuController::class, 'editMenu'])->name('update');
+Route::prefix('menu')->name('menu.')->group(
+    function () {
+        Route::get('/', [MenuController::class, 'listMenu'])->name('index');
 
-    Route::post('delete/{menu_id}', [MenuController::class, 'deleteMenu'])->name('delete');
-});
+        Route::get('create', [MenuController::class, 'showCreateMenuForm'])->name('create');
+        Route::post('create', [MenuController::class, 'createMenu'])->name('store');
+
+        Route::get('edit/{menu_id}', [MenuController::class, 'showEditMenuForm'])->name('edit');
+        Route::post('edit/{menu_id}', [MenuController::class, 'editMenu'])->name('update');
+
+        Route::post('delete/{menu_id}', [MenuController::class, 'deleteMenu'])->name('delete');
+    }
+);
 
 Route::prefix('outlet')->name('outlet.')->group(function () {
     Route::get('/', [OutletController::class, 'index'])->name('index');
