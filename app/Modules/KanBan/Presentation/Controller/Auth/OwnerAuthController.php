@@ -5,14 +5,14 @@ namespace App\Modules\KanBan\Presentation\Controller\Auth;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OwnerLoginFormRequest;
+use App\Http\Requests\OwnerRegisterFormRequest;
 use App\Modules\KanBan\Core\Application\Service\Owner\OwnerLogin\OwnerLoginRequest;
 use App\Modules\KanBan\Core\Application\Service\Owner\OwnerLogin\OwnerLoginService;
 use App\Modules\KanBan\Core\Application\Service\Owner\OwnerRegister\OwnerRegisterRequest;
 use App\Modules\KanBan\Core\Application\Service\Owner\OwnerRegister\OwnerRegisterService;
 use App\Modules\Shared\Mechanism\UnitOfWork;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules\Password;
 use Throwable;
 
 
@@ -39,20 +39,8 @@ class OwnerAuthController extends Controller
         return view('register');
     }
 
-    public function register(Request $request)
+    public function register(OwnerRegisterFormRequest $request)
     {
-        $request->validate(
-            [
-                'name' => 'required|max:255',
-                'email' => 'required|max:255',
-                'password' => [
-                    'required',
-                    'confirmed',
-                    Password::min(8)->letters()->mixedCase()
-                ]
-            ]
-        );
-
         $input = new OwnerRegisterRequest(
             $request->input('name'),
             $request->input('email'),
@@ -95,15 +83,8 @@ class OwnerAuthController extends Controller
         return redirect()->route('home');
     }
 
-    public function authenticate(Request $request)
+    public function authenticate(OwnerLoginFormRequest $request)
     {
-        $request->validate(
-            [
-                'email' => 'required',
-                'password' => 'required'
-            ]
-        );
-
         $input = new OwnerLoginRequest(
             $request->input('email'),
             $request->input('password')
