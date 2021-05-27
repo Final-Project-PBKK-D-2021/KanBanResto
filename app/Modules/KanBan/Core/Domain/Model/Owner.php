@@ -2,13 +2,14 @@
 
 namespace App\Modules\KanBan\Core\Domain\Model;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Owner extends Authenticatable implements MustVerifyEmail
+class Owner extends Authenticatable
 {
     use HasFactory;
+
+    protected $primaryKey = 'owner_id';
 
     /**
      * The attributes that are mass assignable.
@@ -31,13 +32,13 @@ class Owner extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
-    public function getAuthIdentifier()
+    public function getAuthIdentifierName()
     {
-        return 'email';
+        return $this->getKeyName();
     }
 
-    public function getAuthPassword()
+    public function getAuthIdentifier()
     {
-        return $this->password;
+        return $this->getKey();
     }
 }
