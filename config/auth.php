@@ -51,6 +51,11 @@ return [
             'driver' => 'session',
             'provider' => 'owner',
         ],
+
+        'staff' => [
+            'driver' => 'session',
+            'provider' => 'staff',
+        ],
     ],
 
     /*
@@ -82,6 +87,11 @@ return [
             'model' => App\Modules\KanBan\Core\Domain\Model\Owner::class,
         ],
 
+        'staff' => [
+            'driver' => 'eloquent',
+            'model' => App\Modules\KanBan\Core\Domain\Model\Staff::class,
+        ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -110,8 +120,14 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'owners' => [
+        'owner' => [
             'provider' => 'owner',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'staff' => [
+            'provider' => 'staff',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
