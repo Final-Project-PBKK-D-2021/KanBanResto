@@ -32,7 +32,8 @@ Create Business
     <div class="col-sm-12 col-lg-12 mg-b-10">
         <div class="card bg-white">
             <div class="card-body">
-                <x-business-form form-action="business.store" id="" name="" description="" since="" owner-name=""/>
+                <x-business-form form-action="owner.business.store" id="" name="" description="" since=""
+                                 owner-name=""/>
             </div>
         </div>
     </div>

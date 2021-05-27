@@ -92,7 +92,7 @@
         <div class="card-header">
             <h3 class="card-title d-inline">Menu List</h3>
             <div class="d-inline float-right">
-                <a class="btn btn-success" href="{{route('menu.create')}}">Tambah Menu!</a>
+                <a class="btn btn-success" href="{{route('owner.withBusiness.menu.create')}}">Tambah Menu!</a>
             </div>
         </div>
         <!-- /.card-header -->
@@ -111,11 +111,11 @@
                         <td>{{$menu->name}}</td>
                         <td>{{$menu->description}}</td>
                         <td>
-                            <a href="{{route('menu.edit', ['menu_id' => $menu->id])}}">
+                            <a href="{{route('owner.withBusiness.menu.edit', ['menu_id' => $menu->id])}}">
                                 <div class="btn btn-outline-primary">Edit</div>
                             </a>
                             <a onclick="document.getElementById('{{$menu->id}}confirm').style.display='block';
-                            document.getElementById('menuList').style.display='none'">
+                                document.getElementById('menuList').style.display='none'">
                                 <div class="btn btn-outline-danger">Delete</div>
                             </a>
                         </td>
@@ -136,7 +136,8 @@
     </div>
     @foreach($menus as $menu)
         <div id="{{$menu->id}}confirm" class="delete-confirmation">
-            <form class="content" action="{{route('menu.delete',['menu_id' =>$menu->id])}}" method="post">
+            <form class="content" action="{{route('owner.withBusiness.menu.delete',['menu_id' =>$menu->id])}}"
+                  method="post">
                 @csrf
                 <div class="container">
                     <h1>Delete Post</h1>

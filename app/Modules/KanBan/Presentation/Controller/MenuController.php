@@ -60,7 +60,7 @@ class MenuController
             return redirect()->back()->with('alert', 'Menu Creation Failed');
         }
         $this->unit_of_work->commit();
-        return redirect()->route('menu.index');
+        return redirect()->route('owner.withBusiness.menu..index');
     }
 
     public function listMenu(){
@@ -108,7 +108,7 @@ class MenuController
             return redirect()->back()->with('alert', 'Menu Update Failed');
         }
         $this->unit_of_work->commit();
-        return redirect()->route('menu.index');
+        return redirect()->route('owner.withBusiness.menu..index');
     }
 
     public function deleteMenu (int $menu_id){
@@ -127,6 +127,6 @@ class MenuController
             return redirect()->back()->with('alert', 'Menu Delete Failed');
         }
         $this->unit_of_work->commit();
-        return redirect()->route('menu.index');
+        return redirect()->route('owner.withBusiness.menu..index');
     }
 }
