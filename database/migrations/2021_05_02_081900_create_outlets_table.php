@@ -15,6 +15,7 @@ class CreateOutletsTable extends Migration
     {
         Schema::create('outlets', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('business_id');
             $table->string('nama_outlet', 255);
             $table->longText('alamat_outlet');
             $table->char('no_telepon_outlet', 15);

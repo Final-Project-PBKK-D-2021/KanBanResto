@@ -41,4 +41,9 @@ class Owner extends Authenticatable
     {
         return $this->getKey();
     }
+
+    public function businesses()
+    {
+        return $this->hasMany(Business::class, 'owner_id');
+    }
 }

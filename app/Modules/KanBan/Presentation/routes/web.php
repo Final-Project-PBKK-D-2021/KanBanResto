@@ -7,6 +7,7 @@ use App\Modules\KanBan\Presentation\Controller\BusinessController;
 use App\Modules\KanBan\Presentation\Controller\MenuController;
 use App\Modules\KanBan\Presentation\Controller\OutletController;
 use App\Modules\KanBan\Presentation\Controller\ProductController;
+use App\Modules\KanBan\Presentation\Controller\StaffController;
 use App\Modules\KanBan\Presentation\Middleware\OwnerMiddleware;
 use App\Modules\KanBan\Presentation\Middleware\StaffMiddleware;
 use Illuminate\Support\Facades\Auth;
@@ -105,6 +106,7 @@ Route::prefix('owner')->name('owner.')->middleware(OwnerMiddleware::class)->grou
                         //Staff
                         Route::prefix('staff')->name('staff.')->group(
                             function () {
+                                Route::get('/', [StaffController::class, 'listStaff'])->name('index');
                                 Route::get('/register', [StaffAuthController::class, 'showRegisterForm'])->name(
                                     'register'
                                 );

@@ -37,7 +37,7 @@ class StaffAuthController
         return view('KanBan::staff.login');
     }
 
-    public function register(StaffRegisterFormRequest $request, $outlet_id)
+    public function register(StaffRegisterFormRequest $request, $business_id, $outlet_id)
     {
         $input = new StaffRegisterRequest(
             $request->input('username'),

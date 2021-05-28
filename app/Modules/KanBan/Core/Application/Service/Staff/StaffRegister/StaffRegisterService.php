@@ -15,8 +15,9 @@ class StaffRegisterService
      * StaffRegisterService constructor.
      * @param StaffRepositoryInterface $staff_repository
      */
-    public function __construct(StaffRepositoryInterface $staff_repository)
-    {
+    public function __construct(
+        StaffRepositoryInterface $staff_repository
+    ) {
         $this->staff_repository = $staff_repository;
     }
 
@@ -27,8 +28,8 @@ class StaffRegisterService
                 'username' => $request->getUsername(),
                 'name' => $request->getName(),
                 'password' => $request->getPassword(),
-                'staff_role' => $request->getStaffRole(),
-                'outlet_id' => $request->getOutletId()
+                'outlet_id' => $request->getOutletId(),
+                'staff_role' => $request->getStaffRole()
             ]
         );
 

@@ -15,6 +15,7 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('business_id');
             $table->longText('name');
             $table->longText('description');
             $table->timestamps();

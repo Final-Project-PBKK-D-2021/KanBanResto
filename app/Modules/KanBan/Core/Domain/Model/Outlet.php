@@ -11,5 +11,15 @@ class Outlet extends Model
 
     protected $table = 'outlets';
 
-    protected $fillable = ['nama_outlet', 'alamat_outlet', 'no_telepon_outlet'];
+    protected $fillable = ['nama_outlet', 'alamat_outlet', 'no_telepon_outlet', 'business_id'];
+
+    public function staffS()
+    {
+        return $this->hasMany(Staff::class, 'outlet_id');
+    }
+
+    public function business()
+    {
+        return $this->belongsTo(Business::class);
+    }
 }

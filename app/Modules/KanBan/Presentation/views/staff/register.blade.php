@@ -31,7 +31,7 @@
         @endif
         <div class="col-sm-12 col-lg-12 mg-b-10">
             <form id="form_business"
-                  action="{{route('owner.withBusiness.withOutlet.staff.register', ['business_id' => request()->route('business_id'), 'outlet_id' => request()->route('business_id')])}}"
+                  action="{{route('owner.withBusiness.withOutlet.staff.register', ['business_id' => request()->route('business_id'), 'outlet_id' => request()->route('outlet_id')])}}"
                   method="POST" data-parsley-validate="" novalidate="">
                 @csrf
                 <div class="card bg-white">

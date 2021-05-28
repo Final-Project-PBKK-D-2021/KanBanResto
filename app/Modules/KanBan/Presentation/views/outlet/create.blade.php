@@ -5,7 +5,8 @@
 @section('header_title', 'Form Tambah Outlet')
 
 @section('content')
-    <form method="post" action="{{route('owner.withBusiness.outlet.store')}}">
+    <form method="post"
+          action="{{route('owner.withBusiness.outlet.store', ['business_id' => request()->route('business_id')])}}">
         @csrf
         <div class="mb-3">
             <label for="namaOutlet" class="form-label">Nama Outlet</label>

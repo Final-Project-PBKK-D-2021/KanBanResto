@@ -15,6 +15,7 @@ class CreateBusinesssTable extends Migration
     {
         Schema::create('businesss', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('owner_id');
             $table->string('name', 255);
             $table->longText('description');
             $table->integer('since');

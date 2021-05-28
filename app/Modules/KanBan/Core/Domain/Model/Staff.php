@@ -10,7 +10,7 @@ class Staff extends Authenticatable
     use HasFactory;
 
 
-    protected $primaryKey = 'username';
+    protected $primaryKey = 'staff_id';
 
     /**
      * The attributes that are mass assignable.
@@ -43,5 +43,10 @@ class Staff extends Authenticatable
     public function getAuthIdentifier()
     {
         return $this->getKey();
+    }
+
+    public function outlet()
+    {
+        return $this->belongsTo(Outlet::class, 'outlet_id');
     }
 }
