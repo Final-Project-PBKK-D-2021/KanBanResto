@@ -11,4 +11,8 @@ interface StaffRepositoryInterface
     public function storeStaff(Staff $staff);
 
     public function getStaffByUsername(string $username);
+
+    public function deleteStaffById(int $id);
+
+    public function deleteStaff(Staff $staff);
 }

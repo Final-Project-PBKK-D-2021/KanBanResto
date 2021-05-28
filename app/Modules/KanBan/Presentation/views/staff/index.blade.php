@@ -1,5 +1,5 @@
 @extends('base')
-@section('title', 'List Menu')
+@section('title', 'List Staff')
 @section('styles')
     <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
@@ -88,24 +88,24 @@
 @endsection
 {{--@section('header_title', 'Create Menu')--}}
 @section('content')
-    <div class="card" id="menuList">
+    <div class="card" id="staffList">
         <div class="card-header">
-            <h3 class="card-title d-inline">Menu List</h3>
+            <h3 class="card-title d-inline">Staff List</h3>
             <div class="d-inline float-right">
                 <a class="btn btn-success"
                    href="{{route('owner.withBusiness.withOutlet.staff.register', ['business_id' => request()->route('business_id'), 'outlet_id' => request()->route('outlet_id')])}}">Tambah
-                    Menu!</a>
+                    Staff!</a>
             </div>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <table id="menuTable" class="table">
+            <table id="staffTable" class="table">
                 <thead>
                 <tr>
                     <th>Name</th>
                     <th>Username</th>
                     <th>Staff Role</th>
-                    {{--                    <th>Actions</th>--}}
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -114,42 +114,43 @@
                         <td>{{$staff->getName()}}</td>
                         <td>{{$staff->getUsername()}}</td>
                         <td>{{$staff->getStaffRole()}}</td>
-                        {{--                        <td>--}}
-                        {{--                            <a href="{{route('owner.withBusiness.menu.edit', ['menu_id' => $staff->getId()])}}">--}}
-                        {{--                                <div class="btn btn-outline-primary">Edit</div>--}}
-                        {{--                            </a>--}}
-                        {{--                            <a onclick="document.getElementById('{{$staff->getId()}}confirm').style.display='block';--}}
-                        {{--                                document.getElementById('menuList').style.display='none'">--}}
-                        {{--                                <div class="btn btn-outline-danger">Delete</div>--}}
-                        {{--                            </a>--}}
-                        {{--                        </td>--}}
+                        <td>
+                            {{--                            <a href="{{route('owner.withBusiness.menu.edit', ['menu_id' => $staff->getId()])}}">--}}
+                            {{--                                <div class="btn btn-outline-primary">Edit</div>--}}
+                            {{--                            </a>--}}
+                            <a onclick="document.getElementById('{{$staff->getId()}}confirm').style.display='block';
+                                document.getElementById('staffList').style.display='none'">
+                                <div class="btn btn-outline-danger">Delete</div>
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
         </div>
     </div>
-    {{--    @foreach($staffs as $staff)--}}
-    {{--        <div id="{{$staff->getId()}}confirm" class="delete-confirmation">--}}
-    {{--            <form class="content" action="{{route('owner.withBusiness.menu.delete',['menu_id' =>$staff->getId()])}}"--}}
-    {{--                  method="post">--}}
-    {{--                @csrf--}}
-    {{--                <div class="container">--}}
-    {{--                    <h1>Delete Post</h1>--}}
-    {{--                    <p>Are you sure you want to delete this post?</p>--}}
-    {{--                    <div class="clearfix">--}}
-    {{--                        <button type="button"--}}
-    {{--                                onclick="document.getElementById('{{$staff->getId()}}confirm').style.display='none';--}}
-    {{--                                    document.getElementById('menuList').style.display='block'"--}}
-    {{--                                class="cancelbtn">--}}
-    {{--                            Cancel--}}
-    {{--                        </button>--}}
-    {{--                        <button type="submit" class="deletebtn">Delete</button>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--            </form>--}}
-    {{--        </div>--}}
-    {{--    @endforeach--}}
+    @foreach($staffs as $staff)
+        <div id="{{$staff->getId()}}confirm" class="delete-confirmation">
+            <form class="content"
+                  action="{{route('owner.withBusiness.withOutlet.staff.delete', ['business_id' => request()->route('business_id'), 'outlet_id' => request()->route('outlet_id'), 'staff_id' => $staff->getId()])}}"
+                  method="post">
+                @csrf
+                <div class="container">
+                    <h1>Delete Post</h1>
+                    <p>Are you sure you want to delete this post?</p>
+                    <div class="clearfix">
+                        <button type="button"
+                                onclick="document.getElementById('{{$staff->getId()}}confirm').style.display='none';
+                                    document.getElementById('staffList').style.display='block'"
+                                class="cancelbtn">
+                            Cancel
+                        </button>
+                        <button type="submit" class="deletebtn">Delete</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    @endforeach
 @endsection
 
 @section('scripts')
@@ -158,7 +159,7 @@
     <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
     <script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
     <script>
-        var table = $('#menuTable').DataTable({
+        var table = $('#staffTable').DataTable({
             "responsive": true,
             "autoWidth": false,
             orderCellsTop: true,

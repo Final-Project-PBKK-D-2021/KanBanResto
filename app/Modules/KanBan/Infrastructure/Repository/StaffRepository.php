@@ -19,4 +19,14 @@ class StaffRepository implements StaffRepositoryInterface
     {
         return Staff::where('username', $username)->first();
     }
+
+    public function deleteStaffById(int $id)
+    {
+        Staff::where('staff_id', $id)->first()->delete();
+    }
+
+    public function deleteStaff(Staff $staff)
+    {
+        $staff->delete();
+    }
 }
