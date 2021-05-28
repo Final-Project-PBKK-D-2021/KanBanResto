@@ -11,23 +11,12 @@ use App\Modules\KanBan\Core\Application\Service\Owner\OwnerLogin\OwnerLoginReque
 use App\Modules\KanBan\Core\Application\Service\Owner\OwnerLogin\OwnerLoginService;
 use App\Modules\KanBan\Core\Application\Service\Owner\OwnerRegister\OwnerRegisterRequest;
 use App\Modules\KanBan\Core\Application\Service\Owner\OwnerRegister\OwnerRegisterService;
-use App\Modules\Shared\Mechanism\UnitOfWork;
 use Illuminate\Support\Facades\Hash;
 use Throwable;
 
 
 class OwnerAuthController extends Controller
 {
-    private UnitOfWork $unit_of_work;
-
-    /**
-     * OwnerLoginController constructor.
-     * @param UnitOfWork $unit_of_work
-     */
-    public function __construct(UnitOfWork $unit_of_work)
-    {
-        $this->unit_of_work = $unit_of_work;
-    }
 
     public function showLoginForm()
     {
@@ -49,19 +38,16 @@ class OwnerAuthController extends Controller
 
         /** @var OwnerRegisterService $service */
         $service = resolve(OwnerRegisterService::class);
-        $this->unit_of_work->begin();
 
         try {
             $service->execute($input);
         } catch (Throwable $e) {
-            $this->unit_of_work->rollback();
             return back()->withErrors(
                 [
                     'email' => 'Register attempt failed',
                 ]
             );
         }
-        $this->unit_of_work->commit();
 
         $input = new OwnerLoginRequest(
             $input->getEmail(),

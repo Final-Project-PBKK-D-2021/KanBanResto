@@ -10,23 +10,11 @@ use App\Modules\KanBan\Core\Application\Service\Staff\StaffLogin\StaffLoginReque
 use App\Modules\KanBan\Core\Application\Service\Staff\StaffLogin\StaffLoginService;
 use App\Modules\KanBan\Core\Application\Service\Staff\StaffRegister\StaffRegisterRequest;
 use App\Modules\KanBan\Core\Application\Service\Staff\StaffRegister\StaffRegisterService;
-use App\Modules\Shared\Mechanism\UnitOfWork;
 use Illuminate\Support\Facades\Hash;
 use Throwable;
 
 class StaffAuthController
 {
-    private UnitOfWork $unit_of_work;
-
-    /**
-     * StaffAuthController constructor.
-     * @param UnitOfWork $unit_of_work
-     */
-    public function __construct(UnitOfWork $unit_of_work)
-    {
-        $this->unit_of_work = $unit_of_work;
-    }
-
     public function showRegisterForm()
     {
         return view('KanBan::staff.register');
@@ -49,20 +37,16 @@ class StaffAuthController
 
         /** @var StaffRegisterService $service */
         $service = resolve(StaffRegisterService::class);
-        $this->unit_of_work->begin();
 
         try {
             $service->execute($input);
         } catch (Throwable $e) {
-            $this->unit_of_work->rollback();
             return back()->withErrors(
                 [
                     'email' => 'Register attempt failed',
                 ]
             );
         }
-        $this->unit_of_work->commit();
-
 
         return redirect()->route('home');
     }

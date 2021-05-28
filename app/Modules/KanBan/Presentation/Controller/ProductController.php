@@ -13,23 +13,11 @@ use App\Modules\KanBan\Core\Application\Service\Product\EditProduct\EditProductS
 use App\Modules\KanBan\Core\Application\Service\Product\GetProduct\GetProductRequest;
 use App\Modules\KanBan\Core\Application\Service\Product\GetProduct\GetProductService;
 use App\Modules\KanBan\Core\Application\Service\Product\ListProduct\ListProductService;
-use App\Modules\Shared\Mechanism\UnitOfWork;
 use Illuminate\Http\Request;
 use Throwable;
 
 class ProductController
 {
-    private UnitOfWork $unit_of_work;
-
-    /**
-     * ProductController constructor.
-     * @param UnitOfWork $unit_of_work
-     */
-    public function __construct(UnitOfWork $unit_of_work)
-    {
-        $this->unit_of_work = $unit_of_work;
-    }
-
     public function showCreateProductForm()
     {
         return view('KanBan::product.create_product_form');
@@ -55,15 +43,12 @@ class ProductController
 
         /** @var CreateProductService $service */
         $service = resolve(CreateProductService::class);
-        $this->unit_of_work->begin();
 
         try {
             $service->execute($input);
         } catch (Throwable $e) {
-            $this->unit_of_work->rollback();
             return redirect()->back()->with('alert', 'Product Creation Failed');
         }
-        $this->unit_of_work->commit();
         return redirect()->route('product.index');
     }
 
@@ -107,15 +92,12 @@ class ProductController
 
         /** @var EditProductService $service */
         $service = resolve(EditProductService::class);
-        $this->unit_of_work->begin();
 
         try {
             $service->execute($input);
         } catch (Throwable $e) {
-            $this->unit_of_work->rollback();
             return redirect()->back()->with('alert', 'Product Update Failed');
         }
-        $this->unit_of_work->commit();
         return redirect()->route('product.index');
     }
 
@@ -126,15 +108,12 @@ class ProductController
 
         /** @var DeleteProductService $service */
         $service = resolve(DeleteProductService::class);
-        $this->unit_of_work->begin();
 
         try {
             $service->execute($input);
         } catch (Throwable $e) {
-            $this->unit_of_work->rollback();
             return redirect()->back()->with('alert', 'Product Delete Failed');
         }
-        $this->unit_of_work->commit();
         return redirect()->route('product.index');
     }
 }

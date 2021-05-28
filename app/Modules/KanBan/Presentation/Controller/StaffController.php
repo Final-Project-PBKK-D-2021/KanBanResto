@@ -9,22 +9,10 @@ use App\Modules\KanBan\Core\Application\Service\Staff\DeleteStaff\DeleteStaffReq
 use App\Modules\KanBan\Core\Application\Service\Staff\DeleteStaff\DeleteStaffService;
 use App\Modules\KanBan\Core\Application\Service\Staff\ListStaff\ListStaffRequest;
 use App\Modules\KanBan\Core\Application\Service\Staff\ListStaff\ListStaffService;
-use App\Modules\Shared\Mechanism\UnitOfWork;
 use Throwable;
 
 class StaffController
 {
-    private UnitOfWork $unit_of_work;
-
-    /**
-     * StaffController constructor.
-     * @param UnitOfWork $unit_of_work
-     */
-    public function __construct(UnitOfWork $unit_of_work)
-    {
-        $this->unit_of_work = $unit_of_work;
-    }
-
     public function listStaff($business_id, $outlet_id)
     {
         $input = new ListStaffRequest($business_id, $outlet_id);
