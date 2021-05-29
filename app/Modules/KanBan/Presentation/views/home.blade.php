@@ -9,11 +9,11 @@
 @endsection
 
 @section('header_right')
-    @if($businesss->count() != 0) 
+
     <a href="{{ route('owner.business.create') }}" class="btn btn-primary tx-montserrat tx-semibold mg-r-5 mg-lg-r-10">
         <i data-feather="plus" class="wd-10 mg-r-5"></i>Tambah
     </a>
-    @endif
+
 @endsection
 
 @section('content')

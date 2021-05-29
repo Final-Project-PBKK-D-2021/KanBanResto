@@ -15,13 +15,12 @@ class CreateBusinesssTable extends Migration
     {
         Schema::create('businesss', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('owner_id');
             $table->string('name', 255);
             $table->longText('description');
             $table->integer('since');
             $table->string('owner_name', 255);
-            // $table->unsignedBigInteger('id_owner')->unsigned();
-            // $table->foreign('id_owner')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('owner_id')->unsigned();
+            $table->foreign('owner_id')->references('owner_id')->on('owners')->onDelete('cascade');
             $table->timestamps();
         });
     }
