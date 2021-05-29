@@ -66,7 +66,7 @@ class OwnerAuthController extends Controller
                 ]
             );
         }
-        return redirect()->route('home');
+        return redirect()->route('owner.bussiness.index');
     }
 
     public function authenticate(OwnerLoginFormRequest $request)
@@ -89,6 +89,6 @@ class OwnerAuthController extends Controller
             );
         }
 
-        return redirect()->route('home');
+        return redirect()->route('owner.business.index');
     }
 }

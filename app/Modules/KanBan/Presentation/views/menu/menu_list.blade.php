@@ -92,7 +92,7 @@
         <div class="card-header">
             <h3 class="card-title d-inline">Menu List</h3>
             <div class="d-inline float-right">
-                <a class="btn btn-success" href="{{route('owner.withBusiness.menu.create')}}">Tambah Menu!</a>
+                <a class="btn btn-success" href="{{route('owner.withBusiness.menu.create', ['business_id' => request()->route('business_id')])}}">Tambah Menu!</a>
             </div>
         </div>
         <!-- /.card-header -->

@@ -16,7 +16,10 @@ use Throwable;
 
 class BusinessController
 {
-
+    public function showBusinessDashboard(Request $request) 
+    {
+        return view('KanBan::dashboard');
+    }
     public function showBusinessList()
     {
         /** @var ListBusinessService $service */
@@ -24,7 +27,7 @@ class BusinessController
 
         $businesss = $service->execute();
 
-        return view('KanBan::business.index', compact('businesss'));
+        return view('KanBan::home', compact('businesss'));
     }
 
     public function showCreateBusinessForm()
@@ -58,7 +61,7 @@ class BusinessController
         } catch (Throwable $e) {
             return redirect()->back()->with('alert', 'Business Creation Failed');
         }
-        return redirect()->route('business.index');
+        return redirect()->route('owner.business.index');
     }
 
     public function updateBusiness(Request $request)

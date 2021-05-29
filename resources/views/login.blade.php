@@ -52,7 +52,7 @@
 
             <div class="row">
                 <div class="column p-b-0" style="padding-top: 5px">
-                    <a href="#" style="font-weight: normal">Belum punya akun? <b>Daftar</b></a>
+                    <a href="{{route('register')}}" style="font-weight: normal">Belum punya akun? <b>Daftar</b></a>
                 </div>
             </div>
 		</div>

@@ -5,7 +5,7 @@
         <span>Business</span>
     </a>
 </li>
-@if(request()->route('business_id'))
+    @if(request()->route('business_id'))
     <li>
         <a href="{{route('owner.withBusiness.outlet.index', ['business_id' => request()->route('business_id')])}}"
            class="nav-link">

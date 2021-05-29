@@ -1,4 +1,4 @@
-@extends('base')
+@extends('base-in')
 
 @section('title')
 Create Business
@@ -32,8 +32,7 @@ Create Business
     <div class="col-sm-12 col-lg-12 mg-b-10">
         <div class="card bg-white">
             <div class="card-body">
-                <x-business-form form-action="owner.business.store" id="" name="" description="" since=""
-                                 owner-name=""/>
+                <x-business-form form-action="owner.business.store" id="" name="" description="" since="" owner-name=""/>
             </div>
         </div>
     </div>

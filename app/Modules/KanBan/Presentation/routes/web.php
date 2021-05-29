@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get(
     '/',
     function () {
-        return view('KanBan::home');
+        return view('KanBan::welcome');
     }
-)->name('home');
+)->name('welcome');
 
 Route::get(
     '/dd_session',
@@ -54,6 +54,8 @@ Route::prefix('owner')->name('owner.')->middleware(OwnerMiddleware::class)->grou
 
         Route::prefix('/{business_id}')->name('withBusiness.')->group(
             function () {
+                Route::get('/', [BusinessController::class, 'showBusinessDashboard'])->name('dashboard');
+
                 Route::prefix('menu')->name('menu.')->group(
                     function () {
                         Route::get('/', [MenuController::class, 'listMenu'])->name('index');
