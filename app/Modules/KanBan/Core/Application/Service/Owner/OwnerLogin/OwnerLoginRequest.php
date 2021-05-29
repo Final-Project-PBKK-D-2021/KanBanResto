@@ -35,6 +35,4 @@ class OwnerLoginRequest
     {
         return $this->password;
     }
-
-
 }
