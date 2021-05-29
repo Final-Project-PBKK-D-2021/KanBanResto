@@ -66,7 +66,7 @@ class OwnerAuthController extends Controller
                 ]
             );
         }
-        return redirect()->route('owner.bussiness.index');
+        return redirect()->route('owner.business.index');
     }
 
     public function authenticate(OwnerLoginFormRequest $request)

@@ -42,15 +42,18 @@ class BusinessController
                 'name' => 'required|max:255',
                 'description' => 'required',
                 'since' => 'required',
-                'owner_name' => 'required|max:255'
+                'owner_name' => 'required|max:255',
             ]
         );
+
+        dd($request);
 
         $input = new CreateBusinessRequest(
             $request->name,
             $request->description,
             $request->since,
             $request->owner_name,
+            $request->owner_id,
         );
 
         /** @var CreateBusinessService $service */

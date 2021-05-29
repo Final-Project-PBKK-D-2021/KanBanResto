@@ -1,5 +1,5 @@
 @extends('base')
-@section('title', 'List product')
+@section('title', 'List order')
 @section('styles')
     <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
@@ -86,43 +86,29 @@
         }
     </style>
 @endsection
-{{--@section('header_title', 'Create product')--}}
+{{--@section('header_title', 'Create order')--}}
 @section('content')
-    <div class="card" id="productList">
+    <div class="card" id="orderList">
         <div class="card-header">
-            <h3 class="card-title d-inline">Product List</h3>
+            <h3 class="card-title d-inline">Order List</h3>
             <div class="d-inline float-right">
-                <a class="btn btn-success" href="{{route('owner.withBusiness.product.create'), $business_id }}">Tambah produk!</a>
+                <a class="btn btn-success" href="{{route('order.create')}}">Buat pesanan</a>
             </div>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <table id="productTable" class="table">
+            <table id="orderTable" class="table">
                 <thead>
                 <tr>
                     <th>Name</th>
                     <th>Price</th>
-                    <th>Description</th>
-                    <th>Badge</th>
-                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($products as $product)
+                @foreach($orders as $order)
                     <tr>
-                        <td>{{$product->name}}</td>
-                        <td>{{$product->price}}</td>
-                        <td>{{$product->description}}</td>
-                        <td>{{$product->badge}}</td>
-                        <td>
-                            <a href="{{route('owner.withBusiness.product.edit', ['business_id' => request()->route('business_id'), 'product_id' => $product->id])}}">
-                                <div class="btn btn-outline-primary">Edit</div>
-                            </a>
-                            <a onclick="document.getElementById('{{$product->id}}confirm').style.display='block';
-                                document.getElementById('productList').style.display='none'">
-                                <div class="btn btn-outline-danger">Delete</div>
-                            </a>
-                        </td>
+                        <td>{{$order->name}}</td>
+                        <td>{{$order->total_price}}</td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -130,35 +116,15 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <a href="{{$products->previousPageUrl()}}">
+            <a href="{{$orders->previousPageUrl()}}">
                 <div class="btn btn-outline-primary">Previous</div>
             </a>
-            <a href="{{$products->nextPageUrl()}}">
+            <a href="{{$orders->nextPageUrl()}}">
                 <div class="btn btn-outline-primary">Next</div>
             </a>
         </div>
     </div>
-    @foreach($products as $product)
-        <div id="{{$product->id}}confirm" class="delete-confirmation">
-            <form class="content" action="{{route('owner.withBusiness.product.delete',['product_id' =>$product->id])}}"
-                  method="post">
-                @csrf
-                <div class="container">
-                    <h1>Delete Post</h1>
-                    <p>Are you sure you want to delete this post?</p>
-                    <div class="clearfix">
-                        <button type="button"
-                                onclick="document.getElementById('{{$product->id}}confirm').style.display='none';
-                                    document.getElementById('productList').style.display='block'"
-                                class="cancelbtn">
-                            Cancel
-                        </button>
-                        <button type="submit" class="deletebtn">Delete</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    @endforeach
+   
 @endsection
 
 @section('scripts')
@@ -167,7 +133,7 @@
     <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
     <script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
     <script>
-        var table = $('#productTable').DataTable({
+        var table = $('#orderTable').DataTable({
             "responsive": true,
             "autoWidth": false,
             orderCellsTop: true,

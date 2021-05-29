@@ -7,8 +7,9 @@
             </div>
         </div>                 
     </div>
-    <fieldset>
+    <fieldset>  
     <input type="hidden" name="business_id" id="business_id" value="{{ old('id', $id) }}">
+    <input type="hidden" name="owner_id" id="owner_id" value="{{Auth::guard('owner')->user()->owner_id}}">
         <div class="form-group">
             <div class="row">
                 <div class="col-12">

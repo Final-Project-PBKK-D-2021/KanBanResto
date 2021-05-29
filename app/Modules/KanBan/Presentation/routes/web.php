@@ -7,6 +7,7 @@ use App\Modules\KanBan\Presentation\Controller\BusinessController;
 use App\Modules\KanBan\Presentation\Controller\MenuController;
 use App\Modules\KanBan\Presentation\Controller\OutletController;
 use App\Modules\KanBan\Presentation\Controller\ProductController;
+use App\Modules\KanBan\Presentation\Controller\OrderController;
 use App\Modules\KanBan\Presentation\Controller\StaffController;
 use App\Modules\KanBan\Presentation\Middleware\OwnerMiddleware;
 use App\Modules\KanBan\Presentation\Middleware\StaffMiddleware;
@@ -127,5 +128,14 @@ Route::prefix('owner')->name('owner.')->middleware(OwnerMiddleware::class)->grou
 Route::prefix('staff')->name('staff.')->middleware(StaffMiddleware::class)->group(
     function () {
         //Route Untuk Staff ada disini
+    }
+);
+
+Route::prefix('order')->name('order.')->group(
+    function () {
+        Route::get('/', [OrderController::class, 'listOrder'])->name('index');
+
+        Route::get('create', [OrderController::class, 'showCreateOrderForm'])->name('create');
+        Route::post('create', [OrderController::class, 'createOrder'])->name('store');
     }
 );
