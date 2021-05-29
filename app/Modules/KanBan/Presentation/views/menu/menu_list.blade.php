@@ -1,5 +1,18 @@
 @extends('base')
-@section('title', 'List Menu')
+
+@section('title')
+    Menu List
+@endsection
+
+@section('header_title')
+    Menu List
+@endsection
+
+@section('header_right')
+    <a href="{{ route('owner.withBusiness.menu.create', ['business_id' => request()->route('business_id')]) }}" class="btn btn-primary tx-montserrat tx-semibold mg-r-5 mg-lg-r-10">
+        <i data-feather="plus" class="wd-10 mg-r-5"></i>Tambah
+    </a>
+@endsection
 @section('styles')
     <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
@@ -89,12 +102,6 @@
 {{--@section('header_title', 'Create Menu')--}}
 @section('content')
     <div class="card" id="menuList">
-        <div class="card-header">
-            <h3 class="card-title d-inline">Menu List</h3>
-            <div class="d-inline float-right">
-                <a class="btn btn-success" href="{{route('owner.withBusiness.menu.create', ['business_id' => request()->route('business_id')])}}">Tambah Menu!</a>
-            </div>
-        </div>
         <!-- /.card-header -->
         <div class="card-body">
             <table id="menuTable" class="table">
@@ -111,7 +118,7 @@
                         <td>{{$menu->name}}</td>
                         <td>{{$menu->description}}</td>
                         <td>
-                            <a href="{{route('owner.withBusiness.menu.edit', ['menu_id' => $menu->id])}}">
+                            <a href="{{route('owner.withBusiness.menu.edit', ['business_id' => request()->route('business_id'), 'menu_id' => $menu->id])}}">
                                 <div class="btn btn-outline-primary">Edit</div>
                             </a>
                             <a onclick="document.getElementById('{{$menu->id}}confirm').style.display='block';
@@ -136,7 +143,7 @@
     </div>
     @foreach($menus as $menu)
         <div id="{{$menu->id}}confirm" class="delete-confirmation">
-            <form class="content" action="{{route('owner.withBusiness.menu.delete',['menu_id' =>$menu->id])}}"
+            <form class="content" action="{{route('owner.withBusiness.menu.delete',['business_id' => request()->route('business_id'), 'menu_id' =>$menu->id])}}"
                   method="post">
                 @csrf
                 <div class="container">

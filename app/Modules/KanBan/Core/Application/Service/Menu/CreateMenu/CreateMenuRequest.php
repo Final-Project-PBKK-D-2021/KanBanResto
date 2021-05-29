@@ -8,16 +8,18 @@ class CreateMenuRequest
 {
     private string $name;
     private string $description;
+    private int $business_id;
 
     /**
      * CreateMenuRequest constructor.
      * @param string $name
      * @param string $description
      */
-    public function __construct(string $name, string $description)
+    public function __construct(string $name, string $description, int $business_id)
     {
         $this->name = $name;
         $this->description = $description;
+        $this->business_id = $business_id;
     }
 
     /**
@@ -34,5 +36,13 @@ class CreateMenuRequest
     public function getDescription(): string
     {
         return $this->description;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBusinessId(): int
+    {
+        return $this->business_id;
     }
 }

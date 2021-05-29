@@ -8,7 +8,8 @@
         </div>                 
     </div>
     <fieldset>
-    <input type="hidden" name="id" id="menu_id" value="{{ old('menu_id', $menu_id) }}">
+        <input type="hidden" name="menu_id" id="menu_id" value="{{ old('menu_id', $menu_id) }}">
+        <input type="hidden" name="business_id" value="{{ request()->route('business_id') }}">
         <div class="form-group">
             <div class="row">
                 <div class="col-12">
@@ -22,18 +23,6 @@
                 <div class="col-12">
                     <label class="d-block tx-10 tx-spacing-1 tx-color-03 tx-uppercase tx-semibold" for="description">Descripton</label> 
                     <input type="text" id="description" name="menu_description" class="form-control" value="{{ old('menu_description', $menu_description) }}" autocomplete="off" required="">
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-12">
-                    <label class="d-block tx-10 tx-spacing-1 tx-color-03 tx-uppercase tx-semibold" for="">Pilih Produk</label> 
-                    <select class="form-control custom-select " id="" name="" required="">
-                        <option value="" selected="">Pilih salah satu</option>
-                        <option value="1">Ayam</option>
-                        <option value="2">Sapi</option>
-                    </select>
                 </div>
             </div>
         </div>
