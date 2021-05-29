@@ -14,6 +14,7 @@ use App\Modules\KanBan\Core\Application\Service\Menu\GetMenu\GetMenuRequest;
 use App\Modules\KanBan\Core\Application\Service\Menu\GetMenu\GetMenuService;
 use App\Modules\KanBan\Core\Application\Service\Menu\ListMenu\ListMenuService;
 use Illuminate\Http\Request;
+use App\Http\Requests\MenuFormRequest;
 use Throwable;
 
 class MenuController
@@ -23,15 +24,8 @@ class MenuController
         return view('KanBan::menu.create_menu_form');
     }
 
-    public function createMenu(Request $request)
+    public function createMenu(MenuFormRequest $request)
     {
-        $request->validate(
-            [
-                'menu_name' => 'required|max:255',
-                'menu_description' => 'required'
-            ]
-        );
-
         $input = new CreateMenuRequest(
             $request->input('menu_name'),
             $request->input('menu_description'),
