@@ -50,15 +50,6 @@
     <div class="content-body ht-100p pd-t-80">
         <div class="container pd-x-0" id="content">
             @yield('content')
-            @if ($errors->any())
-                <div class="alert alert-danger mt-3" role="alert">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{$error}}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
         </div><!-- container -->
     </div>
 </div>

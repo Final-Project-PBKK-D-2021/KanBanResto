@@ -18,17 +18,6 @@ Create Business
 
 @section('content')
 <div class="row row-xs">
-    @if ($errors->any())
-        <div class="alert alert-danger mt-3" role="alert">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>
-                        {{$error}}
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
     <div class="col-sm-12 col-lg-12 mg-b-10">
         <div class="card bg-white">
             <div class="card-body">

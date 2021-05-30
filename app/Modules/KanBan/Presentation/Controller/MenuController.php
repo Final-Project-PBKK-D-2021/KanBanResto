@@ -35,7 +35,7 @@ class MenuController
         $input = new CreateMenuRequest(
             $request->input('menu_name'),
             $request->input('menu_description'),
-            $request->input('business_id'),
+            $request->business_id,
             $request->input('list_products')
         );
 
@@ -72,7 +72,7 @@ class MenuController
 
         $products =  $service->execute();
 
-        return view('KanBan::menu.edit_menu_form', compact('menu', 'products'));
+        return view('KanBan::menu.edit', compact('menu', 'products'));
     }
 
     public function editMenu (MenuFormRequest $request){

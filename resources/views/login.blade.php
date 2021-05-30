@@ -56,6 +56,15 @@
                 </div>
             </div>
 		</div>
+        @if ($errors->any())
+        <div class="alert alert-danger mt-3" role="alert">
+            <ul class="pd-l-15">
+                @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
 		<footer class="m-sm-t-30">&copy; 2021 KanbanResto.</footer>
 	</div>
 @endsection
