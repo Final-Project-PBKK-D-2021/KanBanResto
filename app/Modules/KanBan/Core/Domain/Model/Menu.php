@@ -15,11 +15,16 @@ class Menu extends Model
     protected $fillable = [
         'name',
         'description',
-        'business_id'
+        'business_id',
+        'list_products'
     ];
 
     protected $guarded = [
         'id'
+    ];
+
+    protected $casts = [
+        'list_products' => 'array'
     ];
 
     public function business()

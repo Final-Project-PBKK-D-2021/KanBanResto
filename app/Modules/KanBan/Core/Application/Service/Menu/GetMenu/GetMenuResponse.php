@@ -9,18 +9,21 @@ class GetMenuResponse
     private string $id;
     private string $name;
     private string $description;
+    private array $list_products;
 
     /**
      * GetMenuResponse constructor.
      * @param string $id
      * @param string $name
      * @param string $description
+     * @param array $list_products
      */
-    public function __construct(string $id, string $name, string $description)
+    public function __construct(string $id, string $name, string $description, array $list_products)
     {
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
+        $this->list_products = $list_products;
     }
 
     /**
@@ -45,5 +48,13 @@ class GetMenuResponse
     public function getDescription(): string
     {
         return $this->description;
+    }
+
+    /**
+     * @return array
+     */
+    public function getListProducts(): array
+    {
+        return $this->list_products;
     }
 }

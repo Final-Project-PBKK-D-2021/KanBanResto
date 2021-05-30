@@ -110,6 +110,8 @@
                     <th>Menu Name</th>
                     <th>Menu Description</th>
                     <th>Actions</th>
+                    <th>Product 1</th>
+                    <th>Product 2</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -126,6 +128,9 @@
                                 <div class="btn btn-outline-danger">Delete</div>
                             </a>
                         </td>
+                        @foreach($menu->list_products as $product)
+                        <td>{{$product}}</td>
+                        @endforeach
                     </tr>
                 @endforeach
                 </tbody>

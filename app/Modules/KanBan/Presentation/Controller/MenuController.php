@@ -13,6 +13,7 @@ use App\Modules\KanBan\Core\Application\Service\Menu\EditMenu\EditMenuService;
 use App\Modules\KanBan\Core\Application\Service\Menu\GetMenu\GetMenuRequest;
 use App\Modules\KanBan\Core\Application\Service\Menu\GetMenu\GetMenuService;
 use App\Modules\KanBan\Core\Application\Service\Menu\ListMenu\ListMenuService;
+use App\Modules\KanBan\Core\Application\Service\Product\ListProduct\ListProductService;
 use Illuminate\Http\Request;
 use App\Http\Requests\MenuFormRequest;
 use Throwable;
@@ -21,7 +22,12 @@ class MenuController
 {
     public function showCreateMenuForm()
     {
-        return view('KanBan::menu.create_menu_form');
+        /** @var ListProductService $service */
+        $service = resolve(ListProductService::class);
+
+        $products =  $service->execute();
+
+        return view('KanBan::menu.create', compact('products'));
     }
 
     public function createMenu(MenuFormRequest $request)
@@ -29,7 +35,8 @@ class MenuController
         $input = new CreateMenuRequest(
             $request->input('menu_name'),
             $request->input('menu_description'),
-            $request->input('business_id')
+            $request->input('business_id'),
+            $request->input('list_products')
         );
 
         /** @var CreateMenuService $service */
@@ -60,7 +67,12 @@ class MenuController
 
         $menu =  $service->execute($input);
 
-        return view('KanBan::menu.edit_menu_form', compact('menu'));
+        /** @var ListProductService $service */
+        $service = resolve(ListProductService::class);
+
+        $products =  $service->execute();
+
+        return view('KanBan::menu.edit_menu_form', compact('menu', 'products'));
     }
 
     public function editMenu (MenuFormRequest $request){
@@ -68,6 +80,7 @@ class MenuController
             $request->input('menu_id'),
             $request->input('menu_name'),
             $request->input('menu_description'),
+            $request->input('list_products'),
         );
 
         /** @var EditMenuService $service */

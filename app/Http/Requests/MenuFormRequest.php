@@ -25,7 +25,8 @@ class MenuFormRequest extends FormRequest
     {
         return [
             'menu_name' => 'required|max:255',
-            'menu_description' => 'required'
+            'menu_description' => 'required',
+            'list_products' => 'required'
         ];
     }
 }

@@ -26,7 +26,8 @@ class CreateMenuService
             [
                 'name' => $request->getName(),
                 'description' => $request->getDescription(),
-                'business_id' => $request->getBusinessId()
+                'business_id' => $request->getBusinessId(),
+                'list_products' => $request->getListProducts()
             ]
         );
 

@@ -18,6 +18,7 @@ class CreateMenusTable extends Migration
             $table->unsignedBigInteger('business_id');
             $table->longText('name');
             $table->longText('description');
+            $table->json('list_products');
             $table->timestamps();
         });
     }
