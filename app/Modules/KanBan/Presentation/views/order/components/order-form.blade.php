@@ -37,7 +37,7 @@
                             <label for="price-input">Total Harga</label>
                             <input type="text" class="form-control"
                                    id="total-price-input"
-                                   name="order_ttotal_price" placeholder="Masukkan total harga" value="{{old('order_total_price', $order_total_price)}}"
+                                   name="order_total_price" placeholder="Masukkan total harga" value="{{old('order_total_price', $order_total_price)}}"
                                    autocomplete="off">
                         </div>
                     </div>

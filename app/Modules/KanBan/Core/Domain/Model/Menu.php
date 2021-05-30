@@ -10,14 +10,21 @@ class Menu extends Model
     use HasFactory;
 
     protected $table = 'menus';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'name',
         'description',
+        'business_id',
+        'list_products'
     ];
 
     protected $guarded = [
         'id'
+    ];
+
+    protected $casts = [
+        'list_products' => 'array'
     ];
 
     public function business()

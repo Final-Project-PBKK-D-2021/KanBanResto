@@ -13,6 +13,7 @@ use App\Modules\KanBan\Core\Application\Service\Menu\EditMenu\EditMenuService;
 use App\Modules\KanBan\Core\Application\Service\Menu\GetMenu\GetMenuRequest;
 use App\Modules\KanBan\Core\Application\Service\Menu\GetMenu\GetMenuService;
 use App\Modules\KanBan\Core\Application\Service\Menu\ListMenu\ListMenuService;
+use App\Modules\KanBan\Core\Application\Service\Product\ListProduct\ListProductService;
 use Illuminate\Http\Request;
 use App\Http\Requests\MenuFormRequest;
 use Throwable;
@@ -21,7 +22,12 @@ class MenuController
 {
     public function showCreateMenuForm()
     {
-        return view('KanBan::menu.create_menu_form');
+        /** @var ListProductService $service */
+        $service = resolve(ListProductService::class);
+
+        $products =  $service->execute();
+
+        return view('KanBan::menu.create', compact('products'));
     }
 
     public function createMenu(MenuFormRequest $request)
@@ -29,6 +35,8 @@ class MenuController
         $input = new CreateMenuRequest(
             $request->input('menu_name'),
             $request->input('menu_description'),
+            $request->business_id,
+            $request->input('list_products')
         );
 
         /** @var CreateMenuService $service */
@@ -39,7 +47,7 @@ class MenuController
         } catch (Throwable $e) {
             return redirect()->back()->with('alert', 'Menu Creation Failed');
         }
-        return redirect()->route('owner.withBusiness.menu..index');
+        return redirect()->route('owner.withBusiness.menu.index', ['business_id' => request()->route('business_id')]);
     }
 
     public function listMenu(){
@@ -51,29 +59,28 @@ class MenuController
         return view('KanBan::menu.menu_list', compact('menus'));
     }
 
-    public function showEditMenuForm(int $menu_id){
-        $input = new GetMenuRequest($menu_id);
+    public function showEditMenuForm(Request $request){
+        $input = new GetMenuRequest($request->menu_id);
 
         /** @var GetMenuService $service */
         $service = resolve(GetMenuService::class);
 
         $menu =  $service->execute($input);
 
-        return view('KanBan::menu.edit_menu_form', compact('menu'));
+        /** @var ListProductService $service */
+        $service = resolve(ListProductService::class);
+
+        $products =  $service->execute();
+
+        return view('KanBan::menu.edit', compact('menu', 'products'));
     }
 
-    public function editMenu (int $menu_id, Request $request){
-        $request->validate(
-            [
-                'menu_name' => 'required|max:255',
-                'menu_description' => 'required'
-            ]
-        );
-
+    public function editMenu (MenuFormRequest $request){
         $input = new EditMenuRequest(
-            $menu_id,
+            $request->input('menu_id'),
             $request->input('menu_name'),
             $request->input('menu_description'),
+            $request->input('list_products'),
         );
 
         /** @var EditMenuService $service */
@@ -84,12 +91,12 @@ class MenuController
         } catch (Throwable $e) {
             return redirect()->back()->with('alert', 'Menu Update Failed');
         }
-        return redirect()->route('owner.withBusiness.menu..index');
+        return redirect()->route('owner.withBusiness.menu.index', ['business_id' => request()->route('business_id')]);
     }
 
-    public function deleteMenu (int $menu_id){
+    public function deleteMenu (Request $request){
         $input = new DeleteMenuRequest(
-            $menu_id
+            $request->menu_id
         );
 
         /** @var DeleteMenuService $service */
@@ -100,6 +107,6 @@ class MenuController
         } catch (Throwable $e) {
             return redirect()->back()->with('alert', 'Menu Delete Failed');
         }
-        return redirect()->route('owner.withBusiness.menu..index');
+        return redirect()->route('owner.withBusiness.menu.index', ['business_id' => request()->route('business_id')]);
     }
 }

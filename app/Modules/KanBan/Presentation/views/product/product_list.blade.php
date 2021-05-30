@@ -92,7 +92,7 @@
         <div class="card-header">
             <h3 class="card-title d-inline">Product List</h3>
             <div class="d-inline float-right">
-                <a class="btn btn-success" href="{{route('owner.withBusiness.product.create')}}">Tambah produk!</a>
+                <a class="btn btn-success" href="{{route('owner.withBusiness.product.create', ['business_id' => request()->route('business_id')]) }}">Tambah produk!</a>
             </div>
         </div>
         <!-- /.card-header -->
@@ -115,7 +115,7 @@
                         <td>{{$product->description}}</td>
                         <td>{{$product->badge}}</td>
                         <td>
-                            <a href="{{route('owner.withBusiness.product.edit', ['product_id' => $product->id])}}">
+                            <a href="{{route('owner.withBusiness.product.edit', ['business_id' => request()->route('business_id'), 'product_id' => $product->id])}}">
                                 <div class="btn btn-outline-primary">Edit</div>
                             </a>
                             <a onclick="document.getElementById('{{$product->id}}confirm').style.display='block';
@@ -140,7 +140,7 @@
     </div>
     @foreach($products as $product)
         <div id="{{$product->id}}confirm" class="delete-confirmation">
-            <form class="content" action="{{route('owner.withBusiness.product.delete',['product_id' =>$product->id])}}"
+            <form class="content" action="{{route('owner.withBusiness.product.delete',['business_id' => request()->route('business_id'), 'product_id' =>$product->id])}}"
                   method="post">
                 @csrf
                 <div class="container">

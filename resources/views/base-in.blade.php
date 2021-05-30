@@ -48,6 +48,15 @@
 <div class="content ht-100v pd-0" style="position: relative">
     <div class="content-body ht-100p pd-t-80">
         <div class="container pd-x-0" id="content">
+            @if ($errors->any())
+            <div class="alert alert-danger mt-3" role="alert">
+                <ul class="pd-l-15">
+                    @foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             @yield('content')
         </div><!-- container -->
         <div>

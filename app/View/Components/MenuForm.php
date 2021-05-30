@@ -11,6 +11,7 @@ class MenuForm extends Component
     public ?string $menu_id;
     public ?string $menu_name;
     public ?string $menu_description;
+    public ?array $products;
 
     /**
      * MenuForm constructor.
@@ -19,14 +20,16 @@ class MenuForm extends Component
      * @param $menuId
      * @param $menuName
      * @param $menuDescription
+     * @param $products
      */
-    public function __construct(string $formAction, string $actionName, ?string $menuId, ?string $menuName, ?string $menuDescription)
+    public function __construct(string $formAction, string $actionName, ?string $menuId, ?string $menuName, ?string $menuDescription, ?array $products)
     {
         $this->form_action = $formAction;
         $this->action_name = $actionName;
         $this->menu_id = $menuId;
         $this->menu_name = $menuName;
         $this->menu_description = $menuDescription;
+        $this->products = $products;
     }
 
     /**

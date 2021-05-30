@@ -25,7 +25,7 @@ class CreateOrderService
         $order = Order::create(
             [
                 'name' => $request->getName(),
-                'total_price' => $request->getTotalPrice();
+                'total_price' => $request->getTotalPrice(),
 
             ]
         );

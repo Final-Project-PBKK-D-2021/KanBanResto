@@ -6,15 +6,15 @@ namespace App\Modules\KanBan\Core\Application\Service\Menu\DeleteMenu;
 
 class DeleteMenuRequest
 {
-    private int $menu_id;
+    private int $id;
 
     /**
      * DeleteMenuRequest constructor.
-     * @param int $menu_id
+     * @param int $id
      */
-    public function __construct(int $menu_id)
+    public function __construct(int $id)
     {
-        $this->menu_id = $menu_id;
+        $this->id = $id;
     }
 
     /**
@@ -22,7 +22,7 @@ class DeleteMenuRequest
      */
     public function getMenuId(): int
     {
-        return $this->menu_id;
+        return $this->id;
     }
 }
 

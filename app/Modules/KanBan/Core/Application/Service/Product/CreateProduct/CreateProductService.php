@@ -28,7 +28,6 @@ class CreateProductService
                 'description' => $request->getDescription(),
                 'price' => $request->getPrice(),
                 'badge' => $request->getBadge()
-
             ]
         );
 
