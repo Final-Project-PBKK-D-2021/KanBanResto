@@ -20,12 +20,14 @@ class CreateBusinessService
 
     public function execute(CreateBusinessRequest $request) 
     {
+        
         $business = Business::create(
             [
                 'name' => $request->getName(),
                 'description' => $request->getDescription(),
                 'since' => $request->getSince(),
-                'owner_name' => $request->getOwnerName()
+                'owner_name' => $request->getOwnerName(),
+                'owner_id'=>$request->getOwnerID()
             ]
         );
 

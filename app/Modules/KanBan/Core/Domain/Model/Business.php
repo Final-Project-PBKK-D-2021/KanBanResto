@@ -15,7 +15,8 @@ class Business extends Model
         'name',
         'description',
         'since',
-        'owner_name'
+        'owner_name',
+        'owner_id'
     ];
 
     protected $guarded = [

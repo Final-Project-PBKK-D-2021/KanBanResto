@@ -3,8 +3,11 @@
 
 namespace App\Modules\KanBan\Presentation\Controller;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\CreateOutletFormRequest;
+use App\Http\Requests\EditOutletFormRequest;
+use App\Modules\KanBan\Core\Domain\Model\Business;
 use App\Modules\KanBan\Core\Domain\Model\Outlet;
+use Illuminate\Http\Request;
 
 class OutletController
 {
@@ -35,22 +38,17 @@ class OutletController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateOutletFormRequest $request, $business_id)
     {
-        //return $request;
-        $request->validate([
-            'namaOutlet' => 'required',
-            'alamatOutlet' => 'required',
-            'noTelpOutlet' => 'required'
-        ]);
-        
+
         Outlet::create([
             'nama_outlet' => $request->input('namaOutlet'),
             'alamat_outlet' => $request->input('alamatOutlet'),
-            'no_telepon_outlet' => $request->input('noTelpOutlet')
+            'no_telepon_outlet' => $request->input('noTelpOutlet'),
+            'business_id'=>$business_id
         ]);
 
-        return redirect('/outlet');
+        return redirect()->route('owner.withBusiness.outlet.index' ,  ['business_id' => request()->route('business_id')]);
     }
 
     /**
@@ -59,9 +57,10 @@ class OutletController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Outlet $outlet)
+    public function show(Request $request)
     {
-        return view('KanBan::outlet.show', compact('outlet'));;
+        $outlet = Outlet::where('id', $request->outlet)->first();
+        return view('KanBan::outlet.show', compact('outlet'));
     }
 
     /**
@@ -70,8 +69,10 @@ class OutletController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Outlet $outlet)
+    public function edit(Request $request)
     {
+        
+        $outlet = Outlet::where('id', $request->outlet)->first();
         return view('KanBan::outlet.edit', compact('outlet'));
     }
 
@@ -82,22 +83,18 @@ class OutletController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Outlet $outlet)
+    public function update(EditOutletFormRequest $request)
     {
-        $request->validate([
-            'namaOutlet' => 'required',
-            'alamatOutlet' => 'required',
-            'noTelpOutlet' => 'required'
-        ]);
 
-        Outlet::where('id', $outlet->id)
+        $outlet = Outlet::where('id', $request->outlet)
                 ->update([
                     'nama_outlet' => $request->input('namaOutlet'),
                     'alamat_outlet' => $request->input('alamatOutlet'),
-                    'no_telepon_outlet' => $request->input('noTelpOutlet')
+                    'no_telepon_outlet' => $request->input('noTelpOutlet'),
+                    'business_id'=>$request->business_id
                 ]);
-        
-        return redirect('/outlet')->with('status', 'Data Outlet Berhasil Diubah');
+
+        return redirect()->route('owner.withBusiness.outlet.index' ,['business_id' => request()->route('business_id')])->with('status', 'Data Outlet Berhasil Diubah');;
     }
 
     /**
@@ -106,9 +103,9 @@ class OutletController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Outlet $outlet)
+    public function destroy(Request $request)
     {
-        Outlet::destroy($outlet->id);
-        return redirect('/outlet')->with('status', 'Outlet Berhasil Dihapus');
+        Outlet::where('id', $request->outlet)->delete();
+        return redirect()->route('owner.withBusiness.outlet.index' ,['business_id' => request()->route('business_id')])->with('status', 'Outlet Berhasil Dihapus');
     }
 }

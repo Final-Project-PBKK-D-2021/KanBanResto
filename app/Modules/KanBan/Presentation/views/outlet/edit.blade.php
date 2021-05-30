@@ -3,7 +3,7 @@
 @section('title', "Form Ubah Data Outlet")
 @section('header_title', 'Form Ubah Data Outlet')
 @section('content')
-    <form method="post" action="{{route('owner.withBusiness.outlet.update', ['outlet' => $outlet->id])}}">
+    <form method="post" action="{{route('owner.withBusiness.outlet.update', ['outlet' => $outlet->id, 'business_id' => request()->route('business_id')])}}">
         @method('patch')
         @csrf
         <div class="form-group mb-3">

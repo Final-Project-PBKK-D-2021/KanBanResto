@@ -10,6 +10,7 @@ class CreateBusinessRequest
     private string $description;
     private int $since;
     private string $owner_name;
+    private int $owner_id;
 
     /**
      * CreateBusinessRequest constructor.
@@ -18,12 +19,13 @@ class CreateBusinessRequest
      * @param int $since
      * @param string $owner_name
      */
-    public function __construct(string $name, string $description, int $since, string $owner_name)
+    public function __construct(string $name, string $description, int $since, string $owner_name, int $owner_id)
     {
         $this->name = $name;
         $this->description = $description;
         $this->since = $since;
         $this->owner_name = $owner_name;
+        $this->owner_id = $owner_id;
     }
 
     /**
@@ -56,5 +58,13 @@ class CreateBusinessRequest
     public function getOwnerName(): string
     {
         return $this->owner_name;
+    }
+
+     /**
+     * @return int
+     */
+    public function getOwnerID(): int
+    {
+        return $this->owner_id;
     }
 }

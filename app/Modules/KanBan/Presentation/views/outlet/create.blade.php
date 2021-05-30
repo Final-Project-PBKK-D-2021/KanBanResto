@@ -8,6 +8,7 @@
     <form method="post"
           action="{{route('owner.withBusiness.outlet.store', ['business_id' => request()->route('business_id')])}}">
         @csrf
+        <input type="hidden" name="business_id" id="business_id" value="{{request()->route('business_id')}}">
         <div class="mb-3">
             <label for="namaOutlet" class="form-label">Nama Outlet</label>
             <input type="text" class="form-control @error('namaOutlet') is-invalid @enderror" id="namaOutlet"

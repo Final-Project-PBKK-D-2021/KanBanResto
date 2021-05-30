@@ -10,14 +10,16 @@
             <h5 class="card-title">{{ $outlet->nama_outlet }}</h5>
             <p class="card-text">{{ $outlet->alamat_outlet }}</p>
             <p class="card-text">{{ $outlet->no_telepon_outlet }}</p>
-            <a href="{{route('owner.withBusiness.outlet.edit', ['outlet' => $outlet->id])}}" class="btn btn-primary">Edit</a>
-            <form action="{{route('owner.withBusiness.outlet.destroy', ['outlet' => $outlet->id])}}" method="post"
-                  class="d-inline">
+            <a href="{{route('owner.withBusiness.outlet.edit', ['business_id' => request()->route('business_id'), 'outlet' => $outlet->id])}}" class="btn btn-primary">Edit</a>
+            <form action="{{route('owner.withBusiness.outlet.destroy', ['business_id' => request()->route('business_id'), 'outlet' => $outlet->id])}}" method="post"
+                  class="d-inline" id="form-hapus">
                 @method('delete')
                 @csrf
+                <input type="hidden" name="business_id" value="{{request()->route('business_id')}}">
+                <input type="hidden" name="outlet" value="{{ $outlet->id }}">
                 <button type="submit" class="btn btn-danger">Delete</button>
             </form>
-            <a href="{{route('owner.withBusiness.outlet.index')}}" class="card-link">Back</a>
+            <a href="{{route('owner.withBusiness.outlet.index', ['outlet' => $outlet->id, 'business_id' => request()->route('business_id')])}}" class="card-link">Back</a>
         </div>
     </div>
 @endsection

@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-6">
                     <label class="d-block tx-10 tx-spacing-1 tx-color-03 tx-uppercase tx-semibold" for="owner_name">Nama Owner</label> 
-                    <input type="text" id="owner_name" name="owner_name" class="form-control" value="{{ old('owner_name', $owner_name) }}" autocomplete="off" required="">
+                    <input type="text" id="owner_name" name="owner_name" class="form-control" value="{{Auth::guard('owner')->user()->name}}" autocomplete="off" required="">
                 </div>
             </div>
         </div>

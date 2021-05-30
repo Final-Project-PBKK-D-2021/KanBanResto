@@ -2,6 +2,8 @@
 
 namespace App\Modules\KanBan\Presentation\Controller;
 
+use App\Http\Requests\CreateBusinessFormRequest;
+use App\Http\Requests\EditBusinessFormRequest;
 use App\Modules\KanBan\Core\Application\Service\Business\CreateBusiness\CreateBusinessRequest;
 use App\Modules\KanBan\Core\Application\Service\Business\CreateBusiness\CreateBusinessService;
 use App\Modules\KanBan\Core\Application\Service\Business\DeleteBusiness\DeleteBusinessRequest;
@@ -35,18 +37,8 @@ class BusinessController
         return view('KanBan::business.create');
     }
 
-    public function createBusiness(Request $request)
+    public function createBusiness(CreateBusinessFormRequest $request)
     {
-        $request->validate(
-            [
-                'name' => 'required|max:255',
-                'description' => 'required',
-                'since' => 'required',
-                'owner_name' => 'required|max:255',
-            ]
-        );
-
-        dd($request);
 
         $input = new CreateBusinessRequest(
             $request->name,
@@ -67,18 +59,8 @@ class BusinessController
         return redirect()->route('owner.business.index');
     }
 
-    public function updateBusiness(Request $request)
+    public function updateBusiness(EditBusinessFormRequest $request)
     {
-        $request->validate(
-            [
-                'business_id' => 'required',
-                'name' => 'required|max:255',
-                'description' => 'required',
-                'since' => 'required',
-                'owner_name' => 'required|max:255'
-            ]
-        );
-
         $input = new EditBusinessRequest(
             $request->business_id,
             $request->name,
@@ -95,7 +77,7 @@ class BusinessController
         } catch (Throwable $e) {
             return redirect()->back()->with('alert', 'Business Update Failed');
         }
-        return redirect()->route('business.index');
+        return redirect()->route('owner.business.index');
     }
 
     public function showEditBusiness(int $menu_id){
@@ -122,6 +104,6 @@ class BusinessController
         } catch (Throwable $e) {
             return redirect()->back()->with('alert', 'Business Delete Failed');
         }
-        return redirect()->route('business.index');
+        return redirect()->route('owner.business.index');
     }
 }
