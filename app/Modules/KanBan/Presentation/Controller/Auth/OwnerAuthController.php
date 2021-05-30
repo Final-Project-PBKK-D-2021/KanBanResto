@@ -11,6 +11,7 @@ use App\Modules\KanBan\Core\Application\Service\Owner\OwnerLogin\OwnerLoginReque
 use App\Modules\KanBan\Core\Application\Service\Owner\OwnerLogin\OwnerLoginService;
 use App\Modules\KanBan\Core\Application\Service\Owner\OwnerRegister\OwnerRegisterRequest;
 use App\Modules\KanBan\Core\Application\Service\Owner\OwnerRegister\OwnerRegisterService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Throwable;
 
@@ -30,10 +31,11 @@ class OwnerAuthController extends Controller
 
     public function register(OwnerRegisterFormRequest $request)
     {
+        $password = $request->input('password');
         $input = new OwnerRegisterRequest(
             $request->input('name'),
             $request->input('email'),
-            Hash::make($request->input('password')),
+            Hash::make($password),
         );
 
         /** @var OwnerRegisterService $service */
@@ -51,7 +53,7 @@ class OwnerAuthController extends Controller
 
         $input = new OwnerLoginRequest(
             $input->getEmail(),
-            $input->getPassword()
+            $password
         );
 
         /** @var OwnerLoginService $service */
@@ -90,5 +92,11 @@ class OwnerAuthController extends Controller
         }
 
         return redirect()->route('owner.business.index');
+    }
+
+    public function logout()
+    {
+        Auth::guard('owner')->logout();
+        return redirect()->route('welcome');
     }
 }

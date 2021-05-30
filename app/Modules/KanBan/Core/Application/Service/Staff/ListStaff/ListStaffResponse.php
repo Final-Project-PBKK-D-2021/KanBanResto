@@ -4,9 +4,8 @@
 namespace App\Modules\KanBan\Core\Application\Service\Staff\ListStaff;
 
 
-use JsonSerializable;
 
-class ListStaffResponse implements JsonSerializable
+class ListStaffResponse
 {
     private int $id;
     private string $name;
@@ -28,13 +27,35 @@ class ListStaffResponse implements JsonSerializable
         $this->staff_role = $staff_role;
     }
 
-    public function jsonSerialize()
+    /**
+     * @return int
+     */
+    public function getId(): int
     {
-        return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'username' => $this->username,
-            'id' => $this->id,
-        ]
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStaffRole(): string
+    {
+        return $this->staff_role;
     }
 }

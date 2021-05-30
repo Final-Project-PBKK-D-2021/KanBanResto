@@ -5,7 +5,7 @@
         <span>Business</span>
     </a>
 </li>
-    @if(request()->route('business_id'))
+@if(request()->route('business_id'))
     <li>
         <a href="{{route('owner.withBusiness.outlet.index', ['business_id' => request()->route('business_id')])}}"
            class="nav-link">
@@ -36,4 +36,24 @@
             </a>
         </li>
     @endif
+    <li>
+        <a href="javascript: logout()" class="nav-link">
+            <i data-feather="logout"></i>
+            <span>Logout</span>
+        </a>
+        @if(Auth::guard('owner')->check())
+            <form action="{{route('logout')}}" method="post" name="logoutForm" class="d-none">
+                @csrf
+            </form>
+        @elseif(Auth::guard('staff')->check())
+            <form action="{{route('staff_logout')}}" method="post" name="logoutForm" class="d-none">
+                @csrf
+            </form>
+        @endif
+        <script>
+            function logout() {
+                document.logoutForm.submit();
+            }
+        </script>
+    </li>
 @endif

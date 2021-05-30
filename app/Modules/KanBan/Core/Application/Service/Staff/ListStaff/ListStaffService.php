@@ -32,7 +32,6 @@ class ListStaffService
             );
         }
 
-
         return $response;
     }
 }

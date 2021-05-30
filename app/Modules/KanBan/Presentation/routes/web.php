@@ -5,9 +5,9 @@ use App\Modules\KanBan\Presentation\Controller\Auth\OwnerAuthController;
 use App\Modules\KanBan\Presentation\Controller\Auth\StaffAuthController;
 use App\Modules\KanBan\Presentation\Controller\BusinessController;
 use App\Modules\KanBan\Presentation\Controller\MenuController;
+use App\Modules\KanBan\Presentation\Controller\OrderController;
 use App\Modules\KanBan\Presentation\Controller\OutletController;
 use App\Modules\KanBan\Presentation\Controller\ProductController;
-use App\Modules\KanBan\Presentation\Controller\OrderController;
 use App\Modules\KanBan\Presentation\Controller\StaffController;
 use App\Modules\KanBan\Presentation\Middleware\OwnerMiddleware;
 use App\Modules\KanBan\Presentation\Middleware\StaffMiddleware;
@@ -32,6 +32,8 @@ Route::get('/owner/login', [OwnerAuthController::class, 'showLoginForm'])->name(
 Route::post('/owner/login', [OwnerAuthController::class, 'authenticate'])->name('login');
 Route::get('/owner/register', [OwnerAuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/owner/register', [OwnerAuthController::class, 'register'])->name('register');
+Route::post('/owner/logout', [OwnerAuthController::class, 'logout'])->name('logout');
+Route::post('/staff/logout', [StaffAuthController::class, 'logout'])->name('staff_logout');
 
 
 Route::get('/staff/login', [StaffAuthController::class, 'showLoginForm'])->name('staff_login');

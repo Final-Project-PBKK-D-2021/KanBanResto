@@ -10,6 +10,7 @@ use App\Modules\KanBan\Core\Application\Service\Staff\StaffLogin\StaffLoginReque
 use App\Modules\KanBan\Core\Application\Service\Staff\StaffLogin\StaffLoginService;
 use App\Modules\KanBan\Core\Application\Service\Staff\StaffRegister\StaffRegisterRequest;
 use App\Modules\KanBan\Core\Application\Service\Staff\StaffRegister\StaffRegisterService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Throwable;
 
@@ -48,7 +49,10 @@ class StaffAuthController
             );
         }
 
-        return redirect()->route('home');
+        return redirect()->route(
+            'owner.withBusiness.withOutlet.staff.index',
+            ['business_id' => $business_id, 'outlet_id' => $outlet_id]
+        );
     }
 
     public function authenticate(StaffLoginFormRequest $request)
@@ -72,5 +76,11 @@ class StaffAuthController
         }
 
         return redirect()->intended('/dd_session');
+    }
+
+    public function logout()
+    {
+        Auth::guard('staff')->logout();
+        return redirect()->route('welcome');
     }
 }

@@ -18,17 +18,6 @@
 
 @section('content')
     <div class="row row-xs">
-        @if ($errors->any())
-            <div class="alert alert-danger mt-3" role="alert">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>
-                            {{$error}}
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
         <div class="col-sm-12 col-lg-12 mg-b-10">
             <form id="form_business"
                   action="{{route('owner.withBusiness.withOutlet.staff.register', ['business_id' => request()->route('business_id'), 'outlet_id' => request()->route('outlet_id')])}}"
@@ -88,7 +77,7 @@
                         </div>
                         <div class="submit-btn">
                             <button type="submit" class="form-btn">
-                                {{ __('Login') }}
+                                {{ __('Register') }}
                             </button>
                         </div>
                     </div>

@@ -17,9 +17,9 @@ class OwnerMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
         if (!Auth::guard('owner')->check()) {
             return redirect('/');
         }
+        return $next($request);
     }
 }

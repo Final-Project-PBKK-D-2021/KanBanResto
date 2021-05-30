@@ -30,7 +30,6 @@ class StaffController
             return redirect()->back()->with('alert', 'Failed To Get Staff');
         }
 
-
         return view('KanBan::staff.index', compact('staffs'));
     }
 
