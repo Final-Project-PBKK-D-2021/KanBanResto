@@ -19,8 +19,8 @@ class CreateOutletsTable extends Migration
             $table->string('nama_outlet', 255);
             $table->longText('alamat_outlet');
             $table->char('no_telepon_outlet', 15);
-            $table->unsignedBigInteger('business_id')->unsigned();
-            $table->foreign('business_id')->references('business_id')->on('businesss')->onDelete('cascade');
+            //$table->unsignedBigInteger('business_id')->unsigned();
+            //$table->foreign('business_id')->references('business_id')->on('businesss')->onDelete('cascade');
             $table->timestamps();
         });
     }
