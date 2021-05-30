@@ -20,7 +20,7 @@ class OrderController
     public function createOrder(Request $request)
     {
         $request->validate(
-            [ 
+            [
                 'order_name' => 'required|max:255',
                 'order_total_price' => 'required'
             ]
@@ -40,7 +40,7 @@ class OrderController
         } catch (Throwable $e) {
             return redirect()->back()->with('alert', 'Order Creation Failed');
         }
-        return redirect()->route('order.index');
+        return redirect()->route('staff.order.index');
     }
 
     public function listOrder(){

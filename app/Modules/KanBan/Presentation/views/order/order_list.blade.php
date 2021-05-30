@@ -92,7 +92,7 @@
         <div class="card-header">
             <h3 class="card-title d-inline">Order List</h3>
             <div class="d-inline float-right">
-                <a class="btn btn-success" href="{{route('order.create')}}">Buat pesanan</a>
+                <a class="btn btn-success" href="{{route('staff.order.create')}}">Buat pesanan</a>
             </div>
         </div>
         <!-- /.card-header -->
@@ -124,7 +124,7 @@
             </a>
         </div>
     </div>
-   
+
 @endsection
 
 @section('scripts')

@@ -130,14 +130,14 @@ Route::prefix('owner')->name('owner.')->middleware(OwnerMiddleware::class)->grou
 Route::prefix('staff')->name('staff.')->middleware(StaffMiddleware::class)->group(
     function () {
         //Route Untuk Staff ada disini
+        Route::prefix('order')->name('order.')->group(
+            function () {
+                Route::get('/', [OrderController::class, 'listOrder'])->name('index');
+
+                Route::get('create', [OrderController::class, 'showCreateOrderForm'])->name('create');
+                Route::post('create', [OrderController::class, 'createOrder'])->name('store');
+            }
+        );
     }
 );
 
-Route::prefix('order')->name('order.')->group(
-    function () {
-        Route::get('/', [OrderController::class, 'listOrder'])->name('index');
-
-        Route::get('create', [OrderController::class, 'showCreateOrderForm'])->name('create');
-        Route::post('create', [OrderController::class, 'createOrder'])->name('store');
-    }
-);
