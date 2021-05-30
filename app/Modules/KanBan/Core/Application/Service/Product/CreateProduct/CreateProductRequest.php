@@ -10,18 +10,19 @@ class CreateProductRequest
     private string $description;
     private int $price;
     private string $badge;
-
+    private int $business_id;
     /**
      * CreateMenuRequest constructor.
      * @param string $name
      * @param string $description
      */
-    public function __construct(string $name, int $price, string $description, string $badge)
+    public function __construct(string $name, int $price, string $description, string $badge, int $business_id)
     {
         $this->name = $name;
         $this->description = $description;
         $this->price = $price;
         $this->badge = $badge;
+        $this->business_id = $business_id;
     }
 
     /**
@@ -49,6 +50,12 @@ class CreateProductRequest
     {
         return $this->badge;
     }
+
+    public function getBusinessId(): int
+    {
+        return $this->business_id;
+    }
+
 
 
 

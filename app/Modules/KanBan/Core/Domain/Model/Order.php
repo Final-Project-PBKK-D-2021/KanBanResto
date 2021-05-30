@@ -14,16 +14,17 @@ class Order extends Model
     protected $fillable = [
         'name',
         'total_price',
-        'payment_status',
-        'payment_method'
+        'id_product',
+        'qty'
+    ];
+
+    protected $casts = [
+        'id_product' => 'array',
+        'qty' => 'array'
     ];
 
     protected $guarded = [
         'id'
     ];
 
-    public function product()
-    {
-        return $this->hasMany(Product::Class, 'product_id');
-    }
 }

@@ -15,7 +15,8 @@ class Product extends Model
         'name',
         'price',
         'description',
-        'badge'
+        'badge',
+        'business_id'
     ];
 
     protected $guarded = [
@@ -25,5 +26,14 @@ class Product extends Model
     public function business()
     {
         return $this->belongsTo(Business::class);
+    }
+
+    public function order()
+    {
+        return $this->belongsToMany(
+            Order::class, 
+            'product_order',
+            'product_id',
+            'order_id');
     }
 }

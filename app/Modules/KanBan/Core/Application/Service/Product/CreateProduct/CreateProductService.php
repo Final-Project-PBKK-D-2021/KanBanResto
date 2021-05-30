@@ -22,12 +22,14 @@ class CreateProductService
 
     public function execute(CreateProductRequest $request)
     {
+       // dd($request);
         $product = Product::create(
             [
                 'name' => $request->getName(),
                 'description' => $request->getDescription(),
                 'price' => $request->getPrice(),
-                'badge' => $request->getBadge()
+                'badge' => $request->getBadge(),
+                'business_id' => $request->getBusinessId(),
             ]
         );
 

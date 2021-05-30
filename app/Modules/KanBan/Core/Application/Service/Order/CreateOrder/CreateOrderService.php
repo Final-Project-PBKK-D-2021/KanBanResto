@@ -26,10 +26,10 @@ class CreateOrderService
             [
                 'name' => $request->getName(),
                 'total_price' => $request->getTotalPrice(),
-
+                'id_product' => $request->getIdProduct(),
+                'qty' => $request->getQty()
             ]
         );
-
         $this->order_repository->persist($order);
     }
 }

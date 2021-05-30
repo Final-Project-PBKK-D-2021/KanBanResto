@@ -23,7 +23,7 @@ class ProductController
         return view('KanBan::product.create_product_form');
     }
 
-    public function createProduct(Request $request)
+    public function createProduct(Request $request, $business_id)
     {
         $request->validate(
             [
@@ -38,7 +38,8 @@ class ProductController
             $request->input('product_name'),
             $request->input('product_price'),
             $request->input('product_description'),
-            $request->input('product_badge')
+            $request->input('product_badge'),
+            $business_id
         );
 
         /** @var CreateProductService $service */
@@ -49,7 +50,7 @@ class ProductController
         } catch (Throwable $e) {
             return redirect()->back()->with('alert', 'Product Creation Failed');
         }
-        return redirect()->route('product.index');
+        return redirect()->route('owner.withBusiness.product.index',  ['business_id' => request()->route('business_id')]);
     }
 
     public function listProduct(){

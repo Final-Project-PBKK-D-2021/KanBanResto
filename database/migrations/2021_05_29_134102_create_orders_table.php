@@ -17,6 +17,8 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->longText('name');
             $table->decimal('total_price', 15,2);
+            $table->json('id_product');
+            $table->json('qty');
             $table->timestamps();
         });
     }

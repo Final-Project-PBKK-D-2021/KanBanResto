@@ -14,7 +14,7 @@
             </ul>
         </div>
     @endif
-    <form role="form" method="post" action="{{route($form_action, ['product_id' => $product_id])}}"
+    <form role="form" method="post" action="{{route($form_action, ['business_id' => request()->route('business_id'), 'product_id' => $product_id])}}"
           enctype="multipart/form-data">
         @csrf
         <div class="card card-info col-md-10 offset-md-1 mt-3">
@@ -28,6 +28,7 @@
                     <div class="col-12">
                         <div class="form-group">
                             <label for="name-input">Nama Produk</label>
+                            <input type="hidden" name="business_id" id="business_id" value="{{request()->route('business_id')}}">
                             <input type="text" class="form-control"
                                    id="name-input"
                                    name="product_name" placeholder="Masukkan Nama Buku product" value="{{old('product_name', $product_name)}}"
