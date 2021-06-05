@@ -14,6 +14,7 @@ use App\Modules\KanBan\Core\Application\Service\Product\GetProduct\GetProductReq
 use App\Modules\KanBan\Core\Application\Service\Product\GetProduct\GetProductService;
 use App\Modules\KanBan\Core\Application\Service\Product\ListProduct\ListProductService;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductFormRequest;
 use Throwable;
 
 class ProductController
@@ -23,16 +24,8 @@ class ProductController
         return view('KanBan::product.create_product_form');
     }
 
-    public function createProduct(Request $request, $business_id)
+    public function createProduct(ProductFormRequest $request, $business_id)
     {
-        $request->validate(
-            [
-                'product_name' => 'required|max:255',
-                'product_price' => 'required',
-                'product_description' => 'required',
-                'product_badge' => 'nullable'
-            ]
-        );
 
         $input = new CreateProductRequest(
             $request->input('product_name'),
