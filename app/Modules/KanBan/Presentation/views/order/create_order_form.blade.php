@@ -55,13 +55,13 @@
                                             @endforeach
                                         </tbody>
                                     </table>
-                                    <!-- <div class="form-group">
+                                    <div class="form-group">
                                         <label for="price-input">Total Harga</label>
                                         <input type="text" class="form-control total"
                                             id="total-price-input"
                                             name="total_price" placeholder="Masukkan total harga" value="{{old('total_price')}}"
                                             autocomplete="off">
-                                    </div> -->
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -27,4 +27,18 @@ class Order extends Model
         'id'
     ];
 
+    public function products()
+    {
+        // dd($this);
+        return $this->belongsToMany(Product::class, 'order_product')->withPivot('jumlah');
+    }
+
+    // public function products()
+    // {
+    //     return $this->belongsToMany(
+    //         Product::class, 
+    //         'order_product',
+    //         'order_id',
+    //         'product_id')->withPivot('jumlah');
+    // }
 }
