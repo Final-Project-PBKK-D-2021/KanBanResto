@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\KanBan\Core\Domain\Service\QRCode;
+namespace App\Modules\KanBan\Core\Domain\Service;
 
 interface QRCodeServiceInterface
 {

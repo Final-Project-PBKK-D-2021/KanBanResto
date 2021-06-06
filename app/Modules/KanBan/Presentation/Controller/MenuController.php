@@ -4,6 +4,7 @@
 namespace App\Modules\KanBan\Presentation\Controller;
 
 
+use App\Http\Requests\MenuFormRequest;
 use App\Modules\KanBan\Core\Application\Service\Menu\CreateMenu\CreateMenuRequest;
 use App\Modules\KanBan\Core\Application\Service\Menu\CreateMenu\CreateMenuService;
 use App\Modules\KanBan\Core\Application\Service\Menu\DeleteMenu\DeleteMenuRequest;
@@ -15,9 +16,8 @@ use App\Modules\KanBan\Core\Application\Service\Menu\GetMenu\GetMenuService;
 use App\Modules\KanBan\Core\Application\Service\Menu\ListMenu\ListMenuService;
 use App\Modules\KanBan\Core\Application\Service\Product\ListProduct\ListProductService;
 use App\Modules\KanBan\Core\Application\Service\QRCode\QRCodeService;
+use App\Modules\KanBan\Core\Domain\Service\QRCodeServiceInterface;
 use Illuminate\Http\Request;
-use App\Http\Requests\MenuFormRequest;
-use App\Modules\KanBan\Core\Application\Service\QRCode\QRCodeServiceInterface;
 use Throwable;
 
 class MenuController
@@ -113,8 +113,6 @@ class MenuController
     }
 
     public function qrcode(Request $request) {
-    
-
         $input = new GetMenuRequest($request->menu_id);
 
         /** @var GetMenuService $service */
@@ -122,12 +120,11 @@ class MenuController
 
         $menu =  $service->execute($input);
 
+        /** @var QRCodeService $qrService */
         $qrService = resolve(QRCodeServiceInterface::class);
 
         $qrCode = $qrService->generateMenuQR($menu->getId());
 
         return view('KanBan::qrcode.qrcode_menu', compact('menu', 'qrCode'));
-
-        //echo $qrService->generate('Dyah Putri');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+
 use App\Modules\KanBan\Core\Application\Service\QRCode\QRCodeService;
 use App\Modules\KanBan\Core\Domain\Service\QRCodeServiceInterface;
 use Illuminate\Support\ServiceProvider;
