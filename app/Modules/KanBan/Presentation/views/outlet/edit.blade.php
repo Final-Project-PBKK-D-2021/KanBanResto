@@ -27,9 +27,9 @@
             <input type="text" class="form-control  @error('noTelpOutlet') is-invalid @enderror" id="noTelpOutlet"
                    placeholder="Masukkan No Telepon Outlet" name="noTelpOutlet" value="{{ $outlet->no_telepon_outlet}}">
             @error('noTelpOutlet')
-        <div class="invalid-feedback">{{ $message }}</div>
-    @enderror
-  </div>
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
   <button type="submit" class="btn btn-primary">Ubah Data</button>
 </form>
 @endsection

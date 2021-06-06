@@ -6,6 +6,7 @@ namespace App\Modules\KanBan\Core\Application\Service\Staff\StaffRegister;
 
 use App\Modules\KanBan\Core\Domain\Model\Staff;
 use App\Modules\KanBan\Core\Domain\Repository\StaffRepositoryInterface;
+use App\Modules\KanBan\Core\Domain\Service\MailtrapServiceInterface;
 
 class StaffRegisterService
 {
@@ -25,14 +26,19 @@ class StaffRegisterService
     {
         $staff = Staff::create(
             [
-                'username' => $request->getUsername(),
+                'email' => $request->getEmail(),
                 'name' => $request->getName(),
                 'password' => $request->getPassword(),
-                'outlet_id' => $request->getOutletId(),
-                'staff_role' => $request->getStaffRole()
+                'staff_role' => $request->getStaffRole(),
+                'outlet_id' => $request->getOutletId()
             ]
         );
 
+        /** @var MailtrapServiceInterface $service */
+        $service = resolve(MailtrapServiceInterface::class);
+
+        $service->sendStaffWelcomeEmail($staff);
+ 
         $this->staff_repository->storeStaff($staff);
     }
 }

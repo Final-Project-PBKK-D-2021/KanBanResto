@@ -27,7 +27,7 @@ class ListStaffService
             $response[] = new ListStaffResponse(
                 $staff->staff_id,
                 $staff->name,
-                $staff->username,
+                $staff->email,
                 $staff->staff_role
             );
         }

@@ -6,7 +6,7 @@ namespace App\Modules\KanBan\Core\Application\Service\Staff\StaffRegister;
 
 class StaffRegisterRequest
 {
-    private string $username;
+    private string $email;
     private string $name;
     private string $password;
     private string $staff_role;
@@ -14,15 +14,15 @@ class StaffRegisterRequest
 
     /**
      * StaffRegisterRequest constructor.
-     * @param string $username
+     * @param string $email
      * @param string $name
      * @param string $password
      * @param string $staff_role
      * @param int $outlet_id
      */
-    public function __construct(string $username, string $name, string $password, string $staff_role, int $outlet_id)
+    public function __construct(string $email, string $name, string $password, string $staff_role, int $outlet_id)
     {
-        $this->username = $username;
+        $this->email = $email;
         $this->name = $name;
         $this->password = $password;
         $this->staff_role = $staff_role;
@@ -32,9 +32,9 @@ class StaffRegisterRequest
     /**
      * @return string
      */
-    public function getUsername(): string
+    public function getEmail(): string
     {
-        return $this->username;
+        return $this->email;
     }
 
     /**

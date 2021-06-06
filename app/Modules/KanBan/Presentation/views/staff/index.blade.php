@@ -103,7 +103,7 @@
                 <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Username</th>
+                    <th>Email</th>
                     <th>Staff Role</th>
                     <th>Actions</th>
                 </tr>
@@ -112,7 +112,7 @@
                 @foreach($staffs as $staff)
                     <tr>
                         <td>{{$staff->getName()}}</td>
-                        <td>{{$staff->getUsername()}}</td>
+                        <td>{{$staff->getEmail()}}</td>
                         <td>{{$staff->getStaffRole()}}</td>
                         <td>
                             {{--                            <a href="{{route('owner.withBusiness.menu.edit', ['menu_id' => $staff->getId()])}}">--}}

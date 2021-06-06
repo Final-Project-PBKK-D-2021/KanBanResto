@@ -15,9 +15,9 @@ class StaffRepository implements StaffRepositoryInterface
         $staff->save();
     }
 
-    public function getStaffByUsername(string $username)
+    public function getStaffByEmail(string $email)
     {
-        return Staff::where('username', $username)->first();
+        return Staff::where('email', $email)->first();
     }
 
     public function deleteStaffById(int $id)

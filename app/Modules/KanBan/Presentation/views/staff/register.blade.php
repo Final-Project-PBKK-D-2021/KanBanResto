@@ -39,9 +39,9 @@
                             <div class="row">
                                 <div class="col-12">
                                     <label class="d-block tx-10 tx-spacing-1 tx-color-03 tx-uppercase tx-semibold"
-                                           for="name">Userame</label>
-                                    <input type="text" id="name" name="username" class="form-control"
-                                           value="{{ old('username') }}" autocomplete="off" required="">
+                                           for="name">Email</label>
+                                    <input type="text" id="name" name="email" class="form-control"
+                                           value="{{ old('email') }}" autocomplete="off" required="">
                                 </div>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                             </div>
                         </div>
                         <div class="submit-btn">
-                            <button type="submit" class="form-btn">
+                            <button type="submit" class="btn-its btn form-btn">
                                 {{ __('Register') }}
                             </button>
                         </div>

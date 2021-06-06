@@ -17,7 +17,8 @@ class CreateStaffTable extends Migration
             'staff',
             function (Blueprint $table) {
                 $table->id('staff_id');
-                $table->string('username')->unique();
+                $table->string('email')->unique();
+                $table->timestamp('email_verified_at')->nullable();
                 $table->string('name');
                 $table->string('staff_role');
                 $table->unsignedBigInteger('outlet_id');
@@ -25,7 +26,7 @@ class CreateStaffTable extends Migration
                 $table->rememberToken();
                 $table->timestamps();
 
-                $table->index('username');
+                $table->index('email');
                 $table->index('outlet_id');
             }
         );

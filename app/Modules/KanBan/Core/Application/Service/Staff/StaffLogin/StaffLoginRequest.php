@@ -6,26 +6,26 @@ namespace App\Modules\KanBan\Core\Application\Service\Staff\StaffLogin;
 
 class StaffLoginRequest
 {
-    private string $username;
+    private string $email;
     private string $password;
 
     /**
      * StaffLoginRequest constructor.
-     * @param string $username
+     * @param string $email
      * @param string $password
      */
-    public function __construct(string $username, string $password)
+    public function __construct(string $email, string $password)
     {
-        $this->username = $username;
+        $this->email = $email;
         $this->password = $password;
     }
 
     /**
      * @return string
      */
-    public function getUsername(): string
+    public function getEmail(): string
     {
-        return $this->username;
+        return $this->email;
     }
 
     /**

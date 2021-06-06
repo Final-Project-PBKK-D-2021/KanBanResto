@@ -10,7 +10,7 @@ interface StaffRepositoryInterface
 {
     public function storeStaff(Staff $staff);
 
-    public function getStaffByUsername(string $username);
+    public function getStaffByEmail(string $email);
 
     public function deleteStaffById(int $id);
 
