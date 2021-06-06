@@ -6,6 +6,7 @@ namespace App\Modules\KanBan\Core\Application\Service\Owner\OwnerRegister;
 
 use App\Modules\KanBan\Core\Domain\Model\Owner;
 use App\Modules\KanBan\Core\Domain\Repository\OwnerRepositoryInterface;
+use App\Modules\KanBan\Core\Domain\Service\GMailServiceInterface;
 
 class OwnerRegisterService
 {
@@ -29,6 +30,11 @@ class OwnerRegisterService
                 'password' => $request->getPassword()
             ]
         );
+
+        /** @var GMailServiceInterface $service */
+        $service = resolve(GMailServiceInterface::class);
+
+        $service->sendOwnerWelcomeEmail($owner);
 
         $this->owner_repository->storeOwner($owner);
     }

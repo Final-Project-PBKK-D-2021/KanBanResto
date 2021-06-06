@@ -140,4 +140,3 @@ Route::prefix('staff')->name('staff.')->middleware(StaffMiddleware::class)->grou
         );
     }
 );
-
