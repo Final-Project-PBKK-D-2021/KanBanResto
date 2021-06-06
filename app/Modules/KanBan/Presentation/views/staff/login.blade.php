@@ -16,12 +16,12 @@
             <form method="post" action="{{route('staff_login')}}" autocomplete="off">
             @csrf
             <!-- Email -->
-                <div class="inputbox form-input @error('username') is-invalid @enderror">
-                    <label for="">Username</label>
-                    <input id="username" type="text" name="username"
-                           value="{{ old('username') }}" autocomplete="username" autofocus>
+                <div class="inputbox form-input @error('email') is-invalid @enderror">
+                    <label for="">Email</label>
+                    <input id="email" type="text" name="email"
+                           value="{{ old('email') }}" autocomplete="email" autofocus>
                 </div>
-                @error('username')
+                @error('email')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

@@ -25,7 +25,7 @@ class StaffRegisterFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|max:255|unique:staff',
+            'email' => 'required|max:255|unique:staff',
             'name' => 'required|max:255',
             'staff_role' => 'required',
             'password' => [

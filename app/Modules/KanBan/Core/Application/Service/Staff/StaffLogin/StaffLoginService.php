@@ -11,7 +11,7 @@ class StaffLoginService
     public function execute(StaffLoginRequest $request)
     {
         if (Auth::guard('staff')->attempt(
-            ['username' => $request->getUsername(), 'password' => $request->getPassword()]
+            ['email' => $request->getEmail(), 'password' => $request->getPassword()]
         )) {
             request()->session()->regenerate();
         }

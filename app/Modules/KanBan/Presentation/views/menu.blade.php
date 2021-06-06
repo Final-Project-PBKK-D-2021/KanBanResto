@@ -24,7 +24,7 @@
         <a href="{{route('owner.withBusiness.product.index', ['business_id' => request()->route('business_id')])}}"
            class="nav-link">
             <i data-feather="coffee"></i>
-            <span>Product</span>
+            <span>Product He</span>
         </a>
     </li>
     @if(request()->route('outlet_id'))

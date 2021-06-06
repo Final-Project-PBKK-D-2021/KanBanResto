@@ -29,7 +29,7 @@ class StaffAuthController
     public function register(StaffRegisterFormRequest $request, $business_id, $outlet_id)
     {
         $input = new StaffRegisterRequest(
-            $request->input('username'),
+            $request->input('email'),
             $request->input('name'),
             Hash::make($request->input('password')),
             $request->input('staff_role'),
@@ -58,7 +58,7 @@ class StaffAuthController
     public function authenticate(StaffLoginFormRequest $request)
     {
         $input = new StaffLoginRequest(
-            $request->input('username'),
+            $request->input('email'),
             $request->input('password')
         );
 
