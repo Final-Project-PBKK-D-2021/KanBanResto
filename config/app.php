@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         App\Providers\DependencyInjectionServiceProvider::class,
+        App\Providers\GMailServiceProvider::class,
 
         /*
          * Application Service Providers...

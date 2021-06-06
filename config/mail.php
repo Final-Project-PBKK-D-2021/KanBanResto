@@ -45,6 +45,17 @@ return [
             'auth_mode' => null,
         ],
 
+        'gmail' => [
+            'transport' => 'smtp',
+            'host' => env('GMAIL_MAIL_HOST', 'smtp.mailgun.org'),
+            'port' => env('GMAIL_MAIL_PORT', 587),
+            'encryption' => env('GMAIL_MAIL_ENCRYPTION', 'tls'),
+            'username' => env('GMAIL_MAIL_USERNAME'),
+            'password' => env('GMAIL_MAIL_PASSWORD'),
+            'timeout' => null,
+            'auth_mode' => null,
+        ],
+
         'ses' => [
             'transport' => 'ses',
         ],
