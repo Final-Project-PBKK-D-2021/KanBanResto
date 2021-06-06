@@ -11,11 +11,11 @@ class StaffRegisteredMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private Staf $staff;
+    private Staff $staff;
 
     /**
      * StaffRegisteredMail constructor.
-     * 
+     *
      * @param Staff $staff
      */
     public function __construct(Staff $staff)
