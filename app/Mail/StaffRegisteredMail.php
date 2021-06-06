@@ -11,7 +11,7 @@ class StaffRegisteredMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private Staf $staff;
+    private Staff $staff;
 
     /**
      * StaffRegisteredMail constructor.
@@ -34,7 +34,6 @@ class StaffRegisteredMail extends Mailable
         return $this->from('indriatifiqey16@gmail.com')->markdown('staff.mail.welcome')->with(
             [
                 'name' => $this->staff->name,
-                'password' => $this->staff->password,
                 'email' => $this->staff->email
             ]
         );
