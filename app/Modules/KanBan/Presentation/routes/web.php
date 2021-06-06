@@ -1,6 +1,5 @@
 <?php
 
-
 use App\Modules\KanBan\Presentation\Controller\Auth\OwnerAuthController;
 use App\Modules\KanBan\Presentation\Controller\Auth\StaffAuthController;
 use App\Modules\KanBan\Presentation\Controller\BusinessController;
@@ -9,6 +8,7 @@ use App\Modules\KanBan\Presentation\Controller\OrderController;
 use App\Modules\KanBan\Presentation\Controller\OutletController;
 use App\Modules\KanBan\Presentation\Controller\ProductController;
 use App\Modules\KanBan\Presentation\Controller\StaffController;
+use App\Modules\KanBan\Presentation\Controller\DetailMenuController;
 use App\Modules\KanBan\Presentation\Middleware\OwnerMiddleware;
 use App\Modules\KanBan\Presentation\Middleware\StaffMiddleware;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +38,8 @@ Route::post('/staff/logout', [StaffAuthController::class, 'logout'])->name('staf
 
 Route::get('/staff/login', [StaffAuthController::class, 'showLoginForm'])->name('staff_login');
 Route::post('/staff/login', [StaffAuthController::class, 'authenticate'])->name('staff_login');
+
+Route::get("/detailmenu/{menu_id}",  [DetailMenuController::class, 'show'])->name('show');
 
 Route::prefix('owner')->name('owner.')->middleware(OwnerMiddleware::class)->group(
     function () {
@@ -70,6 +72,8 @@ Route::prefix('owner')->name('owner.')->middleware(OwnerMiddleware::class)->grou
                         Route::post('edit/{menu_id}', [MenuController::class, 'editMenu'])->name('update');
 
                         Route::post('delete/{menu_id}', [MenuController::class, 'deleteMenu'])->name('delete');
+
+                        Route::get('qrcode/{menu_id}', [MenuController::class, 'qrcode'])->name('qrcode');
                     }
                 );
 
@@ -140,4 +144,5 @@ Route::prefix('staff')->name('staff.')->middleware(StaffMiddleware::class)->grou
         );
     }
 );
+
 

@@ -127,6 +127,9 @@
                                 document.getElementById('menuList').style.display='none'">
                                 <div class="btn btn-outline-danger">Delete</div>
                             </a>
+                            <a href="{{route('owner.withBusiness.menu.qrcode', ['business_id' => request()->route('business_id'), 'menu_id' => $menu->id])}}">
+                                <div class="btn btn-outline-info">Show QR Code</div>
+                            </a>
                         </td>
                         @foreach($menu->list_products as $product)
                         <td>{{$product}}</td>

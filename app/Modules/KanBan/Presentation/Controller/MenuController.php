@@ -14,8 +14,10 @@ use App\Modules\KanBan\Core\Application\Service\Menu\GetMenu\GetMenuRequest;
 use App\Modules\KanBan\Core\Application\Service\Menu\GetMenu\GetMenuService;
 use App\Modules\KanBan\Core\Application\Service\Menu\ListMenu\ListMenuService;
 use App\Modules\KanBan\Core\Application\Service\Product\ListProduct\ListProductService;
+use App\Modules\KanBan\Core\Application\Service\QRCode\QRCodeService;
 use Illuminate\Http\Request;
 use App\Http\Requests\MenuFormRequest;
+use App\Modules\KanBan\Core\Application\Service\QRCode\QRCodeServiceInterface;
 use Throwable;
 
 class MenuController
@@ -108,5 +110,24 @@ class MenuController
             return redirect()->back()->with('alert', 'Menu Delete Failed');
         }
         return redirect()->route('owner.withBusiness.menu.index', ['business_id' => request()->route('business_id')]);
+    }
+
+    public function qrcode(Request $request) {
+    
+
+        $input = new GetMenuRequest($request->menu_id);
+
+        /** @var GetMenuService $service */
+        $service = resolve(GetMenuService::class);
+
+        $menu =  $service->execute($input);
+
+        $qrService = resolve(QRCodeServiceInterface::class);
+
+        $qrCode = $qrService->generateMenuQR($menu->getId());
+
+        return view('KanBan::qrcode.qrcode_menu', compact('menu', 'qrCode'));
+
+        //echo $qrService->generate('Dyah Putri');
     }
 }
