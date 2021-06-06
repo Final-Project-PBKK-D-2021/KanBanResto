@@ -15,7 +15,7 @@ class StaffRegisteredMail extends Mailable
 
     /**
      * StaffRegisteredMail constructor.
-     * 
+     *
      * @param Staff $staff
      */
     public function __construct(Staff $staff)
