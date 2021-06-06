@@ -15,8 +15,8 @@
                 <div class="card-body">
                     <p class="tx-color-its">QRCODE</p>
                     <div class="visible-print text-center">
+                        <h5>Scan me to see the menu !</p>
                         {!! $qrCode !!}
-                        <p>Scan me to see the menu.</p>
                     </div>
                 </div>
             </div>

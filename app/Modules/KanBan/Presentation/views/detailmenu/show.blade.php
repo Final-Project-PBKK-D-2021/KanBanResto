@@ -18,18 +18,14 @@
                 <table id="menuTable" class="table">
                 <thead>
                 <tr>
-                    <th>Nama Product</th>
-                    <th>Harga</th>
+                    <th>Product</th>
                 </tr>
                 </thead>
                 <tbody>
                     @foreach($menu->getListProducts() as $product)
                     <tr>
                         <td>
-                            {{$product->name}}
-                        </td>
-                        <td>
-                            {{$product->price}}
+                            {{$product}}
                         </td>
                     </tr>
                     @endforeach
