@@ -14,6 +14,7 @@
             <div class="card">
                 <div class="card-body">
                     <p class="tx-color-its">SELAMAT DATANG</p>
+                    
                 </div>
             </div>
         </div>

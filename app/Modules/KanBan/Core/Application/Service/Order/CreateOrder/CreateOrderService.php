@@ -26,8 +26,6 @@ class CreateOrderService
             [
                 'name' => $request->getName(),
                 'total_price' => $request->getTotalPrice(),
-                'id_product' => $request->getIdProduct(),
-                'qty' => $request->getQty()
             ]
         );
 
@@ -52,8 +50,9 @@ class CreateOrderService
             $i++;
         }
 
-        
         // dd($order2->products);
         $this->order_repository->persist($order);
+        // dd("masuk");
+        return $order->id;
     }
 }

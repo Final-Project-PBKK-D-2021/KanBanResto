@@ -3,11 +3,14 @@
 
 namespace App\Modules\KanBan\Presentation\Controller;
 
-
+use App\Modules\KanBan\Core\Domain\Model\Order;
 use App\Modules\KanBan\Core\Application\Service\Order\CreateOrder\CreateOrderRequest;
 use App\Modules\KanBan\Core\Application\Service\Order\CreateOrder\CreateOrderService;
 use App\Modules\KanBan\Core\Application\Service\Order\ListOrder\ListOrderService;
+use App\Modules\KanBan\Core\Application\Service\Order\DeleteOrder\DeleteOrderRequest;
+use App\Modules\KanBan\Core\Application\Service\Order\DeleteOrder\DeleteOrderService;
 use App\Modules\KanBan\Core\Application\Service\Product\ListProduct\ListProductService;
+use App\Modules\KanBan\Core\Domain\Service\QRCodeServiceInterface;
 use Illuminate\Http\Request;
 use Throwable;
 
@@ -43,11 +46,12 @@ class OrderController
         $service = resolve(CreateOrderService::class);
 
         try {
-            $service->execute($input);
+            $order_id = $service->execute($input);
         } catch (Throwable $e) {
             return redirect()->back()->with('alert', 'Order Creation Failed');
         }
-        return redirect()->route('staff.order.index');
+        //dd($order_id);
+        return redirect()->route('staff.order.showPayment', ['order_id' => $order_id]);
     }
 
     public function listOrder(){
@@ -59,4 +63,50 @@ class OrderController
         return view('KanBan::order.order_list', compact('orders'));
     }
 
+    public function qrcode(int $order_id) {
+        /** @var QRCodeService $qrService */
+        $qrService = resolve(QRCodeServiceInterface::class);
+
+        $qrCode = $qrService->generateOrderQR($order_id);
+
+      //  dd($qrCode);
+        //return view('KanBan::welcome');
+
+        return view('KanBan::order.qrcode', compact('qrCode'));
+    }
+
+    public function showPayment(int $order_id)
+    {   
+        $order = Order::findOrFail($order_id);
+        return view('KanBan::order.payment_form', compact('order'));
+        
+    }
+
+    public function cancelOrder (int $order_id){
+        //dd($order_id);
+        $input = new DeleteOrderRequest(
+            $order_id
+        );
+
+        /** @var DeleteOrderService $service */
+        $service = resolve(DeleteOrderService::class);
+
+        try {
+            $service->execute($input);
+        } catch (Throwable $e) {
+            return redirect()->back()->with('alert', 'Order Delete Failed');
+        }
+        return redirect()->route('staff.order.create');
+    }
+    
+    public function updatePriceOrder(Request $request, $order_id)
+    {   
+     //   dd($request->total, $order_id);
+        $total_price = $request->total;
+        $order = Order::findOrFail($order_id);
+            
+        $order->update(['total_price'=> $total_price]);
+            
+        return redirect()->route('staff.order.qrcode', ['order_id' => $order_id]);
+    }
 }

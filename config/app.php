@@ -178,6 +178,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\QRCodeServiceProvider::class,
+
+        //QRCode Generator werneckbh
+        LaravelQRCode\Providers\QRCodeServiceProvider::class,   
     ],
 
     /*
@@ -230,7 +233,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'QRCode' => LaravelQRCode\Facades\QRCode::class, //qrcodewerneckbh
     ],
 
 ];

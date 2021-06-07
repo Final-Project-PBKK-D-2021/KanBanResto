@@ -17,7 +17,7 @@ class OrderRepository implements OrderRepositoryInterface
 
     public function persist(Order $order)
     {
-        $Order->save();
+        $order->save();
     }
 
     public function listOrder()

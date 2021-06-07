@@ -14,13 +14,6 @@ class Order extends Model
     protected $fillable = [
         'name',
         'total_price',
-        'id_product',
-        'qty'
-    ];
-
-    protected $casts = [
-        'id_product' => 'array',
-        'qty' => 'array'
     ];
 
     protected $guarded = [

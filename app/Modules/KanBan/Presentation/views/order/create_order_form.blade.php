@@ -55,27 +55,27 @@
                                             @endforeach
                                         </tbody>
                                     </table>
-                                    <div class="form-group">
-                                        <label for="price-input">Total Harga</label>
-                                        <input type="text" class="form-control total"
+                                    
+                                        <input type="hidden" class="form-control total"
                                             id="total-price-input"
-                                            name="total_price" placeholder="Masukkan total harga" value="{{old('total_price')}}"
+                                            name="total_price" placeholder="Masukkan total harga" value="0"
                                             autocomplete="off">
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
                         <!-- /.card-body -->
                     </div>
-
-                    <button type="submit" form="form_Order" class="btn btn-primary tx-montserrat tx-semibold float-right">Simpan</button>
+                    
+                    <button type="submit" form="form_Order" class="btn btn-primary tx-montserrat tx-semibold float-right">Lanjutkan Pembayaran</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-<script>
+
+<!-- <script>
     $(document).on("change", ".qty", function() {
         var sum = 0;
         $(".qty").each(function(){
@@ -83,5 +83,5 @@
         });
         $(".total").val(sum);
     });
-</script>
+</script> -->
 @endsection
