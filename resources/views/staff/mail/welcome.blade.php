@@ -4,7 +4,7 @@
     You are receiving this email because you've just registered as Staff in KanBanResto.
     This is your account detail:
     - Email : {{ $email }}
-    - Password : {{ $password }}
+    - Password : Please contact your owner
 
     Don't tell anyone, this is confidential.
 

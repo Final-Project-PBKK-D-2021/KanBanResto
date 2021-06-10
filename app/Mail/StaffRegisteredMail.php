@@ -34,7 +34,6 @@ class StaffRegisteredMail extends Mailable
         return $this->from('indriatifiqey16@gmail.com')->markdown('staff.mail.welcome')->with(
             [
                 'name' => $this->staff->name,
-                'password' => $this->staff->password,
                 'email' => $this->staff->email
             ]
         );
