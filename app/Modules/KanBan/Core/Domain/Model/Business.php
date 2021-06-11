@@ -38,7 +38,6 @@ class Business extends Model
         return $this->hasMany(Menu::class, 'business_id');
     }
 
-
     public function products()
     {
         return $this->hasMany(Product::class, 'business_id');
