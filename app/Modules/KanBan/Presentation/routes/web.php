@@ -149,5 +149,3 @@ Route::prefix('staff')->name('staff.')->middleware(StaffMiddleware::class)->grou
     }
 );
 
-
-Route::get('qr-code',[OrderController::class, 'qrcode']);
