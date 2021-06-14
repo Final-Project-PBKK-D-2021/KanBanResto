@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-6">
                     <label class="d-block tx-10 tx-spacing-1 tx-color-03 tx-uppercase tx-semibold">Product 1</label> 
-                    <select class="form-control custom-select" name="list_products[]" required="">
+                    <select class="form-control custom-select" name="products[]" required="">
                         @foreach ($products as $product)
                             <option value="{{ $product }}">{{ $product->name }}</option>                                        
                         @endforeach
@@ -38,7 +38,7 @@
                 </div>   
                 <div class="col-6">
                     <label class="d-block tx-10 tx-spacing-1 tx-color-03 tx-uppercase tx-semibold">Product 2</label> 
-                    <select class="form-control custom-select" name="list_products[]" required="">
+                    <select class="form-control custom-select" name="products[]" required="">
                         @foreach ($products as $product)
                             <option value="{{ $product }}">{{ $product->name }}</option>                                        
                         @endforeach

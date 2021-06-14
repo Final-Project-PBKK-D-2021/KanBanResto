@@ -26,8 +26,7 @@ class GetMenuService
         return new GetMenuResponse(
             $menu->id,
             $menu->name,
-            $menu->description,
-            $menu->list_products
+            $menu->description
         );
     }
 }

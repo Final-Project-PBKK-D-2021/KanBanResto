@@ -37,8 +37,7 @@ class MenuController
         $input = new CreateMenuRequest(
             $request->input('menu_name'),
             $request->input('menu_description'),
-            $request->business_id,
-            $request->input('list_products')
+            $request->business_id
         );
 
         /** @var CreateMenuService $service */
@@ -81,8 +80,7 @@ class MenuController
         $input = new EditMenuRequest(
             $request->input('menu_id'),
             $request->input('menu_name'),
-            $request->input('menu_description'),
-            $request->input('list_products'),
+            $request->input('menu_description')
         );
 
         /** @var EditMenuService $service */

@@ -28,8 +28,14 @@ class Product extends Model
         return $this->belongsTo(Business::class);
     }
 
+    public function menus()
+    {
+        return $this->belongsToMany(Menu::class, 'menu_product');
+    }
+    
     public function orders()
     {
         return $this->belongsToMany(Order::class, 'order_product')->withPivot(['jumlah']);
     }
+
 }

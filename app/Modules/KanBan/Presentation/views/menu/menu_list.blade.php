@@ -131,7 +131,7 @@
                                 <div class="btn btn-outline-info">Show QR Code</div>
                             </a>
                         </td>
-                        @foreach($menu->list_products as $product)
+                        @foreach($menu->products as $product)
                         <td>{{$product}}</td>
                         @endforeach
                     </tr>

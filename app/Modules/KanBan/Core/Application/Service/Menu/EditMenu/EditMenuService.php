@@ -24,7 +24,6 @@ class EditMenuService
 
         $menu->name = $request->getName();
         $menu->description = $request->getDescription();
-        $menu->list_products = $request->getListProducts();
 
         $this->menu_repository->persist($menu);
     }

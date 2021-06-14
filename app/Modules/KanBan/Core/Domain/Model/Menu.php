@@ -15,20 +15,20 @@ class Menu extends Model
     protected $fillable = [
         'name',
         'description',
-        'business_id',
-        'list_products'
+        'business_id'
     ];
 
     protected $guarded = [
         'id'
     ];
 
-    protected $casts = [
-        'list_products' => 'array'
-    ];
-
     public function business()
     {
         return $this->belongsTo(Business::class);
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'menu_product');
     }
 }
