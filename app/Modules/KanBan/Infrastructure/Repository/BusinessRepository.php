@@ -9,7 +9,6 @@ use App\Modules\KanBan\Core\Domain\Repository\BusinessRepositoryInterface;
 
 class BusinessRepository implements BusinessRepositoryInterface
 {
-
     public function getBusinessById($id)
     {
         return Business::where('id', $id)->first();
