@@ -22,7 +22,7 @@ class BusinessRepository implements BusinessRepositoryInterface
 
     public function listBusiness()
     {
-        return Business::paginate(10);
+        return Business::all();
     }
 
     public function deleteBusinessById($id)

@@ -1,7 +1,0 @@
-Service nanti akan dibuatkan sebuah folder sendiri.
-Misal service namanya adalah RegisterBusiness maka strukturnya folder adalah
-
-RegisterBusiness
--> RegisterBusinessService.php
--> RegisterBusinessRequest.php
--> RegisterBusinessResponse.php

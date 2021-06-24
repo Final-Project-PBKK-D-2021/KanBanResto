@@ -19,10 +19,10 @@ class GetBusinessService
         $this->business_repository = $business_repository;
     }
 
-    public function execute(GetBusinessRequest $request) 
+    public function execute(GetBusinessRequest $request)
     {
         $business = $this->business_repository->getBusinessById($request->getId());
-        
+
         return new GetBusinessResponse(
             $business->id,
             $business->name,
@@ -31,5 +31,4 @@ class GetBusinessService
             $business->owner_name
         );
     }
-
 }

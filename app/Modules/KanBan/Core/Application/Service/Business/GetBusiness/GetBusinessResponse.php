@@ -4,7 +4,9 @@
 namespace App\Modules\KanBan\Core\Application\Service\Business\GetBusiness;
 
 
-class GetBusinessResponse
+use JsonSerializable;
+
+class GetBusinessResponse implements JsonSerializable
 {
     private int $id;
     private string $name;
@@ -67,5 +69,16 @@ class GetBusinessResponse
     public function getOwnerName(): string
     {
         return $this->owner_name;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'since' => $this->since,
+            'owner_name' => $this->owner_name,
+        ];
     }
 }
