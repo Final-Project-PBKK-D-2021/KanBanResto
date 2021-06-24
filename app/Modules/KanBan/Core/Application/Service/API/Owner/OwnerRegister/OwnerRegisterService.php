@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Modules\KanBan\Core\Application\Service\Owner\OwnerRegister;
+namespace App\Modules\KanBan\Core\Application\Service\API\Owner\OwnerRegister;
 
 
 use App\Modules\KanBan\Core\Domain\Model\Owner;
@@ -28,7 +28,6 @@ class OwnerRegisterService
         $owner->name = $request->getName();
         $owner->email = $request->getEmail();
         $owner->password = $request->getPassword();
-
 
         /** @var GMailServiceInterface $service */
         $service = resolve(GMailServiceInterface::class);
