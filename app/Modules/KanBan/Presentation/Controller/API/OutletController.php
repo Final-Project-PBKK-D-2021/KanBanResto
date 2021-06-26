@@ -3,108 +3,79 @@
 namespace App\Modules\KanBan\Presentation\Controller\API;
 
 use App\Http\Controllers\Controller;
+use App\Modules\KanBan\Core\Application\Service\Outlet\ListOutlet\ListOutletResponse;
 use App\Modules\KanBan\Core\Domain\Model\Outlet;
-use Illuminate\Http\JsonResponse;
+use App\Modules\KanBan\Core\Domain\Repository\OutletRepositoryInterface;
 use Illuminate\Http\Request;
+use Throwable;
 
 class OutletController extends Controller
 {
+    private OutletRepositoryInterface $outlet_repository;
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * OutletController constructor.
+     * @param OutletRepositoryInterface $outlet_repository
      */
-    public function index()
+    public function __construct(OutletRepositoryInterface $outlet_repository)
     {
-        $outlets = Outlet::all();
-        return view('KanBan::outlet.index', compact('outlets'));
+        $this->outlet_repository = $outlet_repository;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function list_outlet(Request $request)
     {
-        return view('KanBan::outlet.create');
+        try {
+            $outlets = $this->outlet_repository->listOutlet();
+
+            $response = [];
+            foreach ($outlets as $outlet) {
+                $response[] = new ListOutletResponse(
+                    $outlet->nama_outlet,
+                    $outlet->alamat_outlet,
+                    $outlet->no_telepon_outlet,
+                    $outlet->business_id
+                );
+            }
+        } catch (Throwable $e) {
+            return $this->failedWithMsg(
+                $e->getMessage(),
+                $e->getCode()
+            );
+        }
+
+        return $this->successWithData($response);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request, $business_id): JsonResponse
+    public function update_outlet(Request $request)
     {
-
-        Outlet::create([
-            'nama_outlet' => $request->input('namaOutlet'),
-            'alamat_outlet' => $request->input('alamatOutlet'),
-            'no_telepon_outlet' => $request->input('noTelpOutlet'),
-            'business_id'=>$business_id
-        ]);
-
-        return redirect()->route('owner.withBusiness.outlet.index' ,  ['business_id' => request()->route('business_id')]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Request $request): JsonResponse
+    public function delete_outlet(Request $request)
     {
-        $outlet = Outlet::where('id', $request->outlet)->first();
-        return view('KanBan::outlet.show', compact('outlet'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Request $request): JsonResponse
+    public function get_outlet(Request $request)
     {
-        
-        $outlet = Outlet::where('id', $request->outlet)->first();
-        return view('KanBan::outlet.edit', compact('outlet'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request): JsonResponse
+    public function create_outlet(Request $request)
     {
+        try {
+            $outlet = new Outlet();
+            $outlet->nama_outlet = $request->input('namaOutlet');
+            $outlet->alamat_outlet = $request->input('alamatOutlet');
+            $outlet->no_telepon_outlet = $request->input('noTelpOutlet');
+            $outlet->business_id = $request->input('business_id');
 
-        $outlet = Outlet::where('id', $request->outlet)
-                ->update([
-                    'nama_outlet' => $request->input('namaOutlet'),
-                    'alamat_outlet' => $request->input('alamatOutlet'),
-                    'no_telepon_outlet' => $request->input('noTelpOutlet'),
-                    'business_id'=>$request->business_id
-                ]);
+            $this->outlet_repository->storeOutlet($outlet);
+        } catch (Throwable $e) {
+            return $this->failedWithMsg(
+                $e->getMessage(),
+                $e->getCode()
+            );
+        }
 
-        return redirect()->route('owner.withBusiness.outlet.index' ,['business_id' => request()->route('business_id')])->with('status', 'Data Outlet Berhasil Diubah');;
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Request $request): JsonResponse
-    {
-        Outlet::where('id', $request->outlet)->delete();
-        return redirect()->route('owner.withBusiness.outlet.index' ,['business_id' => request()->route('business_id')])->with('status', 'Outlet Berhasil Dihapus');
+        return $this->success();
     }
 }
 
