@@ -10,9 +10,13 @@ interface MenuRepositoryInterface
 {
     public function getMenuById($id);
 
-    public function persist (Menu $menu);
+    public function getListProductById($id);
 
-    public function listMenu ();
+    public function persist(Menu $menu, array $product_ids);
+
+    public function listMenu();
 
     public function deleteMenuById($id);
+
+    public function resetMenuProductById($id);
 }

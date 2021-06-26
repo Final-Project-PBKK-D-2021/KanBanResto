@@ -5,6 +5,7 @@ namespace App\Modules\KanBan\Core\Application\Service\Menu\CreateMenu;
 
 
 use App\Modules\KanBan\Core\Domain\Model\Menu;
+use App\Modules\KanBan\Core\Domain\Model\MenuProduct;
 use App\Modules\KanBan\Core\Domain\Repository\MenuRepositoryInterface;
 
 class CreateMenuService
@@ -22,14 +23,14 @@ class CreateMenuService
 
     public function execute(CreateMenuRequest $request)
     {
-        $menu = Menu::create(
-            [
-                'name' => $request->getName(),
-                'description' => $request->getDescription(),
-                'business_id' => $request->getBusinessId()
-            ]
-        );
+        $menu = new Menu();
 
-        $this->menu_repository->persist($menu);
+        $menu->name = $request->getName();
+        $menu->description = $request->getDescription();
+        $menu->business_id = $request->getBusinessId();
+
+        $product_ids = $request->getProducts();
+
+        $this->menu_repository->persist($menu, $product_ids);
     }
 }

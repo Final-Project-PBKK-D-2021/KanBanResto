@@ -20,10 +20,9 @@ use Illuminate\Contracts\Foundation\Application;
 
 /** @var Application $app */
 $app->singleton(BusinessRepositoryInterface::class, BusinessRepository::class);
-
+$app->singleton(MenuRepositoryInterface::class, MenuRepository::class);
 
 $app->singleton(OwnerRepositoryInterface::class, OwnerRepository::class);
-$app->singleton(MenuRepositoryInterface::class, MenuRepository::class);
 $app->singleton(ProductRepositoryInterface::class, ProductRepository::class);
 $app->singleton(StaffRepositoryInterface::class, StaffRepository::class);
 $app->singleton(OutletRepositoryInterface::class, OutletRepository::class);

@@ -21,17 +21,6 @@ class ListMenuService
 
     public function execute (){
         $menus = $this->menu_repository->listMenu();
-//        /** @var ListMenuResponse[] $response */
-//        $response = [];
-//
-//        foreach ($menus as $menu){
-//            $response[] = new ListMenuResponse(
-//                $menu->id,
-//                $menu->name,
-//                $menu->description ?? '-'
-//            );
-//        }
-
         return $menus;
     }
 }

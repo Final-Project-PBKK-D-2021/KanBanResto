@@ -26,9 +26,9 @@ Edit Menu
                     <div class="row row-xs">
                         <div class="col-10 col-sm-10 col-lg-10 d-flex align-items-center">
                             <div>
-                            <p class="tx-medium tx-15">Menu Information</p>       
+                            <p class="tx-medium tx-15">Menu Information</p>
                             </div>
-                        </div>                 
+                        </div>
                     </div>
                     <fieldset>
                         <input type="hidden" name="menu_id" id="menu_id" value="{{ old('menu_id', $menu->getId()) }}">
@@ -36,7 +36,7 @@ Edit Menu
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-12">
-                                    <label class="d-block tx-10 tx-spacing-1 tx-color-03 tx-uppercase tx-semibold" for="name">Menu Name</label> 
+                                    <label class="d-block tx-10 tx-spacing-1 tx-color-03 tx-uppercase tx-semibold" for="name">Menu Name</label>
                                     <input type="text" id="name" name="menu_name" class="form-control" value="{{ old('menu_name', $menu->getName()) }}" autocomplete="off" required="">
                                 </div>
                             </div>
@@ -44,7 +44,7 @@ Edit Menu
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-12">
-                                    <label class="d-block tx-10 tx-spacing-1 tx-color-03 tx-uppercase tx-semibold" for="description">Descripton</label> 
+                                    <label class="d-block tx-10 tx-spacing-1 tx-color-03 tx-uppercase tx-semibold" for="description">Descripton</label>
                                     <input type="text" id="description" name="menu_description" class="form-control" value="{{ old('menu_name', $menu->getDescription()) }}" autocomplete="off" required="">
                                 </div>
                             </div>
@@ -52,21 +52,21 @@ Edit Menu
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-6">
-                                    <label class="d-block tx-10 tx-spacing-1 tx-color-03 tx-uppercase tx-semibold">Product 1</label> 
+                                    <label class="d-block tx-10 tx-spacing-1 tx-color-03 tx-uppercase tx-semibold">Product 1</label>
                                     <select class="form-control custom-select" name="products[]" required="">
                                         @foreach ($products as $product)
-                                            <option value="{{ $product }}" {{ $menu->products[0] == $product->id ? 'selected' : '' }}>{{ $product->name }}</option>                                        
+                                            <option value="{{ $product->id }}" {{ $menu->getProducts()[0] == $product->id ? 'selected' : '' }}>{{ $product->name }}</option>
                                         @endforeach
                                     </select>
-                                </div>   
+                                </div>
                                 <div class="col-6">
-                                    <label class="d-block tx-10 tx-spacing-1 tx-color-03 tx-uppercase tx-semibold">Product 2</label> 
+                                    <label class="d-block tx-10 tx-spacing-1 tx-color-03 tx-uppercase tx-semibold">Product 2</label>
                                     <select class="form-control custom-select" name="products[]" required="">
                                         @foreach ($products as $product)
-                                            <option value="{{ $product }}" {{ $menu->products[1] == $product->id ? 'selected' : '' }}>{{ $product->name }}</option>                             
+                                            <option value="{{ $product->id }}" {{ $menu->getProducts()[1] == $product->id ? 'selected' : '' }}>{{ $product->name }}</option>
                                         @endforeach
                                     </select>
-                                </div>              
+                                </div>
                             </div>
                         </div>
                     </fieldset>

@@ -19,12 +19,16 @@ class EditMenuService
         $this->menu_repository = $menu_repository;
     }
 
-    public function execute (EditMenuRequest $request){
+    public function execute (EditMenuRequest $request)
+    {
         $menu = $this->menu_repository->getMenuById($request->getId());
+        $this->menu_repository->resetMenuProductById($request->getId());
 
         $menu->name = $request->getName();
         $menu->description = $request->getDescription();
 
-        $this->menu_repository->persist($menu);
+        $product_ids = $request->getProducts();
+
+        $this->menu_repository->persist($menu, $product_ids);
     }
 }
