@@ -4,7 +4,9 @@
 namespace App\Modules\KanBan\Core\Application\Service\Menu\GetMenu;
 
 
-class GetMenuResponse
+use JsonSerializable;
+
+class GetMenuResponse implements JsonSerializable
 {
     private string $id;
     private string $name;
@@ -56,5 +58,15 @@ class GetMenuResponse
     public function getProducts(): array
     {
         return $this->products;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'products' => $this->products
+        ];
     }
 }

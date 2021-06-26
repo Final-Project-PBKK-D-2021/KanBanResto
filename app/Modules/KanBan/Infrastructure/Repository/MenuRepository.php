@@ -13,7 +13,7 @@ class MenuRepository implements MenuRepositoryInterface
 
     public function getMenuById($id)
     {
-        return Menu::where('id', $id)->first();
+        return Menu::find($id);
     }
 
     public function getListProductById($id)
