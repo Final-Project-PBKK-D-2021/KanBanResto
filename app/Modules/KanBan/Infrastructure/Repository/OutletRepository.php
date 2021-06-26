@@ -19,4 +19,14 @@ class OutletRepository implements OutletRepositoryInterface
     {
         return Outlet::where('id', $outlet_id)->first();
     }
+
+    public function listOutlet() 
+    {
+        return Outlet::all();
+    }
+
+    public function deleteOutletById(int $outlet_id)
+    {
+        Outlet::where('outlet_id', $outlet_id)->delete();
+    }
 }
