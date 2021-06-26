@@ -180,7 +180,7 @@ return [
         App\Providers\QRCodeServiceProvider::class,
 
         //QRCode Generator werneckbh
-        LaravelQRCode\Providers\QRCodeServiceProvider::class,   
+        //LaravelQRCode\Providers\QRCodeServiceProvider::class,   
     ],
 
     /*
