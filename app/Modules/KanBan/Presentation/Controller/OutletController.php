@@ -5,9 +5,10 @@ namespace App\Modules\KanBan\Presentation\Controller;
 
 use App\Http\Requests\CreateOutletFormRequest;
 use App\Http\Requests\EditOutletFormRequest;
-use App\Modules\KanBan\Core\Domain\Model\Business;
 use App\Modules\KanBan\Core\Domain\Model\Outlet;
+use App\Modules\KanBan\Presentation\Controller\OutletRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Http\Responese;
 
 class OutletController
 {
@@ -87,12 +88,12 @@ class OutletController
     {
 
         $outlet = Outlet::where('id', $request->outlet)
-                ->update([
-                    'nama_outlet' => $request->input('namaOutlet'),
-                    'alamat_outlet' => $request->input('alamatOutlet'),
-                    'no_telepon_outlet' => $request->input('noTelpOutlet'),
-                    'business_id'=>$request->business_id
-                ]);
+        ->update([
+            'nama_outlet' => $request->input('namaOutlet'),
+            'alamat_outlet' => $request->input('alamatOutlet'),
+            'no_telepon_outlet' => $request->input('noTelpOutlet'),
+            'business_id'=>$request->business_id
+        ]);
 
         return redirect()->route('owner.withBusiness.outlet.index' ,['business_id' => request()->route('business_id')])->with('status', 'Data Outlet Berhasil Diubah');;
     }

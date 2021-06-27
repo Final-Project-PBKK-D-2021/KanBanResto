@@ -10,9 +10,9 @@ interface OutletRepositoryInterface
 {
     public function storeOutlet(Outlet $outlet);
 
-    public function getOutletByOutletId(int $outlet_id);
+    public function getOutletByOutletId($id);
 
     public function listOutlet();
 
-    public function deleteOutletById(int $outlet_id);
+    public function deleteOutletById($id);
 }

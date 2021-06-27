@@ -15,9 +15,9 @@ class OutletRepository implements OutletRepositoryInterface
         $outlet->save();
     }
 
-    public function getOutletByOutletId(int $outlet_id)
+    public function getOutletByOutletId($id)
     {
-        return Outlet::where('id', $outlet_id)->first();
+        return Outlet::where('id', $id)->first();
     }
 
     public function listOutlet() 
@@ -25,8 +25,8 @@ class OutletRepository implements OutletRepositoryInterface
         return Outlet::all();
     }
 
-    public function deleteOutletById(int $outlet_id)
+    public function deleteOutletById($id)
     {
-        Outlet::where('outlet_id', $outlet_id)->delete();
+        Outlet::where('id', $id)->delete();
     }
 }
