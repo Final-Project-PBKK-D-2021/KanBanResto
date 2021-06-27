@@ -2,6 +2,7 @@
 
 use App\Modules\KanBan\Presentation\Controller\API\Auth\OwnerAuthController;
 use App\Modules\KanBan\Presentation\Controller\API\BusinessController;
+use App\Modules\KanBan\Presentation\Controller\API\MenuController;
 use App\Modules\KanBan\Presentation\Controller\API\OutletController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,16 @@ Route::middleware('auth:sanctum')->group(
             }
         );
 
+        Route::prefix('menu')->group(
+            function () {
+                Route::post('create', [MenuController::class, 'createMenu']);
+                Route::post('update', [MenuController::class, 'editMenu']);
+                Route::post('get_menu', [MenuController::class, 'getMenu']);
+                Route::post('delete', [MenuController::class, 'deleteMenu']);
+                Route::post('list', [MenuController::class, 'listMenu']);
+            }
+        );
+
         Route::prefix('outlet')->group(
             function () {
                 Route::post('create_outlet', [OutletController::class, 'create_outlet']);
@@ -39,8 +50,6 @@ Route::middleware('auth:sanctum')->group(
                 Route::post('get_outlet', [OutletController::class, 'get_outlet']);
                 Route::post('delete_outlet', [OutletController::class, 'delete_outlet']);
                 Route::post('list_outlet', [OutletController::class, 'list_outlet']);
-            }
-        );
     }
 );
 

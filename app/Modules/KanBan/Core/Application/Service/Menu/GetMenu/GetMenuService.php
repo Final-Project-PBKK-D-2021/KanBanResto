@@ -22,11 +22,18 @@ class GetMenuService
     public function execute(GetMenuRequest $request)
     {
         $menu = $this->menu_repository->getMenuById($request->getMenuId());
+        $menu_products = $this->menu_repository->getListProductById($request->getMenuId());
+        $menu_product_ids = array();
+
+        foreach ($menu_products as $menu_product) {
+            $menu_product_ids[] = $menu_product->product_id;
+        }
 
         return new GetMenuResponse(
             $menu->id,
             $menu->name,
-            $menu->description
+            $menu->description,
+            $menu_product_ids
         );
     }
 }

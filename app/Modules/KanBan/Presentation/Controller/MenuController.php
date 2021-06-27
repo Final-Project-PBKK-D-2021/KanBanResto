@@ -34,10 +34,12 @@ class MenuController
 
     public function createMenu(MenuFormRequest $request)
     {
+        dd($request->products);
         $input = new CreateMenuRequest(
             $request->input('menu_name'),
             $request->input('menu_description'),
-            $request->business_id
+            $request->business_id,
+            $request->products
         );
 
         /** @var CreateMenuService $service */
@@ -51,7 +53,8 @@ class MenuController
         return redirect()->route('owner.withBusiness.menu.index', ['business_id' => request()->route('business_id')]);
     }
 
-    public function listMenu(){
+    public function listMenu()
+    {
         /** @var ListMenuService $service */
         $service = resolve(ListMenuService::class);
 
@@ -60,7 +63,8 @@ class MenuController
         return view('KanBan::menu.menu_list', compact('menus'));
     }
 
-    public function showEditMenuForm(Request $request){
+    public function showEditMenuForm(Request $request)
+    {
         $input = new GetMenuRequest($request->menu_id);
 
         /** @var GetMenuService $service */
@@ -76,11 +80,13 @@ class MenuController
         return view('KanBan::menu.edit', compact('menu', 'products'));
     }
 
-    public function editMenu (MenuFormRequest $request){
+    public function editMenu (MenuFormRequest $request)
+    {
         $input = new EditMenuRequest(
             $request->input('menu_id'),
             $request->input('menu_name'),
-            $request->input('menu_description')
+            $request->input('menu_description'),
+            $request->products
         );
 
         /** @var EditMenuService $service */
@@ -94,7 +100,8 @@ class MenuController
         return redirect()->route('owner.withBusiness.menu.index', ['business_id' => request()->route('business_id')]);
     }
 
-    public function deleteMenu (Request $request){
+    public function deleteMenu (Request $request)
+    {
         $input = new DeleteMenuRequest(
             $request->menu_id
         );
@@ -110,7 +117,8 @@ class MenuController
         return redirect()->route('owner.withBusiness.menu.index', ['business_id' => request()->route('business_id')]);
     }
 
-    public function qrcode(Request $request) {
+    public function qrcode(Request $request)
+    {
         $input = new GetMenuRequest($request->menu_id);
 
         /** @var GetMenuService $service */

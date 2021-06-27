@@ -82,7 +82,6 @@
             right: 35px;
             top: 15px;
             font-size: 40px;
-            font-weight: bold;
             color: #f1f1f1;
         }
 
@@ -109,9 +108,8 @@
                 <tr>
                     <th>Menu Name</th>
                     <th>Menu Description</th>
+                    <th>Products</th>
                     <th>Actions</th>
-                    <th>Product 1</th>
-                    <th>Product 2</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -119,6 +117,11 @@
                     <tr>
                         <td>{{$menu->name}}</td>
                         <td>{{$menu->description}}</td>
+                        <td>
+                            @foreach($menu->products as $product)
+                                Nama : {{$product->name}} |  Harga : {{$product->price}} | Deskripsi : {{$product->description}} | Tag : {{$product->badge}}<br><br>
+                            @endforeach
+                        </td>
                         <td>
                             <a href="{{route('owner.withBusiness.menu.edit', ['business_id' => request()->route('business_id'), 'menu_id' => $menu->id])}}">
                                 <div class="btn btn-outline-primary">Edit</div>
@@ -131,9 +134,6 @@
                                 <div class="btn btn-outline-info">Show QR Code</div>
                             </a>
                         </td>
-                        @foreach($menu->products as $product)
-                        <td>{{$product}}</td>
-                        @endforeach
                     </tr>
                 @endforeach
                 </tbody>
