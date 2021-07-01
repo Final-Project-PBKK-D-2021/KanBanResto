@@ -50,6 +50,7 @@ Route::middleware('auth:sanctum')->group(
                 Route::post('get_outlet', [OutletController::class, 'get_outlet']);
                 Route::post('delete_outlet', [OutletController::class, 'delete_outlet']);
                 Route::post('list_outlet', [OutletController::class, 'list_outlet']);
+            }
+        );
     }
 );
-
