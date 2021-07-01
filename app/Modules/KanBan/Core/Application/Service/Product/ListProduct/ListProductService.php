@@ -19,8 +19,9 @@ class ListProductService
         $this->product_repository = $product_repository;
     }
 
-    public function execute (){
-        $products = $this->product_repository->listProduct();
+    public function execute($business_id)
+    {
+        $products = $this->product_repository->listProductByBusinessId($business_id);
         return $products;
     }
 }

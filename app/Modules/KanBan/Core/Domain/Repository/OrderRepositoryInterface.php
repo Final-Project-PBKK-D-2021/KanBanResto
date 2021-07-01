@@ -12,7 +12,7 @@ interface OrderRepositoryInterface
 
     public function persist (Order $order);
 
-    public function listOrder();
+    public function listOrderByOutletId($outlet_id);
 
     // public function deleteOrderById($id);
 }

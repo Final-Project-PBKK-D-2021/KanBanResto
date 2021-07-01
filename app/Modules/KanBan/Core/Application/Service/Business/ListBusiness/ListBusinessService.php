@@ -3,8 +3,9 @@
 namespace App\Modules\KanBan\Core\Application\Service\Business\ListBusiness;
 
 use App\Modules\KanBan\Core\Domain\Repository\BusinessRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 
-class ListBusinessService 
+class ListBusinessService
 {
     private BusinessRepositoryInterface $business_repository;
 
@@ -17,9 +18,9 @@ class ListBusinessService
         $this->business_repository = $business_repository;
     }
 
-    public function execute() 
+    public function execute()
     {
-        $business = $this->business_repository->listBusiness();
+        $business = $this->business_repository->listBusinessByOwnerId(Auth::guard('owner')->user()->owner_id);
         return $business;
     }
 }

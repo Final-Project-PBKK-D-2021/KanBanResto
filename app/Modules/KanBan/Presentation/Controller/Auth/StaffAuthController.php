@@ -75,7 +75,7 @@ class StaffAuthController
             );
         }
 
-        return redirect()->intended('/dd_session');
+        return redirect()->intended('/staff/order');
     }
 
     public function logout()

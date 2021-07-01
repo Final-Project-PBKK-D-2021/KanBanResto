@@ -26,6 +26,7 @@ class CreateOrderService
             [
                 'name' => $request->getName(),
                 'total_price' => $request->getTotalPrice(),
+                'outlet_id' => $request->getOutletId()
             ]
         );
 
@@ -37,22 +38,18 @@ class CreateOrderService
         //dd($id_product[0], $qty[0]);
         $i=0;
         foreach($qty as $jumlah){
-            
             if($jumlah != null || $jumlah != 0){
                 //dd("masuk");
                 $id = $id_product[$i];
                 //dd($id, $jumlah, $order->id);
                 $order2->products()->attach($id, ['jumlah' => $jumlah]);
-                $order2->products;
                 //dd($order2->products);
 
             }
             $i++;
         }
 
-        // dd($order2->products);
         $this->order_repository->persist($order);
-        // dd("masuk");
         return $order->id;
     }
 }

@@ -5,8 +5,8 @@ namespace App\Modules\KanBan\Core\Application\Service\Staff\DeleteStaff;
 
 
 use App\Exceptions\KanBanException;
-use App\Modules\KanBan\Core\Domain\Model\Business;
 use App\Modules\KanBan\Core\Domain\Repository\StaffRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 
 class DeleteStaffService
 {
@@ -23,11 +23,12 @@ class DeleteStaffService
 
     public function execute(DeleteStaffRequest $request)
     {
-//        $owner = Auth::guard('owner')->user();
-//        $business = $owner->businesses()->where('id', $request->getBusinessId());
+        $owner = Auth::guard('owner')->user();
+        $business = $owner->businesses()->where('id', $request->getBusinessId());
 
         //Sementara karena belom di tata
-        $business = Business::where('id', $request->getBusinessId())->first();
+//        $business = Business::where('id', $request->getBusinessId())->first();
+
         $outlet = $business->outlets()->where('id', $request->getOutletId())->first();
 
         if (!$outlet) {

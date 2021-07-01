@@ -12,7 +12,7 @@ interface ProductRepositoryInterface
 
     public function persist (Product $product);
 
-    public function listProduct();
+    public function listProductByBusinessId($business_id);
 
     public function deleteProductById($id);
 }

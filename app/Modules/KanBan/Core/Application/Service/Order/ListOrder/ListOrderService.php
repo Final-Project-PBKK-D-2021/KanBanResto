@@ -19,8 +19,9 @@ class ListOrderService
         $this->order_repository = $order_repository;
     }
 
-    public function execute (){
-        $orders = $this->order_repository->listOrder();
+    public function execute($outlet_id)
+    {
+        $orders = $this->order_repository->listOrderByOutletId($outlet_id);
         return $orders;
     }
 }

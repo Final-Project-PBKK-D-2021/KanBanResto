@@ -12,7 +12,9 @@ interface OutletRepositoryInterface
 
     public function getOutletByOutletId($id);
 
-    public function listOutlet();
+    public function listOutletByBusinessId($business_id);
 
     public function deleteOutletById($id);
+
+    public function listOutlet();
 }
