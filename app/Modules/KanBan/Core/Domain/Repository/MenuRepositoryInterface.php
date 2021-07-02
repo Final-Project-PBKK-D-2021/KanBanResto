@@ -14,7 +14,7 @@ interface MenuRepositoryInterface
 
     public function persist(Menu $menu, array $product_ids);
 
-    public function listMenu();
+    public function listMenuByBusinessId($business_id);
 
     public function deleteMenuById($id);
 

@@ -22,19 +22,18 @@ use Throwable;
 
 class MenuController
 {
-    public function showCreateMenuForm()
+    public function showCreateMenuForm($business_id)
     {
         /** @var ListProductService $service */
         $service = resolve(ListProductService::class);
 
-        $products =  $service->execute();
+        $products = $service->execute($business_id);
 
         return view('KanBan::menu.create', compact('products'));
     }
 
     public function createMenu(MenuFormRequest $request)
     {
-        dd($request->products);
         $input = new CreateMenuRequest(
             $request->input('menu_name'),
             $request->input('menu_description'),
@@ -53,29 +52,29 @@ class MenuController
         return redirect()->route('owner.withBusiness.menu.index', ['business_id' => request()->route('business_id')]);
     }
 
-    public function listMenu()
+    public function listMenu($business_id)
     {
         /** @var ListMenuService $service */
         $service = resolve(ListMenuService::class);
 
-        $menus =  $service->execute();
+        $menus = $service->execute($business_id);
 
         return view('KanBan::menu.menu_list', compact('menus'));
     }
 
-    public function showEditMenuForm(Request $request)
+    public function showEditMenuForm(Request $request, $business_id)
     {
         $input = new GetMenuRequest($request->menu_id);
 
         /** @var GetMenuService $service */
         $service = resolve(GetMenuService::class);
 
-        $menu =  $service->execute($input);
+        $menu = $service->execute($input);
 
         /** @var ListProductService $service */
         $service = resolve(ListProductService::class);
 
-        $products =  $service->execute();
+        $products = $service->execute($business_id);
 
         return view('KanBan::menu.edit', compact('menu', 'products'));
     }

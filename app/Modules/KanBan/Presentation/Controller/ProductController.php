@@ -4,6 +4,7 @@
 namespace App\Modules\KanBan\Presentation\Controller;
 
 
+use App\Http\Requests\ProductFormRequest;
 use App\Modules\KanBan\Core\Application\Service\Product\CreateProduct\CreateProductRequest;
 use App\Modules\KanBan\Core\Application\Service\Product\CreateProduct\CreateProductService;
 use App\Modules\KanBan\Core\Application\Service\Product\DeleteProduct\DeleteProductRequest;
@@ -14,7 +15,6 @@ use App\Modules\KanBan\Core\Application\Service\Product\GetProduct\GetProductReq
 use App\Modules\KanBan\Core\Application\Service\Product\GetProduct\GetProductService;
 use App\Modules\KanBan\Core\Application\Service\Product\ListProduct\ListProductService;
 use Illuminate\Http\Request;
-use App\Http\Requests\ProductFormRequest;
 use Throwable;
 
 class ProductController
@@ -26,7 +26,6 @@ class ProductController
 
     public function createProduct(ProductFormRequest $request, $business_id)
     {
-
         $input = new CreateProductRequest(
             $request->input('product_name'),
             $request->input('product_price'),
@@ -43,25 +42,30 @@ class ProductController
         } catch (Throwable $e) {
             return redirect()->back()->with('alert', 'Product Creation Failed');
         }
-        return redirect()->route('owner.withBusiness.product.index',  ['business_id' => request()->route('business_id')]);
+        return redirect()->route(
+            'owner.withBusiness.product.index',
+            ['business_id' => request()->route('business_id')]
+        );
     }
 
-    public function listProduct(){
+    public function listProduct($business_id)
+    {
         /** @var ListProductService $service */
         $service = resolve(ListProductService::class);
 
-        $products =  $service->execute();
+        $products = $service->execute($business_id);
 
         return view('KanBan::product.product_list', compact('products'));
     }
 
-    public function showEditProductForm(int $product_id){
+    public function showEditProductForm(int $product_id)
+    {
         $input = new GetProductRequest($product_id);
 
         /** @var GetProductService $service */
         $service = resolve(GetProductService::class);
 
-        $product =  $service->execute($input);
+        $product = $service->execute($input);
 
         return view('KanBan::product.edit_product_form', compact('product'));
     }

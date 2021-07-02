@@ -31,9 +31,9 @@ class MenuRepository implements MenuRepositoryInterface
         }
     }
 
-    public function listMenu()
+    public function listMenuByBusinessId($business_id)
     {
-        return Menu::paginate(10);
+        return Menu::where('business_id', $business_id)->get();
     }
 
     public function deleteMenuById($id)

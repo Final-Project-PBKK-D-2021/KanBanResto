@@ -22,6 +22,13 @@ Route::get(
 )->name('welcome');
 
 Route::get(
+    '/login',
+    function () {
+        return view('KanBan::choose_login');
+    }
+)->name('choose_login');
+
+Route::get(
     '/dd_session',
     function () {
         dd(Auth::guard('staff')->user(), Auth::guard('owner')->check(), Auth::user(), Auth::guard());

@@ -12,7 +12,7 @@ interface BusinessRepositoryInterface
 
     public function persist(Business $business);
 
-    public function listBusiness();
+    public function listBusinessByOwnerId($owner_id);
 
     public function deleteBusinessById($id);
 }

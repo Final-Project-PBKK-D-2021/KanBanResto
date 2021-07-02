@@ -14,6 +14,7 @@ class Order extends Model
     protected $fillable = [
         'name',
         'total_price',
+        'outlet_id'
     ];
 
     protected $guarded = [
@@ -25,13 +26,4 @@ class Order extends Model
         // dd($this);
         return $this->belongsToMany(Product::class, 'order_product')->withPivot('jumlah');
     }
-
-    // public function products()
-    // {
-    //     return $this->belongsToMany(
-    //         Product::class, 
-    //         'order_product',
-    //         'order_id',
-    //         'product_id')->withPivot('jumlah');
-    // }
 }

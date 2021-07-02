@@ -16,9 +16,10 @@
 
 @section('content')
     <div class="wrapper">
-		<div class="box">
+		<div class="box shadow-sm">
+            <a href="{{ route('welcome') }}">
 			<img src="{{ url('assets/img/logo.png') }}" alt="Logo Kanban Resto" class="logo">
-			
+			</a>
             <form action="{{route('register')}}" method="post" autocomplete="off">
                 @csrf
                 <!-- Nama -->

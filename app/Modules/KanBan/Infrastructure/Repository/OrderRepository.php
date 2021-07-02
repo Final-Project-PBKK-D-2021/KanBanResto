@@ -20,9 +20,9 @@ class OrderRepository implements OrderRepositoryInterface
         $order->save();
     }
 
-    public function listOrder()
+    public function listOrderByOutletId($outlet_id)
     {
-        return Order::paginate(10);
+        return Order::where('outlet_id', $outlet_id)->get();
     }
 
     public function deleteOrderById($id)

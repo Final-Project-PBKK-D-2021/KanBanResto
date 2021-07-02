@@ -22,7 +22,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach($menu->getListProducts() as $product)
+                    @foreach($menu->getProducts() as $product)
                     <tr>
                         <td>
                             {{$product}}

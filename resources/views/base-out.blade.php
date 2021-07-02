@@ -46,8 +46,8 @@
 </head>
 <body>
 
-<div class="content ht-100v pd-0">
-    <div class="content-body ht-100p pd-t-80">
+<div class="content bg-white ht-100v pd-0">
+    <div class="content-body ht-100p">
         <div class="container pd-x-0" id="content">
             @yield('content')
         </div><!-- container -->

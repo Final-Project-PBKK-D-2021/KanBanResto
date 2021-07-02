@@ -19,8 +19,10 @@ class ListMenuService
         $this->menu_repository = $menu_repository;
     }
 
-    public function execute (){
-        $menus = $this->menu_repository->listMenu();
+    public function execute($businesss_id)
+    {
+        $menus = $this->menu_repository->listMenuByBusinessId($businesss_id);
+
         return $menus;
     }
 }

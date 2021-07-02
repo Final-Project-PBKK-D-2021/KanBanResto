@@ -20,9 +20,9 @@ class ProductRepository implements ProductRepositoryInterface
         $product->save();
     }
 
-    public function listProduct()
+    public function listProductByBusinessId($business_id)
     {
-        return Product::paginate(10);
+        return Product::where('business_id', $business_id)->get();
     }
 
     public function deleteProductById($id)
