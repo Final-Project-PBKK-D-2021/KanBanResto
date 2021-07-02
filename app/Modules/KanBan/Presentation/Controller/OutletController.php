@@ -8,7 +8,7 @@ use App\Http\Requests\EditOutletFormRequest;
 use App\Modules\KanBan\Core\Domain\Model\Outlet;
 use App\Modules\KanBan\Presentation\Controller\OutletRepositoryInterface;
 use Illuminate\Http\Request;
-use Illuminate\Http\Responese;
+use Illuminate\Http\Response;
 
 class OutletController
 {
