@@ -18,6 +18,11 @@ use Throwable;
 
 class BusinessController
 {
+    public function showBusinessDashboard()
+    {
+        return view('KanBan::dashboard');
+    }
+
     public function showBusinessInLanding()
     {
         /** @var ListBusinessService $service */
