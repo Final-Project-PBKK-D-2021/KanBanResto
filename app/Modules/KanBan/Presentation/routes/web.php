@@ -132,6 +132,11 @@ Route::prefix('owner')->name('owner.')->middleware(OwnerMiddleware::class)->grou
                                 );
                             }
                         );
+                        Route::prefix('order')->name('order.')->group(
+                            function () {
+                                Route::get('/', [OrderController::class, 'listOrderOwner'])->name('index');
+                            }
+                        );
                     }
                 );
             }

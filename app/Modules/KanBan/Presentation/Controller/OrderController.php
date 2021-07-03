@@ -67,6 +67,15 @@ class OrderController
         return view('KanBan::order.order_list', compact('orders'));
     }
 
+    public function listOrderOwner(Request $request){
+        /** @var ListOrderService $service */
+        $service = resolve(ListOrderService::class);
+
+        $orders = $service->execute($request->outlet_id);
+
+        return view('KanBan::order.index', compact('orders'));
+    }
+
     public function qrcode(int $order_id) {
         /** @var QRCodeService $qrService */
         $qrService = resolve(QRCodeServiceInterface::class);

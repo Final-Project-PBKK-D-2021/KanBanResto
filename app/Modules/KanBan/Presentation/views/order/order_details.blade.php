@@ -11,7 +11,8 @@
 
 @section('content')
 <div class="container">
-    <h1>Atas Nama : {{$order->name}}</h1>
+    <h1>Atas Nama : {{$order->name}} </h1>
+    <h4>Tanggal : {{$order->updated_at}}</h4>
     <table class="table col-md-8">
         <thead>
             <tr>
