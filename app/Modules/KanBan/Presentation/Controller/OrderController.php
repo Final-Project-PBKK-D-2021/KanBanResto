@@ -68,12 +68,17 @@ class OrderController
     }
 
     public function qrcode(int $order_id) {
-        /** @var QRCodeServiceInterface $qrService */
+        /** @var QRCodeService $qrService */
         $qrService = resolve(QRCodeServiceInterface::class);
-
         $qrCode = $qrService->generateOrderQR($order_id);
 
         return view('KanBan::order.qrcode', compact('qrCode'));
+    }
+
+    public function linkqrcode(int $order_id) {
+        $order = Order::findOrFail($order_id);
+
+        return view('KanBan::order.order_details', compact('order'));
     }
 
     public function showPayment(int $order_id)

@@ -15,14 +15,15 @@ class QRCodeService implements QRCodeServiceInterface
 
     public function generateOrderQR(int $order_id)
     {
-        $order = Order::findOrFail($order_id);
-        // dd($order);
-        $barcode = '/barcode.png';
-        $file = public_path($barcode);
+        return QrCode::size(100)->generate('http://127.0.0.1:8000/order-details/'.$order_id);
+        // $order = Order::findOrFail($order_id);
+        // // dd($order);
+        // $barcode = '/barcode.png';
+        // $file = public_path($barcode);
 
-        $qrCode = \QRCode::text($order)->setSize(5)->setOutfile($file)->png();
+        // $qrCode = \QRCode::text($order)->setSize(5)->setOutfile($file)->png();
 
-        return $barcode;
+        // return $barcode;
        //return view('KanBan::welcome', compact('barcode'));
     }
 }
