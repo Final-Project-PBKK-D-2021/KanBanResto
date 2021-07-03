@@ -72,8 +72,48 @@ Edit Menu
                     </fieldset>
                     <button type="submit" form="form_menu" class="btn btn-primary tx-montserrat tx-semibold float-right">Simpan</button>
                 </form>
+                <a href="#" data-toggle="modal" data-animation="effect-scale" data-target="#modal-hapus" class="btn btn-danger tx-montserrat tx-semibold float-right mg-r-10">
+                    Hapus
+                </a>
             </div>
         </div>
+    </div>
+</div>
+<!-- Modal hapus -->
+<div class="modal fade" id="modal-hapus" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content bg-white">
+            <!-- Begin overlay-->
+            <div class="modal-spinner" style="display: none;">
+                <div class="spinner-alignment">
+                    <span class="spinner-border tx-white"></span>
+                </div>
+            </div>
+            <!-- End overlay-->
+            <div class="modal-header">
+                <div>
+                    <h5 class="tx-montserrat tx-semibold">Delete Outlet</h5>
+                    <a href="" role="button" class="close pos-absolute t-15 r-15" data-dismiss="modal"
+                       aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </a>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <p>Are you sure to delete <b>{{ $menu->getName() }} menu</b>?</p>
+                </div>
+                <div>
+                    <form id="form-hapus" method="POST" action="{{route('owner.withBusiness.menu.delete',['business_id' => request()->route('business_id'), 'menu_id' => $menu->getId()])}}">
+                        @csrf
+                        <input type="hidden" name="menu_id" value="{{ $menu->getId() }}">
+                        <button class="btn btn-danger btn-block tx-montserrat tx-semibold form-submit-button"
+                                type="submit" form="form-hapus">Delete
+                        </button>
+                    </form>
+                </div>
+            </div><!-- modal-body -->
+        </div><!-- modal-content -->
     </div>
 </div>
 @endsection

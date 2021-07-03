@@ -24,7 +24,7 @@
           <div class="col-sm-6 col-lg-6">
             <div class="card card-help">
                 <div class="card-body tx-13">
-                <div class="tx-60 lh-0 mg-b-25"><ion-icon name="storefront-outline"></ion-icon></div>
+                <div class="tx-60 lh-0 mg-b-25"><ion-icon name="business-outline"></ion-icon></div>
                 <h5><a href="" class="link-01">Owner</a></h5>
                 <p class="tx-color-03 mg-b-0">Masuk sebagai pemilik atau owner bisnis...</p>
                 </div><!-- card-body -->
