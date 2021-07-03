@@ -156,3 +156,5 @@ Route::prefix('staff')->name('staff.')->middleware(StaffMiddleware::class)->grou
     }
 );
 
+
+Route::get('/orderdetails/{order_id}', [OrderController::class, 'linkqrcode'])->name('linkQRCode');
