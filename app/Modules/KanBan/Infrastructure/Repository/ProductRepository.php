@@ -1,9 +1,5 @@
 <?php
-
-
 namespace App\Modules\KanBan\Infrastructure\Repository;
-
-
 use App\Modules\KanBan\Core\Domain\Model\Product;
 use App\Modules\KanBan\Core\Domain\Repository\ProductRepositoryInterface;
 
@@ -30,3 +26,5 @@ class ProductRepository implements ProductRepositoryInterface
         Product::where('id', $id)->delete();
     }
 }
+
+
