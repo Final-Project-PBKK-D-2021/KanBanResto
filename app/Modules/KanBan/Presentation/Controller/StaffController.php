@@ -10,18 +10,20 @@ use App\Modules\KanBan\Core\Application\Service\Staff\DeleteStaff\DeleteStaffSer
 use App\Modules\KanBan\Core\Application\Service\Staff\ListStaff\ListStaffRequest;
 use App\Modules\KanBan\Core\Application\Service\Staff\ListStaff\ListStaffService;
 use Throwable;
+use Illuminate\Http\Request;
 
 class StaffController
 {
-    public function listStaff($business_id, $outlet_id)
+    public function listStaff(Request $request)
     {
-        $input = new ListStaffRequest($business_id, $outlet_id);
+        $input = new ListStaffRequest($request->business_id, $request->outlet_id);
         /** @var ListStaffService $service */
         $service = resolve(ListStaffService::class);
-
+        
         try {
             $staffs = $service->execute($input);
         } catch (KanBanException $e) {
+            dd($e);
             if ($e->getCode() == 101) {
                 return redirect()->back()->with('alert', 'Access Not Authorized');
             }

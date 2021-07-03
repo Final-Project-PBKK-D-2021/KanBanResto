@@ -71,7 +71,8 @@
         </div>
         <div class="card-body">
             <div class="row row-xs mg-t-10">
-                <a href="{{route('owner.withBusiness.withOutlet.staff.index', ['business_id' => request()->route('business_id'), 'outlet_id' => $outlet->id])}}"
+                <p>{{request()->route('business_id')}}</p>
+                <a href="{{route('owner.withBusiness.withOutlet.staff.index', ['business_id' => request()->route('business_id'), 'outlet_id' => $outlet->id ])}}"
                 class="nav-link">
                     <i data-feather="coffee"></i>
                     <span>Staff</span>

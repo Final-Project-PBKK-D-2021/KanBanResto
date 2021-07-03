@@ -12,11 +12,7 @@ class ListStaffService
     public function execute(ListStaffRequest $request)
     {
         $owner = Auth::guard('owner')->user();
-        $business = $owner->businesses()->where('id', $request->getBusinessId());
-
-        //Sementara karena belom di tata
-//        $business = Business::where('id', $request->getBusinessId())->first();
-
+        $business = $owner->businesses()->where('id', $request->getBusinessId())->first();
         $outlet = $business->outlets()->where('id', $request->getOutletId())->first();
 
         if (!$outlet) {
