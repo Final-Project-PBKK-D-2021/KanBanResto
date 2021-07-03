@@ -67,16 +67,12 @@
                     <h5 class="tx-medium tx-montserrat mg-b-5">Staff List Outlet</h5>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="card-body">
-            <div class="row row-xs mg-t-10">
-                <p>{{request()->route('business_id')}}</p>
-                <a href="{{route('owner.withBusiness.withOutlet.staff.index', ['business_id' => request()->route('business_id'), 'outlet_id' => $outlet->id ])}}"
-                class="nav-link">
-                    <i data-feather="coffee"></i>
-                    <span>Staff</span>
-                </a>
+                <div class="col-2 col-sm-2 col-lg-2">
+                    <a href="{{route('owner.withBusiness.withOutlet.staff.index', ['business_id' => request()->route('business_id'), 'outlet_id' => $outlet->id ])}}" 
+                        class="btn btn-white tx-montserrat tx-semibold float-right d-none d-lg-block"><i data-feather="users" class="wd-10 mg-r-5"></i> Show</a>
+                    <a href="{{route('owner.withBusiness.withOutlet.staff.index', ['business_id' => request()->route('business_id'), 'outlet_id' => $outlet->id ])}}" 
+                        class="btn btn-white btn-icon tx-montserrat tx-medium float-right d-lg-none"><i data-feather="users"></i></a>
+                </div>
             </div>
         </div>
     </div>

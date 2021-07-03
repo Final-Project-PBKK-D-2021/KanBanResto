@@ -35,9 +35,10 @@ class StaffController
         return view('KanBan::staff.index', compact('staffs'));
     }
 
-    public function deleteStaff($business_id, $outlet_id, $staff_id)
+    public function deleteStaff(Request $request)
     {
-        $input = new DeleteStaffRequest($business_id, $outlet_id, $staff_id);
+        dd(intval($request->staff_id));
+        $input = new DeleteStaffRequest($request->business_id, $request->outlet_id, intval($request->staff_id));
         /** @var DeleteStaffService $service */
         $service = resolve(DeleteStaffService::class);
 

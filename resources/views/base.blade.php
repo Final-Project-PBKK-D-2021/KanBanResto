@@ -76,10 +76,11 @@
         </a><!-- dropdown-link -->
         <div class="dropdown-menu dropdown-menu-right tx-13">
         <div class="avatar avatar-lg mg-b-15"><img src="https://i.etsystatic.com/14193803/r/il/7eba8e/2455919397/il_794xN.2455919397_h3lz.jpg" class="rounded-circle" alt=""></div>
-        <h6 class="tx-semibold mg-b-5">{{Auth::guard('owner')->user()->name}}</h6>
         @if(Auth::guard('owner')->check())
+        <h6 class="tx-semibold mg-b-5">{{Auth::guard('owner')->user()->name}}</h6>
         <p class="mg-b-25 tx-12 tx-color-03">Owner</p>
         @elseif(Auth::guard('staff')->check())
+        <h6 class="tx-semibold mg-b-5">{{Auth::guard('staff')->user()->name}}</h6>
         <p class="mg-b-25 tx-12 tx-color-03">Staff</p>
         @endif
 

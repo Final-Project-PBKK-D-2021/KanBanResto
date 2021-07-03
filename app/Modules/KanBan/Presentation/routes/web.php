@@ -127,7 +127,7 @@ Route::prefix('owner')->name('owner.')->middleware(OwnerMiddleware::class)->grou
                                     'register'
                                 );
                                 Route::post('/register', [StaffAuthController::class, 'register'])->name('register');
-                                Route::post('/delete/{staff_id}', [StaffController::class, 'deleteStaff'])->name(
+                                Route::post('/delete', [StaffController::class, 'deleteStaff'])->name(
                                     'delete'
                                 );
                             }
