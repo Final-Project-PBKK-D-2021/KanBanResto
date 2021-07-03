@@ -24,6 +24,11 @@ class BusinessRepository implements BusinessRepositoryInterface
         return Business::where('owner_id', $owner_id)->get();
     }
 
+    public function listBusiness()
+    {
+        return Business::all();
+    }
+
     public function deleteBusinessById($id)
     {
         Business::where('id', $id)->delete();

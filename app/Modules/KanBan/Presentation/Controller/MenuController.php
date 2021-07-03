@@ -62,6 +62,16 @@ class MenuController
         return view('KanBan::menu.index', compact('menus'));
     }
 
+    public function listMenuInLanding($business_id)
+    {
+        /** @var ListMenuService $service */
+        $service = resolve(ListMenuService::class);
+
+        $menus = $service->execute($business_id);
+
+        return view('KanBan::menu.menu_list', compact('menus'));
+    }
+
     public function showEditMenuForm(Request $request, $business_id)
     {
         $input = new GetMenuRequest($request->menu_id);

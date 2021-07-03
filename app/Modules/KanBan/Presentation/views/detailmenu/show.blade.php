@@ -1,4 +1,4 @@
-@extends('base-in')
+@extends('base-out-alternatif')
 
 @section('title')
     KanbanResto
@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-<div class="row row-xs">
+<div class="row row-xs mg-t-40 mg-lg-t-60 mg-md-t-40 mg-sm-t-40">
     <div class="col-sm-12 col-lg-12 mg-b-10">
         <div class="card bg-white">
             <div class="card-body">

@@ -23,4 +23,10 @@ class ListBusinessService
         $business = $this->business_repository->listBusinessByOwnerId(Auth::guard('owner')->user()->owner_id);
         return $business;
     }
+
+    public function executeInLanding()
+    {
+        $business = $this->business_repository->listBusiness();
+        return $business;
+    }
 }

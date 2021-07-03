@@ -47,6 +47,8 @@ Route::get('/staff/login', [StaffAuthController::class, 'showLoginForm'])->name(
 Route::post('/staff/login', [StaffAuthController::class, 'authenticate'])->name('staff_login');
 
 Route::get("/detailmenu/{menu_id}",  [DetailMenuController::class, 'show'])->name('show');
+Route::get("/list_business",  [BusinessController::class, 'showBusinessInLanding'])->name('business_list');
+Route::get("/{business_id}/list_menu",  [MenuController::class, 'listMenuInLanding'])->name('menu_list');
 
 Route::prefix('owner')->name('owner.')->middleware(OwnerMiddleware::class)->group(
     function () {

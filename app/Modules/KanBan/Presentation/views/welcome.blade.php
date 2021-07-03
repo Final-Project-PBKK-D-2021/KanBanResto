@@ -8,12 +8,29 @@
     KanbanResto
 @endsection
 
+@section('styles')
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.center-vertical {
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 50%;
+}
+</style>
+@endsection
+
 @section('content')
     <div class="content content-fixed bd-b">
       <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
         <div class="d-sm-flex align-items-center justify-content-between">
           <div>
-            <h4 class="mg-b-5">Selamat Datang di KanbanResto</h4>
+            <h3 class="mg-b-5">Selamat Datang di KanbanResto</h3>
             <p class="mg-b-0 tx-color-03">
               Solusi All-In-One point of sales untuk bisnis restoran yang menyediakan   
               rangkaian lengkap manajemen outlet dan staff.
@@ -69,8 +86,23 @@
         </div><!-- card -->
         </div><!-- col -->
     </div><!-- row -->
-      </div><!-- container -->
-    </div><!-- content -->
+    <hr class="mg-t-30 mg-b-60">
+    
+    <div class="ht-100p align-items-center justify-content-center">
+      <div class="row row-xs">
+        <div class="col-6">
+          <div class="wd-70p wd-sm-150 wd-lg-250 center"><img src="{{ url('assets/img/favicon.png') }}" class="img-fluid" alt=""></div>
+        </div>
+        <div class="col-6 center-vertical">
+          <!-- <div class="wd-70p wd-sm-150 wd-lg-250 mg-b-15"><img src="{{ url('assets/img/favicon.png') }}" class="img-fluid" alt=""></div> -->
+          <h3 class="tx-color-01 mg-xl-b-5">Lihat Menu yang Kami Sajikan</h3>
+          <p class="tx-color-03 mg-b-30">You may choose the business first before you get the menu.</p>
+          <a href="{{route('business_list')}}" class="btn btn-primary"><span>Lihat Menu</span></a>
+        </div>
+      </div>
+    </div>
+    </div><!-- container -->
+  </div><!-- content -->
 
 @endsection
 
