@@ -59,7 +59,7 @@ class MenuController
 
         $menus = $service->execute($business_id);
 
-        return view('KanBan::menu.menu_list', compact('menus'));
+        return view('KanBan::menu.index', compact('menus'));
     }
 
     public function showEditMenuForm(Request $request, $business_id)

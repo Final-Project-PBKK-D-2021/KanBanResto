@@ -21,7 +21,7 @@ class ProductController
 {
     public function showCreateProductForm()
     {
-        return view('KanBan::product.create_product_form');
+        return view('KanBan::product.create');
     }
 
     public function createProduct(ProductFormRequest $request, $business_id)
@@ -55,7 +55,7 @@ class ProductController
 
         $products = $service->execute($business_id);
 
-        return view('KanBan::product.product_list', compact('products'));
+        return view('KanBan::product.index', compact('products'));
     }
 
     public function showEditProductForm(int $product_id)
@@ -67,7 +67,7 @@ class ProductController
 
         $product = $service->execute($input);
 
-        return view('KanBan::product.edit_product_form', compact('product'));
+        return view('KanBan::product.edit', compact('product'));
     }
 
     public function editProduct (int $product_id, Request $request){

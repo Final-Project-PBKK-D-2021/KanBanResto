@@ -21,8 +21,8 @@
             <table id="menuTable" class="table">
                 <thead>
                 <tr>
-                    <th>Menu Name</th>
-                    <th>Menu Description</th>
+                    <th>Name</th>
+                    <th>Description</th>
                     <th>Products</th>
                     <th>Actions</th>
                 </tr>
@@ -65,7 +65,7 @@
             orderCellsTop: true,
             fixedHeader: true,
             "lengthChange": false,
-            "order": [[1, "asc"]]
+            "order": [[0, "asc"]]
         });
     </script>
 @endsection
