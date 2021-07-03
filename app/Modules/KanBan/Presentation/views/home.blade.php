@@ -44,6 +44,20 @@
                                 </div>
                             </div>
                         </a>
+                        <div class="row row-xs mg-t-20 mg-l-5 mg-lg-l-none">
+                            <a href="{{route('owner.business.edit', ['business_id' => $business->id] )}}" class="btn btn-outline-primary tx-montserrat tx-semibold mg-r-5 mg-lg-r-10">
+                                Edit
+                            </a>
+                            <div>
+                                <form id="form-hapus" method="POST" action="{{ route('owner.business.delete') }}">
+                                    @csrf
+                                    <input type="hidden" name="business_id" value="{{ $business->id }}">
+                                    <button class="btn btn-outline-danger btn-block tx-montserrat tx-semibold form-submit-button"
+                                            type="submit" form="form-hapus">Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 @endforeach
                 </div>

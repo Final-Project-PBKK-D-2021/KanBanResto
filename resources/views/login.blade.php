@@ -8,12 +8,6 @@
     Masuk
 @endsection
 
-@section('header_right')
-    <a href="{{ route('owner.business.create') }}" class="btn btn-primary tx-montserrat tx-semibold mg-r-5 mg-lg-r-10">
-        <i data-feather="plus" class="wd-10 mg-r-5"></i>Tambah
-    </a>
-@endsection
-
 @section('content')
     <div class="wrapper">
 		<div class="box shadow-sm">
