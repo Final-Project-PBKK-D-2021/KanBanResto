@@ -13,8 +13,7 @@
         <div class="col-sm-12 col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <p class="tx-color-its">DASHBOARD</p>
-                    <p class="tx-color-03">ID Business:</p>
+                    <p class="tx-color-03">Selamat Datang {{Auth::guard('owner')->user()->name}} di Dashboard Bisnis Anda</p>
                 </div>
             </div>
         </div>

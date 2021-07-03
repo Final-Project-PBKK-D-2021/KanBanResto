@@ -61,8 +61,8 @@
     </div><!-- navbar-menu-header -->
     <ul class="nav navbar-menu">
         <li class="nav-label pd-l-15 pd-lg-l-25 d-lg-none">Main Navigation</li>
-        <li class="nav-item"><a href="#" class="nav-link"><i data-feather="box"></i> Menu</a></li>
-        <li class="nav-item"><a href="#" class="nav-link"><i data-feather="archive"></i> Bisnis</a></li>
+        <li class="nav-item"><a href="{{route('business_list')}}" class="nav-link"><i data-feather="box"></i> Menu</a></li>
+        <!-- <li class="nav-item"><a href="#" class="nav-link"><i data-feather="archive"></i> Bisnis</a></li> -->
     </ul>
     </div><!-- navbar-menu-wrapper -->
     <div class="navbar-right">

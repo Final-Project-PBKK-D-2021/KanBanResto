@@ -23,6 +23,16 @@ class BusinessController
         return view('KanBan::dashboard');
     }
 
+    public function showBusinessInLanding()
+    {
+        /** @var ListBusinessService $service */
+        $service = resolve(ListBusinessService::class);
+
+        $businesss = $service->executeInLanding();
+
+        return view('KanBan::business.index', compact('businesss'));
+    }
+
     public function showBusinessList()
     {
         /** @var ListBusinessService $service */

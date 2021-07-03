@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="wrapper">
-        <div class="box">
+        <div class="box shadow-sm">
             <img src="{{ url('assets/img/logo.png') }}" alt="Logo Kanban Resto" class="logo">
 
             <form method="post" action="{{route('staff_login')}}" autocomplete="off">
