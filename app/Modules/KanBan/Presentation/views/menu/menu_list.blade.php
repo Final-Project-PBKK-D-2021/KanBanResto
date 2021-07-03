@@ -139,15 +139,6 @@
                 </tbody>
             </table>
         </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-            <a href="{{$menus->previousPageUrl()}}">
-                <div class="btn btn-outline-primary">Previous</div>
-            </a>
-            <a href="{{$menus->nextPageUrl()}}">
-                <div class="btn btn-outline-primary">Next</div>
-            </a>
-        </div>
     </div>
     @foreach($menus as $menu)
         <div id="{{$menu->id}}confirm" class="delete-confirmation">
@@ -174,17 +165,16 @@
 
 @section('scripts')
     <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-bs5/js/dataTables.bootstrap5.min.js')}}"></script>
     <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-    <script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap5.min.js')}}"></script>
     <script>
         var table = $('#menuTable').DataTable({
             "responsive": true,
             "autoWidth": false,
             orderCellsTop: true,
             fixedHeader: true,
-            "order": [[1, "asc"]],
-            "paging": false
+            "order": [[1, "asc"]]
         });
     </script>
 @endsection
