@@ -13,19 +13,31 @@
     <div class="col-sm-12 col-lg-12 mg-b-10">
         <div class="card bg-white">
             <div class="card-body">
-                <h5 class="card-title">{{  $menu->getName()  }}</h5>
-                <p class="card-text">{{ $menu->getDescription() }}</p>
+                <h5 class="card-title">{{$menu->name}}</h5>
+                <p class="card-text">{{ $menu->description }}</p>
                 <table id="menuTable" class="table">
                 <thead>
                 <tr>
-                    <th>Product</th>
+                    <th>Nama</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Badge</th>
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach($menu->getProducts() as $product)
+                    @foreach($menu->products as $product)
                     <tr>
                         <td>
-                            {{$product}}
+                            {{$product->name}}
+                        </td>
+                        <td>
+                            {{$product->price}}
+                        </td>
+                        <td>
+                            {{$product->description}}
+                        </td>
+                        <td>
+                            {{$product->badge}}
                         </td>
                     </tr>
                     @endforeach
