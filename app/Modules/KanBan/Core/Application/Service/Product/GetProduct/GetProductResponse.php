@@ -1,10 +1,9 @@
 <?php
-
-
 namespace App\Modules\KanBan\Core\Application\Service\Product\GetProduct;
 
+use JsonSerializable;
 
-class GetProductResponse
+class GetProductResponse implements JsonSerializable
 {
     private string $id;
     private string $name;
@@ -59,5 +58,16 @@ class GetProductResponse
     public function getBadge(): string
     {
         return $this->badge;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'price' => $this->price,
+            'description' => $this->description,
+            'badge' => $this->badge,
+        ];
     }
 }

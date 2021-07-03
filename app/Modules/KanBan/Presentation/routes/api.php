@@ -4,6 +4,7 @@ use App\Modules\KanBan\Presentation\Controller\API\Auth\OwnerAuthController;
 use App\Modules\KanBan\Presentation\Controller\API\BusinessController;
 use App\Modules\KanBan\Presentation\Controller\API\MenuController;
 use App\Modules\KanBan\Presentation\Controller\API\OutletController;
+use App\Modules\KanBan\Presentation\Controller\API\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +51,16 @@ Route::middleware('auth:sanctum')->group(
                 Route::post('get_outlet', [OutletController::class, 'get_outlet']);
                 Route::post('delete_outlet', [OutletController::class, 'delete_outlet']);
                 Route::post('list_outlet', [OutletController::class, 'list_outlet']);
+            }
+        );
+
+        Route::prefix('product')->group(
+            function () {
+                Route::post('create_product', [ProductController::class, 'createProduct']);
+                Route::post('update_product', [ProductController::class, 'updateProduct']);
+                Route::post('get_product', [ProductController::class, 'getProduct']);
+                Route::post('delete_product', [ProductController::class, 'deleteProduct']);
+                Route::post('list_product', [ProductController::class, 'listProduct']);
             }
         );
     }
