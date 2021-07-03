@@ -76,7 +76,7 @@
                             </div>
                         </div>
                         <div class="submit-btn">
-                            <button type="submit" class="btn-its btn form-btn">
+                            <button type="submit" class="btn-its btn form-btn float-right">
                                 {{ __('Register') }}
                             </button>
                         </div>

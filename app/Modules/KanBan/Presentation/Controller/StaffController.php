@@ -37,8 +37,7 @@ class StaffController
 
     public function deleteStaff(Request $request)
     {
-        dd(intval($request->staff_id));
-        $input = new DeleteStaffRequest($request->business_id, $request->outlet_id, intval($request->staff_id));
+        $input = new DeleteStaffRequest($request->business_id, $request->outlet_id, $request->staff_id);
         /** @var DeleteStaffService $service */
         $service = resolve(DeleteStaffService::class);
 
