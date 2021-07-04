@@ -101,6 +101,7 @@
                 <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Details</th>
                     <th>Price</th>
                 </tr>
                 </thead>
@@ -108,7 +109,20 @@
                 @foreach($orders as $order)
                     <tr>
                         <td>{{$order->name}}</td>
+                        <td>
+                            <ul>
+                            @foreach($order->products as $product)
+                                <li>{{$product->name}} ({{$product->pivot->jumlah}})</li>
+                            @endforeach
+                            </ul>
+                        </td>
                         <td>{{$order->total_price}}</td>
+                        <td><form action="{{route('staff.order.delete', ['order_id' => $order->id])}}" method="post">    
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger p-2">Hapus</button>
+                            </form>  
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

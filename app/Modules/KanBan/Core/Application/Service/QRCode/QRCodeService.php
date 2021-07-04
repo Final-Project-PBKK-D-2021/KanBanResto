@@ -15,7 +15,7 @@ class QRCodeService implements QRCodeServiceInterface
 
     public function generateOrderQR(int $order_id)
     {
-        return QrCode::size(100)->generate('http://127.0.0.1:8000/order-details/'.$order_id);
+        return QrCode::size(100)->generate('http://127.0.0.1:8000/orderdetails/'.$order_id);
         // $order = Order::findOrFail($order_id);
         // // dd($order);
         // $barcode = '/barcode.png';
