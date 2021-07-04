@@ -115,12 +115,12 @@ class OutletController
      * @param int $id
      * @return Response
      */
-    public function destroy(Request $request)
-    {
-        $this->outlet_repository->deleteOutletById($request->outlet_id);
-        return redirect()->route(
-            'owner.withBusiness.outlet.index',
-            ['business_id' => request()->route('business_id')]
-        )->with('status', 'Outlet Berhasil Dihapus');
-    }
+    public function destroy($outlet)
+	{
+		$this->outlet_repository->deleteOutletById($outlet);
+		return redirect()->route(
+			'owner.withBusiness.outlet.index',
+			['business_id' => request()->route('business_id')]
+		)->with('status', 'Outlet Berhasil Dihapus');
+	}
 }
