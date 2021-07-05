@@ -1,101 +1,21 @@
 @extends('base')
-@section('title', 'List order')
-@section('styles')
-    <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-    <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
-    <style>
-        .delete-confirmation {
-            display: none;
-            z-index: 0;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            padding-top: 50px;
-        }
 
-        .delete-confirmation button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            opacity: 0.9;
-        }
-
-        .delete-confirmation button:hover {
-            opacity: 1;
-        }
-
-        .delete-confirmation .cancelbtn,
-        .delete-confirmation .deletebtn {
-            float: left;
-            width: 50%;
-        }
-
-        .delete-confirmation .cancelbtn {
-            background-color: #ccc;
-            color: black;
-        }
-
-        .delete-confirmation .deletebtn {
-            background-color: #f44336;
-        }
-
-        .delete-confirmation .container {
-            padding: 16px;
-            text-align: center;
-        }
-
-        .delete-confirmation .content {
-            background-color: #fefefe;
-            margin: 5% auto 15% auto;
-            border: 1px solid #888;
-            width: 80%;
-        }
-
-        .delete-confirmation hr {
-            border: 1px solid #f1f1f1;
-            margin-bottom: 25px;
-        }
-
-        .delete-confirmation .close {
-            position: absolute;
-            right: 35px;
-            top: 15px;
-            font-size: 40px;
-            font-weight: bold;
-            color: #f1f1f1;
-        }
-
-        .delete-confirmation .close:hover,
-        .delete-confirmation .close:focus {
-            color: #f44336;
-            cursor: pointer;
-        }
-
-        .delete-confirmation .clearfix::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-    </style>
+@section('title')
+    Order List
 @endsection
-{{--@section('header_title', 'Create order')--}}
+
+@section('header_title')
+    Order List
+@endsection
+
+@section('header_right')
+    <a href="{{route('staff.order.create')}}" class="btn btn-primary tx-montserrat tx-semibold mg-r-5 mg-lg-r-10">
+        <i data-feather="plus" class="wd-10 mg-r-5"></i>Tambah
+    </a>
+@endsection
+
 @section('content')
     <div class="card" id="orderList">
-        <div class="card-header">
-            <h3 class="card-title d-inline">Order List</h3>
-            <div class="d-inline float-right">
-                <a class="btn btn-success" href="{{route('staff.order.create')}}">Buat pesanan</a>
-            </div>
-        </div>
-        <!-- /.card-header -->
         <div class="card-body">
             <table id="orderTable" class="table">
                 <thead>
@@ -103,6 +23,7 @@
                     <th>Name</th>
                     <th>Details</th>
                     <th>Price</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -117,13 +38,45 @@
                             </ul>
                         </td>
                         <td>{{$order->total_price}}</td>
-                        <td><form action="{{route('staff.order.delete', ['order_id' => $order->id])}}" method="post">    
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="btn btn-danger p-2">Hapus</button>
-                            </form>  
+                        <td>
+                            <a data-id="{{$order->id}}" data-toggle="modal" data-animation="effect-scale" data-target="#modal-hapus{{$order->id}}">
+                                <div class="btn btn-outline-danger">Delete</div>
+                            </a>
+                            <a href="{{route('linkQRCode', ['order_id' => $order->id])}}">
+                                <div class="btn btn-outline-primary">Show</div>
+                            </a>
                         </td>
                     </tr>
+                    <div class="modal fade" id="modal-hapus{{$order->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content bg-white">
+                            <div class="modal-header">
+                                <div>
+                                    <h5 class="tx-montserrat tx-semibold">Delete Staff</h5>
+                                    <a href="" role="button" class="close pos-absolute t-15 r-15" data-dismiss="modal"
+                                    aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div>
+                                    <p>Are you sure to delete this order</b>?</p>
+                                </div>
+                                <div>
+                                    <form id="form-hapus" method="post" action="{{route('staff.order.delete', ['order_id' => $order->id])}}">
+                                        @csrf
+                                        @method('delete')
+                                        <input type="hidden" name="order_id" value="{{$order->id}}">
+                                        <button class="btn btn-danger btn-block tx-montserrat tx-semibold form-submit-button"
+                                            type="submit" form="form-hapus">Delete
+                                        </button>
+                                    </form>
+                                </div>
+                            </div><!-- modal-body -->
+                        </div><!-- modal-content -->
+                    </div>
+         
                 @endforeach
                 </tbody>
             </table>
@@ -143,7 +96,8 @@
             "autoWidth": false,
             orderCellsTop: true,
             fixedHeader: true,
-            "order": [[1, "asc"]]
+            "order": [[1, "asc"]],
+            lengthChange: false
         });
     </script>
 @endsection

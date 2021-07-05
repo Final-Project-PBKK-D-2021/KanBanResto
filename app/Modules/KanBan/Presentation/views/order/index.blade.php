@@ -43,7 +43,7 @@
                             $total = $total + $order->total_price;
                         }
                     ?>
-                <h1>TOTAL PEMASUKAN : {{$total}}</h1>
+                <h3>Total Pemasukan : {{$total}}</h3>
                 <table id="staffTable" class="table">
                     <thead>
                     <tr>

@@ -1,5 +1,5 @@
-<li class="nav-label mg-t-15">With Business</li>
 @if(request()->route('business_id'))
+<li class="nav-label mg-t-15">With Business</li>
     <li>
         <a href="{{route('owner.withBusiness.menu.index', ['business_id' => request()->route('business_id')])}}"
            class="nav-link">
@@ -15,8 +15,8 @@
         </a>
     </li>
 @endif
-<li class="nav-label mg-t-15">With Outlet</li>
 @if(request()->route('business_id'))
+<li class="nav-label mg-t-15">With Outlet</li>
     <li>
         <a href="{{route('owner.withBusiness.outlet.index', ['business_id' => request()->route('business_id')])}}"
            class="nav-link">
@@ -41,5 +41,15 @@
             </a>
         </li>
     @endif
+@endif
+@if((Request::is('staff/order*')))
+<li class="nav-label mg-t-15">With Outlet</li>
+<li>
+    <a href="{{route('staff.order.index')}}"
+    class="nav-link">
+        <i data-feather="file-text"></i>
+        <span>Orders</span>
+    </a>
+</li>
 @endif
 

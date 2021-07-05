@@ -1,11 +1,17 @@
 @extends('base-in')
 
 @section('title')
-    KanbanResto
+    QRCode Order
 @endsection
 
 @section('header_title')
-    KanbanResto
+    QRCode Order
+@endsection
+
+@section('header_right')
+    <a href="{{url()->previous()}}" class="btn btn-white tx-montserrat tx-semibold d-none d-lg-block">
+        <i data-feather="arrow-left" class="wd-10 mg-r-5"></i>Kembali
+    </a>
 @endsection
 
 @section('content')
@@ -13,9 +19,8 @@
         <div class="col-sm-12 col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <p class="tx-color-its">QRCODE</p>
                     <div class="visible-print text-center">
-                        <h5>Scan me to see order details !</p>
+                        <h5>Scan Me to See Order Dtails !</p>
                         {!! $qrCode !!}
                     </div>
                 </div>

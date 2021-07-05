@@ -5,6 +5,7 @@ namespace App\Modules\KanBan\Infrastructure\Repository;
 
 
 use App\Modules\KanBan\Core\Domain\Model\Outlet;
+use App\Modules\KanBan\Core\Domain\Model\Staff;
 use App\Modules\KanBan\Core\Domain\Repository\OutletRepositoryInterface;
 
 class OutletRepository implements OutletRepositoryInterface
@@ -27,6 +28,7 @@ class OutletRepository implements OutletRepositoryInterface
 
     public function deleteOutletById($id)
     {
+        Staff::where('outlet_id', $id)->delete();
         Outlet::where('id', $id)->delete();
     }
 

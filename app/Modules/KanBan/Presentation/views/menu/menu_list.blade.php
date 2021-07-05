@@ -26,7 +26,6 @@
                 <tr>
                     <th>Name</th>
                     <th>Description</th>
-                    <th>Products</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -35,11 +34,6 @@
                     <tr>
                         <td>{{$menu->name}}</td>
                         <td>{{$menu->description}}</td>
-                        <td>
-                            @foreach($menu->products as $product)
-                                Nama : {{$product->name}} |  Harga : {{$product->price}} | Deskripsi : {{$product->description}} | Tag : {{$product->badge}}<br><br>
-                            @endforeach
-                        </td>
                         <td>
                             <a href="{{route('show', ['menu_id' => $menu->id])}}">
                                 <div class="btn btn-outline-primary">Show</div>

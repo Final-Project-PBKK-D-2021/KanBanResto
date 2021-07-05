@@ -64,9 +64,6 @@
                 @else
                 <div class="card-body">
                     <p class="tx-color-its">TIDAK ADA BISNIS</p>
-                    <a href="{{ route('owner.business.create') }}" class="btn btn-primary tx-montserrat tx-semibold mg-r-5 mg-lg-r-10">
-                        <i data-feather="plus" class="wd-10 mg-r-5"></i>Tambah
-                    </a>
                 </div>
                 @endif
             </div>

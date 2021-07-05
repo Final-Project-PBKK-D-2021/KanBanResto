@@ -46,7 +46,7 @@
             <div class="card-body tx-13">
             <div class="tx-60 lh-0 mg-b-25"><ion-icon name="business"></ion-icon></div>
             <h5><a href="" class="link-01">Bisnis & Outlet</a></h5>
-            <p class="tx-color-03 mg-b-0">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molesti...</p>
+            <p class="tx-color-03 mg-b-0">Dapat mencatat bisnis dan outlet bisnis Anda</p>
             </div><!-- card-body -->
             <div class="card-footer tx-13">
             </div><!-- card-footer -->
@@ -57,7 +57,7 @@
             <div class="card-body tx-13">
             <div class="tx-60 lh-0 mg-b-25"><ion-icon name="people"></ion-icon></div>
             <h5><a href="" class="link-01">Staf</a></h5>
-            <p class="tx-color-03 mg-b-0">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molesti...</p>
+            <p class="tx-color-03 mg-b-0">Dapat mendaftarkan staff sebuah bisnis untuk manajemen di outlet</p>
             </div><!-- card-body -->
             <div class="card-footer tx-13">
             </div><!-- card-footer -->
@@ -68,7 +68,7 @@
             <div class="card-body tx-13">
             <div class="tx-60 lh-0 mg-b-25"><i class="icon ion-ios-cart"></i></div>
             <h5><a href="" class="link-01">Produk</a></h5>
-            <p class="tx-color-03 mg-b-0">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molesti...</p>
+            <p class="tx-color-03 mg-b-0">Dapat mencatat segala produk sebuah bisnis</p>
             </div><!-- card-body -->
             <div class="card-footer tx-13">
             </div><!-- card-footer -->
@@ -79,7 +79,7 @@
             <div class="card-body tx-13">
             <div class="tx-60 lh-0 mg-b-25"><i class="icon ion-ios-filing"></i></div>
             <h5><a href="" class="link-01">Transaksi</a></h5>
-            <p class="tx-color-03 mg-b-0">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molesti...</p>
+            <p class="tx-color-03 mg-b-0">Dapat mencatat segala transaksi penjualan sebuah bisnis</p>
             </div><!-- card-body -->
             <div class="card-footer tx-13">
             </div><!-- card-footer -->
