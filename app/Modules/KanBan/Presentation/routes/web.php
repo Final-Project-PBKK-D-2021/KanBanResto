@@ -156,6 +156,7 @@ Route::prefix('staff')->name('staff.')->middleware(StaffMiddleware::class)->grou
                 Route::post('create', [OrderController::class, 'createOrder'])->name('store');
                 Route::get('create/payment/{order_id}', [OrderController::class, 'showPayment'])->name('showPayment');
                 Route::delete('create/payment/{order_id}/cancel', [OrderController::class, 'cancelOrder'])->name('cancel');
+                Route::delete('{order_id}/delete', [OrderController::class, 'deleteOrder'])->name('delete');
                 Route::post('create/payment/{order_id}/updateprice', [OrderController::class, 'updatePriceOrder'])->name('updatePrice');
                 Route::get('qr-code/{order_id}', [OrderController::class, 'qrcode'])->name('qrcode');
             }

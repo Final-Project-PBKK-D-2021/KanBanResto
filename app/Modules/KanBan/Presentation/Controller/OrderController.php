@@ -114,6 +114,23 @@ class OrderController
         return redirect()->route('staff.order.create');
     }
 
+    public function deleteOrder (int $order_id){
+        //dd($order_id);
+        $input = new DeleteOrderRequest(
+            $order_id
+        );
+
+        /** @var DeleteOrderService $service */
+        $service = resolve(DeleteOrderService::class);
+
+        try {
+            $service->execute($input);
+        } catch (Throwable $e) {
+            return redirect()->back()->with('alert', 'Order Delete Failed');
+        }
+        return redirect()->route('staff.order.index');
+    }
+
     public function updatePriceOrder(Request $request, $order_id)
     {
      //   dd($request->total, $order_id);
