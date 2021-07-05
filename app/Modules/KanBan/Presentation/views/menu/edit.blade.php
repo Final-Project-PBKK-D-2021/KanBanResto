@@ -57,7 +57,13 @@ Edit Menu
                                         1</label>
                                     <select class="form-control custom-select" name="products[]" required="" multiple>
                                         @foreach ($products as $product)
-                                            <option value="{{ $product->id }}" {{ $menu->getProducts()[0] == $product->id ? 'selected' : '' }}>{{ $product->name }}</option>
+                                            @php
+                                            $is_selected = false;
+                                            foreach ($menu->getProducts() as $menu_product) {
+                                                if ($menu_product == $product->id) $is_selected = true;
+                                            }
+                                            @endphp
+                                            <option value="{{ $product->id }}" {{ $is_selected ? 'selected' : '' }}>{{ $product->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
