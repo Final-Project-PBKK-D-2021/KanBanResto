@@ -115,7 +115,7 @@ class OutletController
      * @param int $id
      * @return Response
      */
-    public function destroy($outlet)
+    public function destroy($business_id, $outlet)
 	{
 		$this->outlet_repository->deleteOutletById($outlet);
 		return redirect()->route(
